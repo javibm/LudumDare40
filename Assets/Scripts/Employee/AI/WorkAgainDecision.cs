@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu (menuName = "Employee AI/Decisions/Work Again")]
-public class WorkAgain : Decision {
+public class WorkAgainDecision : Decision {
 
 	public override bool Decide(EmployeeController controller)
 	{
