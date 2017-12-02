@@ -7,8 +7,9 @@ public class GameUIController : MonoBehaviour
 {
 	void Awake()
 	{
-		// Buttons listeners
-		expandOfficeButton.onClick.AddListener(OnExpandOfficeButtonClick);
+    // Buttons listeners
+    expandOfficeButton.onClick.AddListener(OnExpandOfficeButtonClick);
+    spawnEmployeeButton.onClick.AddListener(OnSpawnEmployeeButtonClick);
 	}
 	
 	void Start () 
@@ -30,6 +31,14 @@ public class GameUIController : MonoBehaviour
 	{
 		GameMetaManager.Office.TryExpand();
 	}
+
+  private void OnSpawnEmployeeButtonClick()
+  {
+    if (GameMetaManager.Office.GetEmptyDeskCount() > 0)
+    {
+      GameMetaManager.Employee.CreateNewEmployee(GameMetaManager.Office.GetEmptyDesk());
+    }
+  }
 
 	private void OnMoneyChanged()
 	{
@@ -96,4 +105,7 @@ public class GameUIController : MonoBehaviour
 
 	[SerializeField]
 	private Text gameOverLabelText;
+
+  [SerializeField]
+  private Button spawnEmployeeButton;
 }

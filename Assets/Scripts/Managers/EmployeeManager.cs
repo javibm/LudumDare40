@@ -20,7 +20,7 @@ public class EmployeeManager {
 	public EmployeeManager(EmployeeGenerator employeeGenerator)
 	{
 		this.employeeGenerator = employeeGenerator;
-
+    EmployeeList = new List<EmployeeController>();
 		//TO-DO ESTO ES UNA INSTANCIACIÓN DE PRUEBA!
 	}
 	
@@ -28,7 +28,8 @@ public class EmployeeManager {
 	{
 		EmployeeController employeeController = employeeGenerator.InstantiateEmployeePrefab();
 		employeeController.Init(officeDesk);
-	}
+    EmployeeList.Add(employeeController);
+  }
 
 
 	private EmployeeGenerator employeeGenerator;
