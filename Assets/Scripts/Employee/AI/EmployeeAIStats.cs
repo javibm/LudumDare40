@@ -19,7 +19,4 @@ public class EmployeeAIStats : ScriptableObject {
 	[Header("Happiness Changes")]
 	public float requestAcceptedHappiness = 0.3f;
 	public float requestDeniedHappiness = 0.4f;
-
-	[Header("Money Generation")]
-	public int moneyGeneration = 5;
 }
