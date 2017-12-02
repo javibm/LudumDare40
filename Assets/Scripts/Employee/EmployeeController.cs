@@ -26,14 +26,14 @@ public class EmployeeController : MonoBehaviour {
 		}
 	}
 
-	public void Init(OfficeDesk officeDesk, int moneyGenerated)
+	public void Init(OfficeDesk officeDesk)
 	{
 		employeeStateController = GetComponent<EmployeeStateController>();
 		employeeMovementController = GetComponent<EmployeeMovementController>();
 
 		employeeMovementController.Init(officeDesk, GetComponent<NavMeshController>());
 
-		MoneyGenerated = moneyGenerated;
+		MoneyGenerated = employeeStats.MoneyGenerated;
 	}
 
 	/// <summary>
@@ -57,4 +57,7 @@ public class EmployeeController : MonoBehaviour {
 	private EmployeeStateController employeeStateController;
 	private EmployeeMovementController employeeMovementController;
 	private float timeSinceLastGeneration;
+
+	[SerializeField]
+	private EmployeeStats employeeStats;
 }

@@ -34,11 +34,11 @@ public class EmployeeStateController : MonoBehaviour {
 		set;
 	}
 
-	public EmployeeStats EmployeeStats
+	public EmployeeAIStats EmployeeAIStats
 	{
 		get
 		{
-			return employeeStats;
+			return employeeAIStats;
 		}
 	}
 
@@ -76,20 +76,20 @@ public class EmployeeStateController : MonoBehaviour {
 	public void ResetTimes()
 	{
 		LastActionTime = 0;
-		NextProcrastinationTime = Random.Range(employeeStats.minProcrastinateTime, employeeStats.maxProcrastinateTime);
-		NextRequestTime = Random.Range(employeeStats.minRequestTime, employeeStats.maxRequestTime);
+		NextProcrastinationTime = Random.Range(employeeAIStats.minProcrastinateTime, employeeAIStats.maxProcrastinateTime);
+		NextRequestTime = Random.Range(employeeAIStats.minRequestTime, employeeAIStats.maxRequestTime);
 		RequestFinished = false;
 	}
 
 	public void EndRequest(bool accepted)
 	{
 		RequestFinished = true;
-		Happiness -= employeeStats.requestDeniedHappiness;
+		Happiness -= employeeAIStats.requestDeniedHappiness;
 	}
 
 	[SerializeField]
 	private State currentState;
 
 	[SerializeField]
-	private EmployeeStats employeeStats;
+	private EmployeeAIStats employeeAIStats;
 }
