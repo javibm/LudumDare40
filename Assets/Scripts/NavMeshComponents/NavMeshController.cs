@@ -2,7 +2,7 @@
 using UnityEngine.AI;
 using System.Collections.Generic;
 
-public class Patrol : MonoBehaviour
+public class NavMeshController : MonoBehaviour
 {
   public OfficeGenerator office;
   public Vector2 MinMaxStopTime;

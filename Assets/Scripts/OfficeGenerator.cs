@@ -22,7 +22,6 @@ public class OfficeGenerator : MonoBehaviour
 
 	void Awake()
 	{
-		navMeshSurfaceList = new List<NavMeshSurface>();
 		deskTransformList = new List<Transform>();
 		officeCurrentStep = 1;
 		generateInitialOffice();
@@ -42,8 +41,7 @@ public class OfficeGenerator : MonoBehaviour
 		officeRoot.name = "OfficeRoot";
 		officeRootTransform = officeRoot.transform;
 		officeRootTransform.localPosition = Vector3.zero;
-
-		generateOfficeStep(officeCurrentStep);
+    generateOfficeStep(officeCurrentStep);
 	}
 
 	private void generateOfficeStep(int step)
@@ -55,14 +53,15 @@ public class OfficeGenerator : MonoBehaviour
 			go = Instantiate(floorPrefab);
 			go.transform.SetParent(officeRootTransform);
 			go.transform.localPosition = new Vector3(cellSize * i, 0f, cellSize * (step-1));
-			navMeshSurfaceList.Add(go.GetComponent<NavMeshSurface>());
-
-			if(i < step-1)
+      if (step == 1)
+      {
+        navMeshSurface = go.GetComponentInChildren<NavMeshSurface>();
+      }
+      if (i < step-1)
 			{
 				go = Instantiate(floorPrefab);
 				go.transform.SetParent(officeRootTransform);
 				go.transform.localPosition = new Vector3(cellSize * (step-1), 0f, cellSize * i);
-				navMeshSurfaceList.Add(go.GetComponent<NavMeshSurface>());
 			}
 		}
 
@@ -94,7 +93,7 @@ public class OfficeGenerator : MonoBehaviour
 			}
 		}
 		// NavMesh Regeneration
-		navigationBaker.BakeNavMesh(navMeshSurfaceList);
+		navigationBaker.BakeNavMesh(navMeshSurface);
 	}
 
 	private int officeCurrentStep = 0;
@@ -115,6 +114,6 @@ public class OfficeGenerator : MonoBehaviour
 	[SerializeField]
 	private NavigationBaker navigationBaker;
 
-	private List<NavMeshSurface> navMeshSurfaceList;
+	private NavMeshSurface navMeshSurface;
 	private List<Transform> deskTransformList;
 }
