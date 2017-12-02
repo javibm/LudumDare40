@@ -22,7 +22,6 @@ public class OfficeGenerator : MonoBehaviour
 
 	void Awake()
 	{
-		deskTransformList = new List<Transform>();
 		deskList = new List<OfficeDesk>();
 		officeCurrentStep = 1;
 		generateInitialOffice();
@@ -38,10 +37,7 @@ public class OfficeGenerator : MonoBehaviour
 
 	private void generateInitialOffice()
 	{
-		officeRoot = new GameObject();
-		officeRoot.name = "OfficeRoot";
-		officeRootTransform = officeRoot.transform;
-		officeRootTransform.localPosition = Vector3.zero;
+		transform.localPosition = Vector3.zero;
     generateOfficeStep(officeCurrentStep);
 	}
 
@@ -52,7 +48,7 @@ public class OfficeGenerator : MonoBehaviour
 		for(int i = 0; i < step; ++i)
 		{
 			go = Instantiate(floorPrefab);
-			go.transform.SetParent(officeRootTransform);
+			go.transform.SetParent(transform);
 			go.transform.localPosition = new Vector3(cellSize * i, 0f, cellSize * (step-1));
       if (step == 1)
       {
@@ -61,19 +57,19 @@ public class OfficeGenerator : MonoBehaviour
       if (i < step-1)
 			{
 				go = Instantiate(floorPrefab);
-				go.transform.SetParent(officeRootTransform);
+				go.transform.SetParent(transform);
 				go.transform.localPosition = new Vector3(cellSize * (step-1), 0f, cellSize * i);
 			}
 		}
 
 		// Wall generation
 		go = Instantiate(wallPrefab);
-		go.transform.SetParent(officeRootTransform);
+		go.transform.SetParent(transform);
 		go.transform.localPosition = new Vector3(cellSize * (step-1), 0f, 0f);
 		go.transform.eulerAngles = new Vector3(0f, -90, 0f);
 
 		go = Instantiate(wallPrefab);
-		go.transform.SetParent(officeRootTransform);
+		go.transform.SetParent(transform);
 		go.transform.localPosition = new Vector3(0f, 0f, cellSize * (step-1));
 		go.transform.eulerAngles = new Vector3(0f, 0, 0f);
 
@@ -82,26 +78,26 @@ public class OfficeGenerator : MonoBehaviour
 		for(int i = 0; i < step; ++i)
 		{
 			desk = Instantiate(deskPrefab);
-			desk.transform.SetParent(officeRootTransform);
+			desk.transform.SetParent(transform);
 			desk.transform.localPosition = new Vector3(cellSize * i, 0f, cellSize * (step-1));
 			deskList.Add(desk);
 
 			if(i < step-1)
 			{
 				desk = Instantiate(deskPrefab);
-				desk.transform.SetParent(officeRootTransform);
+				desk.transform.SetParent(transform);
 				desk.transform.localPosition = new Vector3(cellSize * (step-1), 0f, cellSize * i);
 				deskList.Add(desk);
 			}
 		}
 		// NavMesh Regeneration
-		navigationBaker.BakeNavMesh(navMeshSurface);
+		if(navigationBaker != null)
+		{
+			navigationBaker.BakeNavMesh(navMeshSurface);
+		}
 	}
 
 	private int officeCurrentStep = 0;
-	
-	private GameObject officeRoot;
-	private Transform officeRootTransform;
 	
 	[SerializeField]
 	private float cellSize = 1f;
@@ -117,6 +113,5 @@ public class OfficeGenerator : MonoBehaviour
 	private NavigationBaker navigationBaker;
 
 	private NavMeshSurface navMeshSurface;
-	private List<Transform> deskTransformList;
 	private List<OfficeDesk> deskList;
 }
