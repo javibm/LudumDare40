@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4527f607a8682e94199f8e5bf84bfcf4, type: 3}
-  m_Name: EmployeeStats
+  m_Name: EmployeeAIStats
   m_EditorClassIdentifier: 
   minRequestTime: 3
   maxRequestTime: 5
@@ -19,3 +19,4 @@ MonoBehaviour:
   maxInitialHappiness: 1
   requestAcceptedHappiness: 0.3
   requestDeniedHappiness: 0.4
+  moneyGeneration: 5

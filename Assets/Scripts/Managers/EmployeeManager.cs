@@ -22,7 +22,7 @@ public class EmployeeManager : MonoBehaviour {
 	public void CreateNewEmployee(OfficeDesk officeDesk)
 	{
 		EmployeeController employeeController = employeeGenerator.InstantiateEmployeePrefab();
-		employeeController.Init(officeDesk, 5);
+		employeeController.Init(officeDesk);
 	}
 
 
