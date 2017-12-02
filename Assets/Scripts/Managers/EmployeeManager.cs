@@ -7,6 +7,7 @@ public class EmployeeManager {
 	public List<EmployeeController> EmployeeList
 	{
 		get;
+		private set;
 	}
 
 	public int CurrentEmployees
