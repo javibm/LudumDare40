@@ -11,5 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c3c8da7ff06bf468f6708f5951fb1e, type: 3}
   m_Name: GameStats
   m_EditorClassIdentifier: 
+  DayDurationInSeconds: 1
   InitialMoney: 2000
+  MaxDaysWithNegativeMoney: 30
   OfficeInitialSize: 2
