@@ -2,10 +2,9 @@
 
 public class EmployeeAnimationController : MonoBehaviour
 {
-
-  void Awake()
+  void Start()
   {
-    animatorController.GetComponent<Animator>();
+    animatorController = GetComponent<Animator>();
   }
 
   public void WalkAnim()
