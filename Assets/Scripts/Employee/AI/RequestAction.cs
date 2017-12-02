@@ -15,7 +15,7 @@ public class RequestAction : Action {
 		controller.EmployeeStateController.IncreaseLastActionTime();
 		if (Input.anyKeyDown)
 		{
-			controller.EmployeeStateController.EndRequest(false);
+			controller.EmployeeStateController.ForceWorkAgain();
 		}
 		Debug.Log ("WAITING FOR REQUEST");
 	}

@@ -32,8 +32,8 @@ public class EmployeeMovementController : MonoBehaviour {
     if (Target == personalOfficeDesk.Transform)
     {
       selectNewTarget();
+      navigate();
     }
-    navigate();
   }
 
   public void MoveToDesk()
@@ -41,8 +41,8 @@ public class EmployeeMovementController : MonoBehaviour {
     if (Target != personalOfficeDesk.Transform)
     {
       Target = personalOfficeDesk.Transform;
+      navigate();
     }
-    navigate();
   }
 
   private void selectNewTarget()
