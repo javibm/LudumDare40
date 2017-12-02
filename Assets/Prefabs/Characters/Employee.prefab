@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: {fileID: 11400000, guid: c6cb1f109d63df04285a05268e17161f, type: 2}
-  employeeStats: {fileID: 11400000, guid: 6a7bcc4eecceece4391d61be14ec40c8, type: 2}
+  employeeAIStats: {fileID: 11400000, guid: 6a7bcc4eecceece4391d61be14ec40c8, type: 2}
 --- !u!114 &114999565111946406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33bfae7df55a7146b8ee7e90e1fa424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  employeeStats: {fileID: 11400000, guid: 178734df347c3b846832f88092d35fe8, type: 2}
 --- !u!136 &136244898676616196
 CapsuleCollider:
   m_ObjectHideFlags: 1
