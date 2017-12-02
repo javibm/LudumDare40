@@ -48,6 +48,27 @@ public class OfficeManager
 		return false;
 	}
 
+	public int GetEmptyDeskCount()
+	{
+		return DeskList.Count - GameMetaManager.Employee.EmployeeList.Count;
+	}
+
+	public OfficeDesk GetEmptyDesk()
+	{
+		if(GetEmptyDeskCount() <= 0)
+		{
+			return null;
+		}
+		foreach(OfficeDesk desk in DeskList)
+		{
+			if(!desk.Filled)
+			{
+				return desk;
+			}
+		}
+		return null;
+	}
+
 	private void PayExpand()
 	{
 		GameMetaManager.Money.RemoveMoney(GetExpandCost());
