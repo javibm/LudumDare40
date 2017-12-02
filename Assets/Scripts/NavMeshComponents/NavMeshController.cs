@@ -4,20 +4,11 @@ using System.Collections.Generic;
 
 public class NavMeshController : MonoBehaviour
 {
-  public OfficeGenerator office;
-  public Vector2 MinMaxStopTime;
-  private int destPointIndex = 0;
-  private NavMeshAgent agent;
-  private float timeElapsed;
-  private Transform currentPoint;
 
   void Start()
   {
     agent = GetComponent<NavMeshAgent>();
     agent.autoBraking = true;
-    timeElapsed = 0.0f;
-    setRandomSpeed();
-    GotoNextPoint();
   }
 
   void Update()
@@ -25,35 +16,15 @@ public class NavMeshController : MonoBehaviour
     if ((!agent.pathPending && agent.remainingDistance < 0.01f) || agent.isStopped )
     {
       agent.isStopped = true;
-      if (timeElapsed > Random.Range(MinMaxStopTime.x, MinMaxStopTime.y))
-      {
-        timeElapsed = 0.0f;
-        GotoNextPoint();
-      }
-      else
-      {
-        timeElapsed += Time.deltaTime;
-      }
     }
   }
 
-  private void GotoNextPoint()
+  public void NavigateTo(Transform target, float speed)
   {
-    if (office.DeskList.Count == 0)
-    {
-      return;
-    }
-
     agent.isStopped = false;
-    setRandomSpeed();
-
-
-    destPointIndex = Random.Range(0, office.DeskList.Count);
-    agent.destination = office.DeskList[destPointIndex].transform.position;
+    agent.speed = speed;
+    agent.destination = target.position;
   }
 
-  private void setRandomSpeed()
-  {
-    agent.speed = Random.Range(0.5f, 3f);
-  }
+  private NavMeshAgent agent;
 }
