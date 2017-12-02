@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class Decision : ScriptableObject
 {
-    public abstract bool Decide (EmployeeStateController controller);
+    public abstract bool Decide (EmployeeController controller);
 }

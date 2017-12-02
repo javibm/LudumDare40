@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class Action : ScriptableObject 
 {
-    public abstract void Act (EmployeeStateController controller);
+    public abstract void Act (EmployeeController controller);
 }

@@ -54,9 +54,9 @@ public class EmployeeStateController : MonoBehaviour {
 	/// <summary>
 	/// Update is called every frame, if the MonoBehaviour is enabled.
 	/// </summary>
-	void Update()
+	public void UpdateState(EmployeeController employeeController)
 	{
-			currentState.UpdateState (this);
+			currentState.UpdateState (employeeController);
 	}
 
 	public void IncreaseLastActionTime()

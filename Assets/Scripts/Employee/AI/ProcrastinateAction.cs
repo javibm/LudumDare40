@@ -5,12 +5,12 @@ using UnityEngine;
 [CreateAssetMenu (menuName = "Employee AI/Actions/Procrastinate")]
 public class ProcrastinateAction : Action {
 
-	public override void Act(EmployeeStateController controller)
+	public override void Act(EmployeeController controller)
 	{
 		LazeAround(controller);
 	}
 
-	private void LazeAround(EmployeeStateController controller)
+	private void LazeAround(EmployeeController controller)
 	{
 		Debug.Log ("LAZING AROUND zZzzZ");
 	}

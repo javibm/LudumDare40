@@ -5,14 +5,14 @@ using UnityEngine;
 [CreateAssetMenu (menuName = "Employee AI/Decisions/Work Again")]
 public class WorkAgain : Decision {
 
-	public override bool Decide(EmployeeStateController controller)
+	public override bool Decide(EmployeeController controller)
 	{
 		return GoToWork(controller);
 	}
 
-	private bool GoToWork(EmployeeStateController controller)
+	private bool GoToWork(EmployeeController controller)
 	{
-		return controller.RequestFinished && controller.Happiness > 0;
+		return controller.EmployeeStateController.RequestFinished && controller.EmployeeStateController.Happiness > 0;
 	}
 
 }
