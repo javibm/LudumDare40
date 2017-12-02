@@ -45,6 +45,7 @@ public class EmployeeController : MonoBehaviour {
 
 	public void ApplyRequest()
 	{
+		Debug.Log("REQUEST " + nextRequest);
 		if (nextRequest == RequestType.PayRaise)
 		{
 			GameMetaManager.Money.RemoveMoney(UnityEngine.Random.Range(employeeStats.MinPayRaise, employeeStats.MaxPayRaise));
@@ -57,6 +58,7 @@ public class EmployeeController : MonoBehaviour {
 	}
 	public void TakeHolidays()
 	{
+		GetComponentInChildren<Renderer>().enabled = false;
 		holidayEnd = employeeStats.HolidayTime;
 		GameMetaManager.Time.OnDayPassed += CheckEndOfHolidays;
 	}
@@ -69,6 +71,7 @@ public class EmployeeController : MonoBehaviour {
 		}
 		if (holidayEnd == 0)
 		{
+			GetComponentInChildren<Renderer>().enabled = true;
 			GameMetaManager.Time.OnDayPassed -= CheckEndOfHolidays;
 		}
 	}

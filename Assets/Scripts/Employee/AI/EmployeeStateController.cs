@@ -47,7 +47,7 @@ public class EmployeeStateController : MonoBehaviour {
 	/// </summary>
 	void Awake()
 	{
-			Happiness = 1;
+			Happiness = Random.Range(employeeAIStats.minInitialHappiness, employeeAIStats.maxInitialHappiness);
 			ResetTimes();
 	}
 
@@ -93,7 +93,6 @@ public class EmployeeStateController : MonoBehaviour {
 	{
 		ForceWork = true;
 		Happiness -= employeeAIStats.requestDeniedHappiness;
-		Debug.Log(Happiness);
 	}
 
 	[SerializeField]
