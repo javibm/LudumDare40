@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AI;
+﻿using UnityEngine.AI;
 
-public class NavigationBaker : MonoBehaviour
+public static class NavigationBaker
 {
-  public void BakeNavMesh(NavMeshSurface surface)
+  public static void BakeNavMesh(NavMeshSurface surface)
   {
     surface.BuildNavMesh();
   }

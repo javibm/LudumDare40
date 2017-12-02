@@ -90,11 +90,8 @@ public class OfficeGenerator : MonoBehaviour
 				deskList.Add(desk);
 			}
 		}
-		// NavMesh Regeneration
-		if(navigationBaker != null)
-		{
-			navigationBaker.BakeNavMesh(navMeshSurface);
-		}
+
+    NavigationBaker.BakeNavMesh(navMeshSurface);
 	}
 
 	private int officeCurrentStep = 0;
@@ -108,9 +105,6 @@ public class OfficeGenerator : MonoBehaviour
 	private OfficeDesk deskPrefab;
 	[SerializeField]
 	private GameObject wallPrefab;
-
-	[SerializeField]
-	private NavigationBaker navigationBaker;
 
 	private NavMeshSurface navMeshSurface;
 	private List<OfficeDesk> deskList;
