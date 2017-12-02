@@ -11,6 +11,8 @@ public class MoneyManager
 	}
 
 	public event System.Action OnMoneyChanged;
+	public event System.Action OnMoneyChangeToNegative;
+	public event System.Action OnMoneyChangeToPossitive;
 
 	public MoneyManager(int initialMoney)
 	{
@@ -19,20 +21,25 @@ public class MoneyManager
 
 	public bool CanPay(int paymentQuantity)
 	{
-		// TODO Si permitimos dinero negativo hacer siempre return true;
-		return CurrentMoney >= paymentQuantity;
+		// Permitimos dinero negativo!
+		return true;
+		// return CurrentMoney >= paymentQuantity;
 	}
 
 	public void AddMoney(int money)
 	{
+		int previousMoney = CurrentMoney;
 		CurrentMoney += money;
 		NotifyOnMoneyChanged();
+		CheckNotifyMoneySignChange(previousMoney, CurrentMoney);
 	}
 
 	public void RemoveMoney(int money)
 	{
+		int previousMoney = CurrentMoney;
 		CurrentMoney -= money;
 		NotifyOnMoneyChanged();
+		CheckNotifyMoneySignChange(previousMoney, CurrentMoney);
 	}
 
 	private void NotifyOnMoneyChanged()
@@ -40,6 +47,24 @@ public class MoneyManager
 		if(OnMoneyChanged != null)
 		{
 			OnMoneyChanged();
+		}
+	}
+
+	private void CheckNotifyMoneySignChange(int previous, int next)
+	{
+		if(previous < 0 && next > 0)
+		{
+			if(OnMoneyChangeToPossitive != null)
+			{
+				OnMoneyChangeToPossitive();
+			}
+		}
+		else if(previous >= 0 && next < 0)
+		{
+			if(OnMoneyChangeToNegative != null)
+			{
+				OnMoneyChangeToNegative();
+			}
 		}
 	}
 }
