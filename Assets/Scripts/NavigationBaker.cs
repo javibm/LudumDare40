@@ -6,9 +6,10 @@ public class NavigationBaker : MonoBehaviour
 {
   public void BakeNavMesh(List<NavMeshSurface> surfaces)
   {
-    foreach (var surface in surfaces)
-    {
-      surface.BuildNavMesh();
-    }
+    surfaces[0].BuildNavMesh();
+    //foreach (var surface in surfaces)
+    //{
+    //  surface.BuildNavMesh();
+    //}
   }
 }

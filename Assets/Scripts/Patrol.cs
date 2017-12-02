@@ -1,12 +1,11 @@
-﻿// Patrol.cs
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 using System.Collections.Generic;
 
 public class Patrol : MonoBehaviour
 {
-
-  public List<Transform> PointsList;
+  public OfficeGenerator office;
+  public Vector2 MinMaxStopTime;
   private int destPointIndex = 0;
   private NavMeshAgent agent;
   private float timeElapsed;
@@ -15,7 +14,7 @@ public class Patrol : MonoBehaviour
   void Start()
   {
     agent = GetComponent<NavMeshAgent>();
-    agent.autoBraking = false;
+    agent.autoBraking = true;
     timeElapsed = 0.0f;
     setRandomSpeed();
     GotoNextPoint();
@@ -23,21 +22,24 @@ public class Patrol : MonoBehaviour
 
   void Update()
   {
-    if ((!agent.pathPending && agent.remainingDistance < 0.3f) || agent.isStopped )
+    if ((!agent.pathPending && agent.remainingDistance < 0.01f) || agent.isStopped )
     {
-      timeElapsed += Time.deltaTime;
       agent.isStopped = true;
-      if (timeElapsed > Random.Range(1f, 5f))
+      if (timeElapsed > Random.Range(MinMaxStopTime.x, MinMaxStopTime.y))
       {
         timeElapsed = 0.0f;
         GotoNextPoint();
+      }
+      else
+      {
+        timeElapsed += Time.deltaTime;
       }
     }
   }
 
   private void GotoNextPoint()
   {
-    if (PointsList.Count == 0)
+    if (office.DeskTransformList.Count == 0)
     {
       return;
     }
@@ -45,18 +47,13 @@ public class Patrol : MonoBehaviour
     agent.isStopped = false;
     setRandomSpeed();
 
-    if (currentPoint != null)
-    {
-      PointsList.Add(currentPoint);
-    }
-    destPointIndex = Random.Range(0, PointsList.Count);
-    currentPoint = PointsList[destPointIndex];
-    agent.destination = PointsList[destPointIndex].position;
-    PointsList.Remove(PointsList[destPointIndex]);
+
+    destPointIndex = Random.Range(0, office.DeskTransformList.Count);
+    agent.destination = office.DeskTransformList[destPointIndex].position;
   }
 
   private void setRandomSpeed()
   {
-    agent.speed = Random.Range(2f, 5f);
+    agent.speed = Random.Range(0.5f, 3f);
   }
 }
