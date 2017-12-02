@@ -1,0 +1,165 @@
+fileFormatVersion: 2
+guid: 649284a2833f52643b7fa8d1b9176a57
+timeCreated: 1512239708
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Base Human
+    100002: Base HumanHead
+    100004: Base HumanLCalf
+    100006: Base HumanLCollarbone
+    100008: Base HumanLFoot
+    100010: Base HumanLForearm
+    100012: Base HumanLPalm
+    100014: Base HumanLPlatform
+    100016: Base HumanLThigh
+    100018: Base HumanLUpperarm
+    100020: Base HumanNeck1
+    100022: Base HumanNeck2
+    100024: Base HumanPelvis
+    100026: Base HumanRCalf
+    100028: Base HumanRCollarbone
+    100030: Base HumanRFoot
+    100032: Base HumanRForearm
+    100034: Base HumanRibcage
+    100036: Base HumanRPalm
+    100038: Base HumanRPlatform
+    100040: Base HumanRThigh
+    100042: Base HumanRUpperarm
+    100044: Base HumanSpine1
+    100046: Base HumanSpine2
+    100048: //RootNode
+    400000: Base Human
+    400002: Base HumanHead
+    400004: Base HumanLCalf
+    400006: Base HumanLCollarbone
+    400008: Base HumanLFoot
+    400010: Base HumanLForearm
+    400012: Base HumanLPalm
+    400014: Base HumanLPlatform
+    400016: Base HumanLThigh
+    400018: Base HumanLUpperarm
+    400020: Base HumanNeck1
+    400022: Base HumanNeck2
+    400024: Base HumanPelvis
+    400026: Base HumanRCalf
+    400028: Base HumanRCollarbone
+    400030: Base HumanRFoot
+    400032: Base HumanRForearm
+    400034: Base HumanRibcage
+    400036: Base HumanRPalm
+    400038: Base HumanRPlatform
+    400040: Base HumanRThigh
+    400042: Base HumanRUpperarm
+    400044: Base HumanSpine1
+    400046: Base HumanSpine2
+    400048: //RootNode
+    7400000: Destroy
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Destroy
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 112
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
