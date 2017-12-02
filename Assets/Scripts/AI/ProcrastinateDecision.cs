@@ -12,7 +12,7 @@ public class ProcrastinateDecision : Decision {
 
 	private bool Procrastinate(EmployeeStateController controller)
 	{
-		return controller.Happiness < 0.4f;
+		return controller.LastActionTime >= controller.NextProcrastinationTime;
 	}
 
 }

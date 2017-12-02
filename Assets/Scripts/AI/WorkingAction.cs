@@ -12,7 +12,7 @@ public class WorkingAction : Action {
 
 	private void ProduceResources(EmployeeStateController controller)
 	{
-		controller.Happiness -= Time.deltaTime;
+		controller.IncreaseLastActionTime();
 		Debug.Log ("PRODUCE " + Time.deltaTime + " MONEY MONEY MONEY!");
 	}
 }

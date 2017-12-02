@@ -32,7 +32,10 @@ public class State : ScriptableObject
                 controller.UpdateState (transitions [i].trueState);
             } else 
             {
-                controller.UpdateState (transitions [i].falseState);
+                if (transitions [i].falseState != null)
+                {
+                    controller.UpdateState (transitions [i].falseState);
+                }
             }
         }
     }
