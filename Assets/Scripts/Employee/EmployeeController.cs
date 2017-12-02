@@ -1,47 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EmployeeController : MonoBehaviour {
 
-	public int MoneyGenerated
-	{
-		get;
-		set;
-	}
-
 	public EmployeeStateController EmployeeStateController
 	{
-		get
-		{
-			return employeeStateController;
-		}
+		get;
+		private set;
 	}
 
 	public EmployeeMovementController EmployeeMovementController
 	{
-		get
-		{
-			return employeeMovementController;
-		}
+		get;
+		private set;
 	}
 
 	public void Init(OfficeDesk officeDesk)
 	{
-		employeeStateController = GetComponent<EmployeeStateController>();
-		employeeMovementController = GetComponent<EmployeeMovementController>();
+		EmployeeStateController = GetComponent<EmployeeStateController>();
+		EmployeeMovementController = GetComponent<EmployeeMovementController>();
 
-		employeeMovementController.Init(officeDesk, GetComponent<NavMeshController>(), GetComponent<EmployeeAnimationController>());
-
-		MoneyGenerated = employeeStats.MoneyGenerated;
+		EmployeeMovementController.Init(officeDesk, GetComponent<NavMeshController>(), GetComponent<EmployeeAnimationController>());
 	}
 
-	/// <summary>
-	/// Update is called every frame, if the MonoBehaviour is enabled.
-	/// </summary>
 	void Update()
 	{
-			employeeStateController.UpdateState(this);
+		if (holidayEnd == 0)
+		{
+			EmployeeStateController.UpdateState(this);
+		}
 	}
 
 	public void GenerateMoney()
@@ -49,14 +38,56 @@ public class EmployeeController : MonoBehaviour {
 		timeSinceLastGeneration += Time.deltaTime;
 		if (timeSinceLastGeneration > 1)
 		{
-			GameMetaManager.Money.AddMoney(MoneyGenerated);
+			GameMetaManager.Money.AddMoney(employeeStats.MoneyGenerated);
 			timeSinceLastGeneration = 0;
 		}
 	}
 
-	private EmployeeStateController employeeStateController;
-	private EmployeeMovementController employeeMovementController;
+	public void ApplyRequest()
+	{
+		if (nextRequest == RequestType.PayRaise)
+		{
+			GameMetaManager.Money.RemoveMoney(UnityEngine.Random.Range(employeeStats.MinPayRaise, employeeStats.MaxPayRaise));
+		}
+		else if (nextRequest == RequestType.Holidays)
+		{
+			TakeHolidays();
+		}
+		SetNextRequest();
+	}
+	public void TakeHolidays()
+	{
+		holidayEnd = employeeStats.HolidayTime;
+		GameMetaManager.Time.OnDayPassed += CheckEndOfHolidays;
+	}
+
+	public void CheckEndOfHolidays()
+	{
+		if (holidayEnd != 0)
+		{
+			holidayEnd--;
+		}
+		if (holidayEnd == 0)
+		{
+			GameMetaManager.Time.OnDayPassed -= CheckEndOfHolidays;
+		}
+	}
+
+	public void SetNextRequest()
+	{
+		nextRequest = (RequestType)UnityEngine.Random.Range(0, Enum.GetValues(typeof(RequestType)).Length);
+	}
+
+	private enum RequestType
+	{
+		PayRaise,
+		Holidays
+	}
+
+	private RequestType nextRequest;
+
 	private float timeSinceLastGeneration;
+	private int holidayEnd;
 
 	[SerializeField]
 	private EmployeeStats employeeStats;

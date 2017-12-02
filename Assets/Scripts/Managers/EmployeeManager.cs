@@ -12,6 +12,14 @@ public class EmployeeManager {
 		}
 	}
 
+	public int CurrentEmployees
+	{
+		get
+		{
+			return EmployeeList.Count;
+		}
+	}
+
 	public EmployeeManager(EmployeeGenerator employeeGenerator)
 	{
 		this.employeeGenerator = employeeGenerator;

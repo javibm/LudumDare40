@@ -81,10 +81,19 @@ public class EmployeeStateController : MonoBehaviour {
 		ForceWork = false;
 	}
 
+	public void AcceptRequest(EmployeeController employeeController)
+	{
+		ForceWork = true;
+		Happiness += employeeAIStats.requestAcceptedHappiness;
+		employeeController.ApplyRequest();
+
+	}
+
 	public void ForceWorkAgain()
 	{
 		ForceWork = true;
 		Happiness -= employeeAIStats.requestDeniedHappiness;
+		Debug.Log(Happiness);
 	}
 
 	[SerializeField]
