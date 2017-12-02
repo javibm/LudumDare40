@@ -5,14 +5,14 @@ using UnityEngine;
 [CreateAssetMenu (menuName = "Employee AI/Decisions/Procrastinate")]
 public class ProcrastinateDecision : Decision {
 
-	public override bool Decide(EmployeeStateController controller)
+	public override bool Decide(EmployeeController controller)
 	{
 		return Procrastinate(controller);
 	}
 
-	private bool Procrastinate(EmployeeStateController controller)
+	private bool Procrastinate(EmployeeController controller)
 	{
-		return controller.LastActionTime >= controller.NextProcrastinationTime;
+		return controller.EmployeeStateController.LastActionTime >= controller.EmployeeStateController.NextProcrastinationTime;
 	}
 
 }

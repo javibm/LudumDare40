@@ -5,15 +5,15 @@ using UnityEngine;
 [CreateAssetMenu (menuName = "Employee AI/Decisions/Request")]
 public class RequestDecision : Decision {
 
-	public override bool Decide(EmployeeStateController controller)
+	public override bool Decide(EmployeeController controller)
 	{
 		return Request(controller);
 	}
 
-	private bool Request(EmployeeStateController controller)
+	private bool Request(EmployeeController controller)
 	{
-		controller.IncreaseLastActionTime();
-		return controller.LastActionTime >= controller.NextRequestTime;
+		controller.EmployeeStateController.IncreaseLastActionTime();
+		return controller.EmployeeStateController.LastActionTime >= controller.EmployeeStateController.NextRequestTime;
 	}
 
 }

@@ -5,12 +5,12 @@ using UnityEngine;
 [CreateAssetMenu (menuName = "Employee AI/Actions/Leave")]
 public class LeaveAction : Action {
 
-	public override void Act(EmployeeStateController controller)
+	public override void Act(EmployeeController controller)
 	{
 		LeaveTheOffice(controller);
 	}
 
-	private void LeaveTheOffice(EmployeeStateController controller)
+	private void LeaveTheOffice(EmployeeController controller)
 	{
 		Debug.Log("RAGEQUIT");
 	}

@@ -10,6 +10,22 @@ public class EmployeeController : MonoBehaviour {
 		set;
 	}
 
+	public EmployeeStateController EmployeeStateController
+	{
+		get
+		{
+			return employeeStateController;
+		}
+	}
+
+	public EmployeeMovementController EmployeeMovementController
+	{
+		get
+		{
+			return employeeMovementController;
+		}
+	}
+
 	/// <summary>
 	/// Awake is called when the script instance is being loaded.
 	/// </summary>
@@ -17,6 +33,14 @@ public class EmployeeController : MonoBehaviour {
 	{
 		employeeStateController = GetComponent<EmployeeStateController>();
 		employeeMovementController = GetComponent<EmployeeMovementController>();
+	}
+
+	/// <summary>
+	/// Update is called every frame, if the MonoBehaviour is enabled.
+	/// </summary>
+	void Update()
+	{
+			employeeStateController.UpdateState(this);
 	}
 
 	public EmployeeController(float moneyGenerated)
