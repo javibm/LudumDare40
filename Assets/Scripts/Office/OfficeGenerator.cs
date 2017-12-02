@@ -13,6 +13,12 @@ public class OfficeGenerator : MonoBehaviour
 		}
 	}
 
+	public int CurrentSize
+	{
+		get;
+		private set;
+	}
+
 	public void InitOffice(int initialSize)
 	{
 		for(int i = 1; i <= initialSize; ++i)
@@ -23,14 +29,14 @@ public class OfficeGenerator : MonoBehaviour
 
 	public void ExpandOffice()
 	{
-		officeCurrentStep++;
-		generateOfficeStep(officeCurrentStep);
+		CurrentSize++;
+		generateOfficeStep(CurrentSize);
 	}
 
 	void Awake()
 	{
 		deskList = new List<OfficeDesk>();
-		officeCurrentStep = 0;
+		CurrentSize = 0;
 	}
 
 	private void generateOfficeStep(int step)
@@ -85,8 +91,6 @@ public class OfficeGenerator : MonoBehaviour
 
     NavigationBaker.BakeNavMesh(navMeshSurface);
 	}
-
-	private int officeCurrentStep = 0;
 	
 	[SerializeField]
 	private float cellSize = 1f;
