@@ -9,11 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ce224d38c72c034dab168f2d73f08df, type: 3}
-  m_Name: ProcrastinateState
+  m_Name: LeaveState
   m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 11400000, guid: 77b723063a9ed0946bf0b46ba89ff76c, type: 2}
-  transitions:
-  - decision: {fileID: 11400000, guid: d8cdbf303b4c403418aa62a2f436b546, type: 2}
-    trueState: {fileID: 11400000, guid: 4907862718bf3a441832bf42906f0e66, type: 2}
-    falseState: {fileID: 11400000}
+  actions: []
+  transitions: []
