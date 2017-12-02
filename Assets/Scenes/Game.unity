@@ -394,10 +394,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e99b006def037b4ebb435aaa9f6bd8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  officeInitialSize: 2
-  initialMoney: 2000
+  gameStats: {fileID: 11400000, guid: f309c5837dfd0254f86f19b9b62b0278, type: 2}
   officeGenerator: {fileID: 656643973}
   officeStats: {fileID: 11400000, guid: 5f27690d3ed23dd4d9d062a27cc959a4, type: 2}
+  employeeGenerator: {fileID: 0}
 --- !u!4 &1733817238
 Transform:
   m_ObjectHideFlags: 0
