@@ -12,7 +12,13 @@ public class ProcrastinateDecision : Decision {
 
 	private bool Procrastinate(EmployeeController controller)
 	{
-		return controller.EmployeeStateController.LastActionTime >= controller.EmployeeStateController.NextProcrastinationTime;
+		float randomProcrastination = Random.Range(0.0f, 1.0f);
+		bool startProcrastination = randomProcrastination > controller.EmployeeStateController.Happiness;
+		if (controller.EmployeeStateController.LastActionTime >= controller.EmployeeStateController.NextProcrastinationTime)
+		{
+			controller.EmployeeStateController.ResetTimes();
+			return startProcrastination;
+		}
+		return false;
 	}
-
 }
