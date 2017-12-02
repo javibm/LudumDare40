@@ -28,7 +28,7 @@ public class EmployeeStateController : MonoBehaviour {
 		set;
 	}
 
-	public bool RequestFinished
+	public bool ForceWork
 	{
 		get;
 		set;
@@ -78,12 +78,12 @@ public class EmployeeStateController : MonoBehaviour {
 		LastActionTime = 0;
 		NextProcrastinationTime = Random.Range(employeeAIStats.minProcrastinateTime, employeeAIStats.maxProcrastinateTime);
 		NextRequestTime = Random.Range(employeeAIStats.minRequestTime, employeeAIStats.maxRequestTime);
-		RequestFinished = false;
+		ForceWork = false;
 	}
 
-	public void EndRequest(bool accepted)
+	public void ForceWorkAgain()
 	{
-		RequestFinished = true;
+		ForceWork = true;
 		Happiness -= employeeAIStats.requestDeniedHappiness;
 	}
 

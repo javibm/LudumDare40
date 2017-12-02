@@ -12,7 +12,6 @@ public class RequestDecision : Decision {
 
 	private bool Request(EmployeeController controller)
 	{
-		controller.EmployeeStateController.IncreaseLastActionTime();
 		return controller.EmployeeStateController.LastActionTime >= controller.EmployeeStateController.NextRequestTime;
 	}
 
