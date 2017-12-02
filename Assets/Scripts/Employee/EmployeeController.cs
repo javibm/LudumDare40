@@ -26,13 +26,12 @@ public class EmployeeController : MonoBehaviour {
 		}
 	}
 
-	/// <summary>
-	/// Awake is called when the script instance is being loaded.
-	/// </summary>
-	void Awake()
+	public void Init(OfficeDesk officeDesk)
 	{
 		employeeStateController = GetComponent<EmployeeStateController>();
 		employeeMovementController = GetComponent<EmployeeMovementController>();
+
+		employeeMovementController.Init(officeDesk, GetComponent<NavMeshController>());
 	}
 
 	/// <summary>

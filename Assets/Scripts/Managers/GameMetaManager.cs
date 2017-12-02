@@ -25,10 +25,15 @@ public class GameMetaManager : Singleton<GameMetaManager>
 		base.Awake();
 		office = new OfficeManager(officeInitialSize, officeGenerator, officeStats);
 		money = new MoneyManager(initialMoney);
+		employees = new EmployeeManager(employeeGenerator);
+
+		//TO DO INSTANCIACION DE PRUEBA
+		employees.CreateNewEmployee(office.DeskList[0]);
 	}
 
 	private OfficeManager office;
 	private MoneyManager money;
+	private EmployeeManager employees;
 
 	[SerializeField]
 	private int officeInitialSize = 2;
@@ -38,4 +43,6 @@ public class GameMetaManager : Singleton<GameMetaManager>
 	private OfficeGenerator officeGenerator;
 	[SerializeField]
 	private OfficeStats officeStats;
+	[SerializeField]
+	private EmployeeGenerator employeeGenerator;
 }

@@ -6,10 +6,8 @@ public class EmployeeMovementController : MonoBehaviour {
 
   public Transform Target
   {
-    get
-    {
-      return target;
-    }
+    get;
+    private set;
   }
 
   public float Speed
@@ -18,16 +16,44 @@ public class EmployeeMovementController : MonoBehaviour {
     set;
   }
 
-  public void MoveToProcrastinationTarget(Transform target)
+  public void Init(OfficeDesk officeDesk, NavMeshController navMeshController)
   {
-    // TODO RANDOM PROCRASTINATION TARGET
+    personalOfficeDesk = officeDesk;
+    personalOfficeDesk.Taken = true;
+
+    this.navMeshController = navMeshController;
+
+    Speed = 1;
+  }
+
+  public void MoveToProcrastinationTarget()
+  {
+    if (Target == personalOfficeDesk.Transform)
+    {
+      selectNewTarget();
+    }
+    navigate();
   }
 
   public void MoveToDesk()
   {
-
+    if (Target != personalOfficeDesk.Transform)
+    {
+      Target = personalOfficeDesk.Transform;
+    }
+    navigate();
   }
 
-  private Transform target;
+  private void selectNewTarget()
+  {
+  }
+
+  private void navigate()
+  {
+    navMeshController.NavigateTo(Target, Speed);
+  }
+
+  private OfficeDesk personalOfficeDesk;
+  private NavMeshController navMeshController;
 
 }
