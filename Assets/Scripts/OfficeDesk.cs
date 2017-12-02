@@ -10,8 +10,16 @@ public class OfficeDesk : MonoBehaviour
 		private set;
 	}
 
+	public bool Taken
+	{
+		get;
+		set;
+	}
+
 	void Awake()
 	{
 		Transform = gameObject.transform;
 	}
+
+
 }

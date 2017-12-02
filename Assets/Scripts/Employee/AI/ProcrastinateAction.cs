@@ -12,6 +12,7 @@ public class ProcrastinateAction : Action {
 
 	private void LazeAround(EmployeeController controller)
 	{
+		controller.EmployeeMovementController.MoveToProcrastinationTarget();
 		Debug.Log ("LAZING AROUND zZzzZ");
 	}
 }
