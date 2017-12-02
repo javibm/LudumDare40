@@ -10,7 +10,7 @@ public class OfficeDesk : MonoBehaviour
 		private set;
 	}
 
-	public bool Taken
+	public bool Filled
 	{
 		get;
 		set;

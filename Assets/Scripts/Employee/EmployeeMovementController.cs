@@ -17,7 +17,7 @@ public class EmployeeMovementController : MonoBehaviour {
   public void Init(OfficeDesk officeDesk, NavMeshController navMeshController, EmployeeAnimationController animController)
   {
     personalOfficeDesk = officeDesk;
-    personalOfficeDesk.Taken = true;
+    personalOfficeDesk.Filled = true;
 
     this.navMeshController = navMeshController;
     this.animController = animController;
