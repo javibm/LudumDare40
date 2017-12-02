@@ -19,7 +19,17 @@ public class EmployeeAnimationController : MonoBehaviour
 
   public void WorkAnim()
   {
-    animatorController.CrossFade("Work", 0.0f);
+    animatorController.CrossFade("Working", 0.0f);
+  }
+
+  public void DestroyAnim()
+  {
+    animatorController.CrossFade("Destroy", 0.0f);
+  }
+
+  public void RunAnim()
+  {
+    animatorController.CrossFade("Run", 0.0f);
   }
 
   private Animator animatorController;	

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EmployeeMovementController : MonoBehaviour {
 
@@ -27,12 +25,17 @@ public class EmployeeMovementController : MonoBehaviour {
     Speed = 1;
   }
 
+  void Test()
+  {
+    animController.WorkAnim();
+  }
+
   public void MoveToProcrastinationTarget()
   {
     if (Target == personalOfficeDesk.Transform)
     {
       selectNewTarget();
-      navigate();
+      navigate(Idle);
     }
   }
 
@@ -41,8 +44,18 @@ public class EmployeeMovementController : MonoBehaviour {
     if (Target != personalOfficeDesk.Transform)
     {
       Target = personalOfficeDesk.Transform;
-      navigate();
+      navigate(Work);
     }
+  }
+
+  public void Work()
+  {
+    animController.WorkAnim();
+  }
+
+  public void Idle()
+  {
+    animController.IdleAnim();
   }
 
   private void selectNewTarget()
@@ -50,9 +63,9 @@ public class EmployeeMovementController : MonoBehaviour {
     Target = GameMetaManager.Office.DeskList[Random.Range(0, GameMetaManager.Office.DeskList.Count)].transform;
   }
 
-  private void navigate()
+  private void navigate(NavMeshController.OnNavigateFinished del)
   {
-    navMeshController.NavigateTo(Target, Speed);
+    navMeshController.NavigateTo(Target, Speed, del);
     animController.WalkAnim();
   }
 
