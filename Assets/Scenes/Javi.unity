@@ -112,6 +112,53 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &67718009
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4169175502584968, guid: 7fe5ccd32c1106a4388f283d5bd226c9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169175502584968, guid: 7fe5ccd32c1106a4388f283d5bd226c9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169175502584968, guid: 7fe5ccd32c1106a4388f283d5bd226c9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169175502584968, guid: 7fe5ccd32c1106a4388f283d5bd226c9, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169175502584968, guid: 7fe5ccd32c1106a4388f283d5bd226c9, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169175502584968, guid: 7fe5ccd32c1106a4388f283d5bd226c9, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169175502584968, guid: 7fe5ccd32c1106a4388f283d5bd226c9, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169175502584968, guid: 7fe5ccd32c1106a4388f283d5bd226c9, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114971774976811792, guid: 7fe5ccd32c1106a4388f283d5bd226c9,
+        type: 2}
+      propertyPath: navigationBaker
+      value: 
+      objectReference: {fileID: 1806637096}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7fe5ccd32c1106a4388f283d5bd226c9, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &89987425
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,8 +343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a9d968bd05caa4bb9ed24c58ea6398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  office: {fileID: 750918927}
-  MinMaxStopTime: {x: 1, y: 3}
 --- !u!195 &447205610
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -320,53 +365,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!1 &750918926
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 750918928}
-  - component: {fileID: 750918927}
-  m_Layer: 0
-  m_Name: OfficeGenerator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &750918927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 750918926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3eef4ef8feb883459fba02aa25e8f75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cellSize: 1
-  floorPrefab: {fileID: 1271744229201292, guid: 8352d91f340553747b966ac56741e1d7,
-    type: 2}
-  deskPrefab: {fileID: 114184026159839892, guid: 35f8b624c6253534f9eb8e6b2c894208,
-    type: 2}
-  wallPrefab: {fileID: 1092904710249904, guid: 563c11fcb28a73f479ebbdbc4c573998, type: 2}
-  navigationBaker: {fileID: 1806637096}
---- !u!4 &750918928
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 750918926}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.6275368, y: 0.8721695, z: 25.424435}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1016085076
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,7 +473,7 @@ Prefab:
         type: 2}
       propertyPath: office
       value: 
-      objectReference: {fileID: 750918927}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 177e4de2370d5cd40a949ca6e9ed77f8, type: 2}
   m_IsPrefabParent: 0
