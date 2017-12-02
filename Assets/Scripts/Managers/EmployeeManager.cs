@@ -6,10 +6,7 @@ public class EmployeeManager {
 
 	public List<EmployeeController> EmployeeList
 	{
-		get
-		{
-			return EmployeeList;
-		}
+		get;
 	}
 
 	public int CurrentEmployees
