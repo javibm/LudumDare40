@@ -15,6 +15,6 @@ public class WorkingAction : Action {
 		controller.GenerateMoney();
 		controller.EmployeeStateController.IncreaseLastActionTime();
 		controller.EmployeeMovementController.MoveToDesk();
-		Debug.Log ("PRODUCE " + Time.deltaTime + " MONEY MONEY MONEY!");
+		Debug.Log ("MONEY MONEY MONEY! MUST BE FUNNY!");
 	}
 }

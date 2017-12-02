@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EmployeeManager : MonoBehaviour {
+public class EmployeeManager {
 
 	public List<EmployeeController> EmployeeList
 	{
