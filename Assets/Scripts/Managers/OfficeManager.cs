@@ -6,8 +6,10 @@ public class OfficeManager
 {
 	public int CurrentSize
 	{
-		get;
-		private set;
+		get
+		{
+			return officeGenerator.CurrentSize;
+		}
 	}
 
 	public List<OfficeDesk> DeskList
@@ -18,16 +20,16 @@ public class OfficeManager
 		}
 	}
 
-	public OfficeManager(int initialSize, OfficeGenerator officeGenerator)
+	public OfficeManager(int initialSize, OfficeGenerator officeGenerator, OfficeStats officeStats)
 	{
-		CurrentSize = initialSize;
 		this.officeGenerator = officeGenerator;
 		this.officeGenerator.InitOffice(initialSize);
+		this.officeStats = officeStats;
 	}
 
 	public int GetExpandCost()
 	{
-		return 100;	// TODO
+		return officeStats.officeExpansionPrices[CurrentSize + 1];
 	}
 
 	public bool CanPayExpandCost()
@@ -57,5 +59,6 @@ public class OfficeManager
 	}
 
 	private OfficeGenerator officeGenerator = null;
+	private OfficeStats officeStats = null;
 }
 

@@ -395,8 +395,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   officeInitialSize: 2
-  initialMoney: 1000
+  initialMoney: 2000
   officeGenerator: {fileID: 656643973}
+  officeStats: {fileID: 11400000, guid: 5f27690d3ed23dd4d9d062a27cc959a4, type: 2}
 --- !u!4 &1733817238
 Transform:
   m_ObjectHideFlags: 0
