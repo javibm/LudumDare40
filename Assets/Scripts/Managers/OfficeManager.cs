@@ -10,9 +10,18 @@ public class OfficeManager
 		private set;
 	}
 
-	public OfficeManager(int initialSize)
+	public List<OfficeDesk> DeskList
+	{
+		get
+		{
+			return officeGenerator.DeskList;
+		}
+	}
+
+	public OfficeManager(int initialSize, OfficeGenerator officeGenerator)
 	{
 		CurrentSize = initialSize;
+		this.officeGenerator = officeGenerator;
 	}
 
 	public int GetExpandCost()
@@ -43,7 +52,9 @@ public class OfficeManager
 
 	private void ExpandOffice()
 	{
-		// TODO
+		officeGenerator.ExpandOffice();
 	}
+
+	private OfficeGenerator officeGenerator = null;
 }
 

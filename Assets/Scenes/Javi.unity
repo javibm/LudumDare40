@@ -350,7 +350,8 @@ MonoBehaviour:
   cellSize: 1
   floorPrefab: {fileID: 1271744229201292, guid: 8352d91f340553747b966ac56741e1d7,
     type: 2}
-  deskPrefab: {fileID: 1112501500878350, guid: 35f8b624c6253534f9eb8e6b2c894208, type: 2}
+  deskPrefab: {fileID: 114184026159839892, guid: 35f8b624c6253534f9eb8e6b2c894208,
+    type: 2}
   wallPrefab: {fileID: 1092904710249904, guid: 563c11fcb28a73f479ebbdbc4c573998, type: 2}
   navigationBaker: {fileID: 1806637096}
 --- !u!4 &750918928

@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 33201389128723786}
   - component: {fileID: 136230688045053192}
   - component: {fileID: 23296383461597936}
+  - component: {fileID: 114948756954854918}
+  - component: {fileID: 114132200504965500}
   - component: {fileID: 114227050164951416}
   m_Layer: 0
   m_Name: Employee
@@ -84,6 +86,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1879793257611198}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114132200504965500
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879793257611198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6e5e2cfb49aae4fbd55fe1cbd0019b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114227050164951416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -97,6 +110,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 11400000, guid: c6cb1f109d63df04285a05268e17161f, type: 2}
   employeeStats: {fileID: 11400000, guid: 6a7bcc4eecceece4391d61be14ec40c8, type: 2}
+--- !u!114 &114948756954854918
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879793257611198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a33bfae7df55a7146b8ee7e90e1fa424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136230688045053192
 CapsuleCollider:
   m_ObjectHideFlags: 1

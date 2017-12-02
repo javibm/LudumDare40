@@ -39,7 +39,7 @@ public class NavMeshController : MonoBehaviour
 
   private void GotoNextPoint()
   {
-    if (office.DeskTransformList.Count == 0)
+    if (office.DeskList.Count == 0)
     {
       return;
     }
@@ -48,8 +48,8 @@ public class NavMeshController : MonoBehaviour
     setRandomSpeed();
 
 
-    destPointIndex = Random.Range(0, office.DeskTransformList.Count);
-    agent.destination = office.DeskTransformList[destPointIndex].position;
+    destPointIndex = Random.Range(0, office.DeskList.Count);
+    agent.destination = office.DeskList[destPointIndex].transform.position;
   }
 
   private void setRandomSpeed()
