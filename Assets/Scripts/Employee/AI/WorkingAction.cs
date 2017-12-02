@@ -12,6 +12,7 @@ public class WorkingAction : Action {
 
 	private void ProduceResources(EmployeeController controller)
 	{
+		controller.GenerateMoney();
 		controller.EmployeeStateController.IncreaseLastActionTime();
 		controller.EmployeeMovementController.MoveToDesk();
 		Debug.Log ("PRODUCE " + Time.deltaTime + " MONEY MONEY MONEY!");
