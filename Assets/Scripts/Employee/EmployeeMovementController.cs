@@ -16,12 +16,13 @@ public class EmployeeMovementController : MonoBehaviour {
     set;
   }
 
-  public void Init(OfficeDesk officeDesk, NavMeshController navMeshController)
+  public void Init(OfficeDesk officeDesk, NavMeshController navMeshController, EmployeeAnimationController animController)
   {
     personalOfficeDesk = officeDesk;
     personalOfficeDesk.Taken = true;
 
     this.navMeshController = navMeshController;
+    this.animController = animController;
 
     Speed = 1;
   }
@@ -46,14 +47,17 @@ public class EmployeeMovementController : MonoBehaviour {
 
   private void selectNewTarget()
   {
+    Target = GameMetaManager.Office.DeskList[Random.Range(0, GameMetaManager.Office.DeskList.Count)].transform;
   }
 
   private void navigate()
   {
     navMeshController.NavigateTo(Target, Speed);
+    animController.WalkAnim();
   }
 
   private OfficeDesk personalOfficeDesk;
   private NavMeshController navMeshController;
+  private EmployeeAnimationController animController;
 
 }

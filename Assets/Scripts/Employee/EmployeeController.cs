@@ -31,7 +31,7 @@ public class EmployeeController : MonoBehaviour {
 		employeeStateController = GetComponent<EmployeeStateController>();
 		employeeMovementController = GetComponent<EmployeeMovementController>();
 
-		employeeMovementController.Init(officeDesk, GetComponent<NavMeshController>());
+		employeeMovementController.Init(officeDesk, GetComponent<NavMeshController>(), GetComponent<EmployeeAnimationController>());
 
 		MoneyGenerated = employeeStats.MoneyGenerated;
 	}
