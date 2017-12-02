@@ -5,11 +5,11 @@ using UnityEngine.AI;
 
 public class OfficeGenerator : MonoBehaviour 
 {
-	public List<Transform> DeskTransformList
+	public List<OfficeDesk> DeskList
 	{
 		get
 		{
-			return deskTransformList;
+			return deskList;
 		}
 	}
 
@@ -23,7 +23,7 @@ public class OfficeGenerator : MonoBehaviour
 	void Awake()
 	{
 		navMeshSurfaceList = new List<NavMeshSurface>();
-		deskTransformList = new List<Transform>();
+		deskList = new List<OfficeDesk>();
 		officeCurrentStep = 1;
 		generateInitialOffice();
 	}
@@ -78,19 +78,20 @@ public class OfficeGenerator : MonoBehaviour
 		go.transform.eulerAngles = new Vector3(0f, 0, 0f);
 
 		// Desk generation
+		OfficeDesk desk;
 		for(int i = 0; i < step; ++i)
 		{
-			go = Instantiate(deskPrefab);
-			go.transform.SetParent(officeRootTransform);
-			go.transform.localPosition = new Vector3(cellSize * i, 0f, cellSize * (step-1));
-			deskTransformList.Add(go.transform);
+			desk = Instantiate(deskPrefab);
+			desk.transform.SetParent(officeRootTransform);
+			desk.transform.localPosition = new Vector3(cellSize * i, 0f, cellSize * (step-1));
+			deskList.Add(desk);
 
 			if(i < step-1)
 			{
-				go = Instantiate(deskPrefab);
-				go.transform.SetParent(officeRootTransform);
-				go.transform.localPosition = new Vector3(cellSize * (step-1), 0f, cellSize * i);
-				deskTransformList.Add(go.transform);
+				desk = Instantiate(deskPrefab);
+				desk.transform.SetParent(officeRootTransform);
+				desk.transform.localPosition = new Vector3(cellSize * (step-1), 0f, cellSize * i);
+				deskList.Add(desk);
 			}
 		}
 		// NavMesh Regeneration
@@ -108,7 +109,7 @@ public class OfficeGenerator : MonoBehaviour
 	[SerializeField]
 	private GameObject floorPrefab;
 	[SerializeField]
-	private GameObject deskPrefab;
+	private OfficeDesk deskPrefab;
 	[SerializeField]
 	private GameObject wallPrefab;
 
@@ -116,5 +117,5 @@ public class OfficeGenerator : MonoBehaviour
 	private NavigationBaker navigationBaker;
 
 	private List<NavMeshSurface> navMeshSurfaceList;
-	private List<Transform> deskTransformList;
+	private List<OfficeDesk> deskList;
 }
