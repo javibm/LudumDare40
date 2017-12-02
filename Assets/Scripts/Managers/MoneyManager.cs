@@ -10,6 +10,8 @@ public class MoneyManager
 		private set;
 	}
 
+	public event System.Action OnMoneyChanged;
+
 	public MoneyManager(int initialMoney)
 	{
 		CurrentMoney = initialMoney;
@@ -24,10 +26,20 @@ public class MoneyManager
 	public void AddMoney(int money)
 	{
 		CurrentMoney += money;
+		NotifyOnMoneyChanged();
 	}
 
 	public void RemoveMoney(int money)
 	{
 		CurrentMoney -= money;
+		NotifyOnMoneyChanged();
+	}
+
+	private void NotifyOnMoneyChanged()
+	{
+		if(OnMoneyChanged != null)
+		{
+			OnMoneyChanged();
+		}
 	}
 }

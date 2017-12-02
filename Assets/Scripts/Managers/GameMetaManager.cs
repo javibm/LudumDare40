@@ -22,6 +22,7 @@ public class GameMetaManager : Singleton<GameMetaManager>
 
 	protected new void Awake()
 	{
+		base.Awake();
 		office = new OfficeManager(officeInitialSize, officeGenerator);
 		money = new MoneyManager(initialMoney);
 		employees = new EmployeeManager(employeeGenerator);
