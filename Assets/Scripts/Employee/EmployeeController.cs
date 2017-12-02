@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EmployeeController : MonoBehaviour {
 
-	public float MoneyGenerated
+	public int MoneyGenerated
 	{
 		get;
 		set;
@@ -26,12 +26,14 @@ public class EmployeeController : MonoBehaviour {
 		}
 	}
 
-	public void Init(OfficeDesk officeDesk)
+	public void Init(OfficeDesk officeDesk, int moneyGenerated)
 	{
 		employeeStateController = GetComponent<EmployeeStateController>();
 		employeeMovementController = GetComponent<EmployeeMovementController>();
 
 		employeeMovementController.Init(officeDesk, GetComponent<NavMeshController>());
+
+		MoneyGenerated = moneyGenerated;
 	}
 
 	/// <summary>
@@ -42,11 +44,17 @@ public class EmployeeController : MonoBehaviour {
 			employeeStateController.UpdateState(this);
 	}
 
-	public EmployeeController(float moneyGenerated)
+	public void GenerateMoney()
 	{
-		MoneyGenerated = moneyGenerated;
+		timeSinceLastGeneration += Time.deltaTime;
+		if (timeSinceLastGeneration > 1)
+		{
+			GameMetaManager.Money.AddMoney(MoneyGenerated);
+			timeSinceLastGeneration = 0;
+		}
 	}
 
 	private EmployeeStateController employeeStateController;
 	private EmployeeMovementController employeeMovementController;
+	private float timeSinceLastGeneration;
 }
