@@ -22,11 +22,12 @@ public class OfficeManager
 	{
 		CurrentSize = initialSize;
 		this.officeGenerator = officeGenerator;
+		this.officeGenerator.InitOffice(initialSize);
 	}
 
 	public int GetExpandCost()
 	{
-		return 1;	// TODO
+		return 100;	// TODO
 	}
 
 	public bool CanPayExpandCost()

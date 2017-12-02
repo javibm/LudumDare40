@@ -13,9 +13,16 @@ public class OfficeGenerator : MonoBehaviour
 		}
 	}
 
+	public void InitOffice(int initialSize)
+	{
+		for(int i = 1; i <= initialSize; ++i)
+		{
+			ExpandOffice();
+		}
+	}
+
 	public void ExpandOffice()
 	{
-		Debug.Log("Expanding Office");
 		officeCurrentStep++;
 		generateOfficeStep(officeCurrentStep);
 	}
@@ -23,22 +30,7 @@ public class OfficeGenerator : MonoBehaviour
 	void Awake()
 	{
 		deskList = new List<OfficeDesk>();
-		officeCurrentStep = 1;
-		generateInitialOffice();
-	}
-	
-	void Update () 
-	{
-		if(Input.GetKeyDown(KeyCode.Space))
-		{
-			ExpandOffice();
-		}	
-	}
-
-	private void generateInitialOffice()
-	{
-		transform.localPosition = Vector3.zero;
-    generateOfficeStep(officeCurrentStep);
+		officeCurrentStep = 0;
 	}
 
 	private void generateOfficeStep(int step)
