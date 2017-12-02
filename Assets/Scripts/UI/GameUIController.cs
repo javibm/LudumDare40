@@ -18,10 +18,12 @@ public class GameUIController : MonoBehaviour
 		GameMetaManager.Money.OnMoneyChangeToNegative += OnMoneyChangeToNegative;
 		GameMetaManager.Money.OnMoneyChangeToPositive += OnMoneyChangeToPositive;
 		GameMetaManager.Time.OnDayPassed += OnDayPassed;
+		GameMetaManager.OnLoseGame += OnLoseGame;
 
 		UpdateMoney();
 		UpdateDaysPassed();
 		ShowDaysWithNegativeMoneyTimer(false);
+		ShowGameOverText(false);
 	}
 
 	private void OnExpandOfficeButtonClick()
@@ -51,6 +53,12 @@ public class GameUIController : MonoBehaviour
 		UpdateDaysPassed();
 		daysWithNegativeMoneyTimerImage.transform.localScale = new Vector2((float)GameMetaManager.DaysWithNegativeMoney / (float)GameMetaManager.MaxDaysWithNegativeMoney, 1f);
 	}
+
+	private void OnLoseGame()
+	{
+		ShowGameOverText(true);
+		GameMetaManager.Time.OnDayPassed -= OnDayPassed;
+	}
 	
 	private void UpdateMoney()
 	{
@@ -65,6 +73,11 @@ public class GameUIController : MonoBehaviour
 	private void ShowDaysWithNegativeMoneyTimer(bool show)
 	{
 		daysWithNegativeMoneyTimerGameObject.SetActive(show);
+	}
+
+	private void ShowGameOverText(bool show)
+	{
+		gameOverLabelText.gameObject.SetActive(show);
 	}
 	
 	[SerializeField]
@@ -81,4 +94,6 @@ public class GameUIController : MonoBehaviour
 	[SerializeField]
 	private Button expandOfficeButton;
 
+	[SerializeField]
+	private Text gameOverLabelText;
 }
