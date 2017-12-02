@@ -12,7 +12,7 @@ public class MoneyManager
 
 	public event System.Action OnMoneyChanged;
 	public event System.Action OnMoneyChangeToNegative;
-	public event System.Action OnMoneyChangeToPossitive;
+	public event System.Action OnMoneyChangeToPositive;
 
 	public MoneyManager(int initialMoney)
 	{
@@ -54,9 +54,9 @@ public class MoneyManager
 	{
 		if(previous < 0 && next > 0)
 		{
-			if(OnMoneyChangeToPossitive != null)
+			if(OnMoneyChangeToPositive != null)
 			{
-				OnMoneyChangeToPossitive();
+				OnMoneyChangeToPositive();
 			}
 		}
 		else if(previous >= 0 && next < 0)
