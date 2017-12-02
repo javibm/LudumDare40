@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class OfficeGenerator : MonoBehaviour 
 {
-
 	public List<Transform> DeskTransformList
 	{
 		get
