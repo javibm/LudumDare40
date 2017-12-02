@@ -23,7 +23,7 @@ public class GameMetaManager : Singleton<GameMetaManager>
 	protected new void Awake()
 	{
 		base.Awake();
-		office = new OfficeManager(officeInitialSize, officeGenerator);
+		office = new OfficeManager(officeInitialSize, officeGenerator, officeStats);
 		money = new MoneyManager(initialMoney);
 	}
 
@@ -36,4 +36,6 @@ public class GameMetaManager : Singleton<GameMetaManager>
 	private int initialMoney = 1000;
 	[SerializeField]
 	private OfficeGenerator officeGenerator;
+	[SerializeField]
+	private OfficeStats officeStats;
 }
