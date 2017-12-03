@@ -7,9 +7,12 @@ public class WindowAnimation : MonoBehaviour {
 
 	void Start ()
 	{
-		GameMetaManager.Employee.OnEmployeeWindow += PlayAnimationOpen;
-		GameMetaManager.Employee.OnEmployeeClosed += PlayAnimationClose;
-		animatorController = GetComponent<Animator>();
+		if(GameMetaManager.Instance != null)
+		{
+			GameMetaManager.Employee.OnEmployeeWindow += PlayAnimationOpen;
+			GameMetaManager.Employee.OnEmployeeClosed += PlayAnimationClose;
+			animatorController = GetComponent<Animator>();
+		}
 	}
 
 	private void PlayAnimationOpen(WindowPoint window)
