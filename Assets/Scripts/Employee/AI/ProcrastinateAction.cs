@@ -14,9 +14,9 @@ public class ProcrastinateAction : Action {
 	{
 		controller.EmployeeStateController.IncreaseLastActionTime();
 		controller.EmployeeMovementController.MoveToProcrastinationTarget();
-		if (Input.anyKeyDown)
+		if (!controller.EmployeeStateController.ForceWork)
 		{
-			controller.EmployeeStateController.ForceWorkAgain();
+			controller.EmployeeUIController.EnableForceWork();
 		}
 		Debug.Log ("LAZING AROUND zZzzZ");
 	}

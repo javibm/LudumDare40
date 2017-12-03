@@ -52,6 +52,7 @@ public class EmployeeController : MonoBehaviour {
 		EmployeeUIController.DisableAll();
 
 		EmployeeUIController.OnRequestAnswered += OnRequestAnswered;
+		EmployeeUIController.OnForceWork += OnForceWork;
 
 		SetNextRequest();
 	}
@@ -71,7 +72,15 @@ public class EmployeeController : MonoBehaviour {
 		{
 			GameMetaManager.Money.AddMoney(employeeStats.MoneyGenerated);
 			timeSinceLastGeneration = 0;
+			EmployeeUIController.EnableMoneyChange(employeeStats.MoneyGenerated);
 		}
+
+	}
+
+	public void OnForceWork()
+	{
+		EmployeeStateController.ForceWorkAgain();
+		EmployeeUIController.DisableAll();
 	}
 
 	public void OnRequestAnswered(bool accepted)
@@ -94,6 +103,7 @@ public class EmployeeController : MonoBehaviour {
 		if (NextRequest == RequestType.PayRaise)
 		{
 			GameMetaManager.Money.RemoveMoney(RequestValue);
+			EmployeeUIController.EnableMoneyChange(-RequestValue);
 		}
 		else if (NextRequest == RequestType.Holidays)
 		{
