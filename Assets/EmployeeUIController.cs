@@ -78,11 +78,13 @@ public class EmployeeUIController : MonoBehaviour {
 
 	public void AcceptRequest()
 	{
+		GameMetaManager.Employee.OnAnswerYay();
 		OnRequestAnswered(true);
 	}
 
 	public void DeclineRequest()
 	{
+		GameMetaManager.Employee.OnAnswerCry();
 		OnRequestAnswered(false);
 	}
 
