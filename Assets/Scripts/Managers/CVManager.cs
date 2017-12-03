@@ -29,7 +29,6 @@ public class CVManager
 	{
 		PendingCV = null;
 		resetDaysForNextCV();
-
 	}
 
 	public void RejectPendingCV()

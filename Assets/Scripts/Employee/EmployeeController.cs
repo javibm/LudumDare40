@@ -159,10 +159,18 @@ public class EmployeeController : MonoBehaviour
 
 	public void ReleaseEmployee()
 	{
-		if (!releasing)
+		if (!releasing && !magicFlag)
 		{
-			EmployeeMovementController.MoveToCrazyTarget();
-			EmployeeUIController.EnableFire();
+			if(UnityEngine.Random.Range(0.0f, 1.0f) > 0.6f)
+			{
+				EmployeeMovementController.MoveToCrazyTarget(true);
+				EmployeeUIController.EnableFire();
+			}
+			else
+			{
+				EmployeeMovementController.MoveToCrazyTarget(false);
+			}
+			magicFlag = true;
 			EmployeeUIController.OnRequestAnswered -= OnRequestAnswered;
 		}
 	}
@@ -176,4 +184,6 @@ public class EmployeeController : MonoBehaviour
 	private float timeSinceLastGeneration;
 	private int holidayEnd;
 	private bool releasing = false;
+
+	private bool magicFlag = false;
 }
