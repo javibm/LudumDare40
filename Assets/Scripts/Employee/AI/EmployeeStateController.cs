@@ -54,6 +54,7 @@ public class EmployeeStateController : MonoBehaviour {
 	{
 		Happiness = Random.Range(EmployeeStats.minInitialHappiness, EmployeeStats.maxInitialHappiness);
 		ResetTimes();
+		initialState = currentState;
 	}
 
 	/// <summary>
@@ -90,12 +91,12 @@ public class EmployeeStateController : MonoBehaviour {
 	{
 		ForceWork = true;
 		Happiness += employeeAIStats.requestAcceptedHappiness;
+		UpdateState(initialState);
 	}
 
 	public void ForceWorkAgain()
 	{
 		ForceWork = true;
-		Happiness -= employeeAIStats.requestDeniedHappiness;
 	}
 
 	[SerializeField]
@@ -103,4 +104,6 @@ public class EmployeeStateController : MonoBehaviour {
 
 	[SerializeField]
 	private EmployeeAIStats employeeAIStats;
+
+	private State initialState;
 }

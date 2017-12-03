@@ -35,33 +35,39 @@ public class GameUIController : MonoBehaviour
 
 	private void OnExpandOfficeButtonClick()
 	{
+		GameMetaManager.OnUIButtonClicked();
 		GameMetaManager.Office.TryExpand();
 	}
 
 	private void OnCVAcceptButtonClick()
 	{
+		GameMetaManager.OnUIButtonClicked();
 		GameMetaManager.Employee.TryCreateNewEmployee(GameMetaManager.CVs.PendingCV.MoneyCost, GameMetaManager.CVs.PendingCV.Happiness);
 		GameMetaManager.CVs.AcceptPendingCV();
 		ShowCV(false);
 	}
 	private void OnCVRejectButtonClick()
 	{
+		GameMetaManager.OnUIButtonClicked();
 		GameMetaManager.CVs.RejectPendingCV();
 		ShowCV(false);
 	}
 
 	private void OnGameOverPlayAgainButtonClick()
 	{
+		GameMetaManager.OnUIButtonClicked();
 		UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
 	}
 	
 	private void OnGameOverTweetButtonClick()
 	{
+		GameMetaManager.OnUIButtonClicked();
 		GetComponent<Twitter>().ShareToTW();
 	}
 	
 	private void OnGameOverMenuButtonClick()
 	{
+		GameMetaManager.OnUIButtonClicked();
 		// TODO
 	}
 	

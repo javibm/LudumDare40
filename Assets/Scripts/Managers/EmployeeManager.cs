@@ -28,11 +28,17 @@ public class EmployeeManager {
 
 	public System.Action<WindowPoint> OnEmployeeClosed;
 
+	public System.Action OnRageWindow;
+
+	public System.Action OnRageDestroy;
+
 	public System.Action OnBackToWork;
 
 	public System.Action OnAnswerCry;
 
 	public System.Action OnAnswerYay;
+	
+	public System.Action OnFired;
 
 	public EmployeeManager(EmployeeGenerator employeeGenerator, EmployeeStats employeeStats)
 	{

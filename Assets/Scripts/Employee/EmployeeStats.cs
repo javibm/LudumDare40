@@ -14,4 +14,5 @@ public class EmployeeStats : ScriptableObject {
 	public float maxInitialHappiness = 1.0f;
 
 	public float moneyFactor = 1f;
+	public float payRaiseProbability = 0.75f;
 }

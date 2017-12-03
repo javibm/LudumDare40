@@ -27,8 +27,10 @@ public class GameMetaManager : Singleton<GameMetaManager>
 			return Instance.gameStats.MaxDaysWithNegativeMoney;
 		}
 	}
-	
+
 	public static System.Action OnLoseGame;
+
+	public static System.Action OnUIButtonClicked;
 
 	protected new void Awake()
 	{
