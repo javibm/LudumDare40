@@ -19,6 +19,7 @@ public class NullifyRotation : MonoBehaviour {
 	void Update()
 	{
 		transform.LookAt(transformCamera);
+		transform.Rotate(0, 180, 0);
 	}
 
 	private Transform transformCamera;

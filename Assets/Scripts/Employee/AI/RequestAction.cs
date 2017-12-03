@@ -13,13 +13,9 @@ public class RequestAction : Action {
 	private void WaitingForRequest(EmployeeController controller)
 	{
 		controller.EmployeeStateController.IncreaseLastActionTime();
-		if (Input.anyKey)
+		if (!controller.EmployeeStateController.ForceWork)
 		{
-			controller.EmployeeStateController.AcceptRequest(controller);
-		}
-		else if(controller.EmployeeStateController.LastActionTime > controller.EmployeeStateController.NextRequestTime)
-		{
-			controller.EmployeeStateController.ForceWorkAgain();
+			controller.EmployeeUIController.EnableUI(controller.NextRequest);
 		}
 		Debug.Log ("WAITING FOR REQUEST");
 	}

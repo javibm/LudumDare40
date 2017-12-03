@@ -17,12 +17,29 @@ public class EmployeeController : MonoBehaviour {
 		private set;
 	}
 
+	public EmployeeUIController EmployeeUIController
+	{
+		get;
+		private set;
+	}
+
+	public RequestType NextRequest
+	{
+		get;
+		set;
+	}
+
+
 	public void Init(OfficeDesk officeDesk)
 	{
 		EmployeeStateController = GetComponent<EmployeeStateController>();
 		EmployeeMovementController = GetComponent<EmployeeMovementController>();
+		EmployeeUIController = GetComponentInChildren<EmployeeUIController>();
 
 		EmployeeMovementController.Init(officeDesk, GetComponent<NavMeshController>(), GetComponent<EmployeeAnimationController>());
+		EmployeeUIController.DisableAll();
+
+		EmployeeUIController.OnRequestAnswered += OnRequestAnswered;
 	}
 
 	void Update()
@@ -43,14 +60,28 @@ public class EmployeeController : MonoBehaviour {
 		}
 	}
 
+	public void OnRequestAnswered(bool accepted)
+	{
+		if (accepted)
+		{
+			EmployeeStateController.AcceptRequest();
+			ApplyRequest();
+		}
+		else
+		{
+			EmployeeStateController.ForceWorkAgain();
+		}
+		EmployeeUIController.DisableAll();
+	}
+
 	public void ApplyRequest()
 	{
-		Debug.Log("REQUEST " + nextRequest);
-		if (nextRequest == RequestType.PayRaise)
+		Debug.Log("REQUEST " + NextRequest);
+		if (NextRequest == RequestType.PayRaise)
 		{
 			GameMetaManager.Money.RemoveMoney(UnityEngine.Random.Range(employeeStats.MinPayRaise, employeeStats.MaxPayRaise));
 		}
-		else if (nextRequest == RequestType.Holidays)
+		else if (NextRequest == RequestType.Holidays)
 		{
 			TakeHolidays();
 		}
@@ -78,16 +109,14 @@ public class EmployeeController : MonoBehaviour {
 
 	public void SetNextRequest()
 	{
-		nextRequest = (RequestType)UnityEngine.Random.Range(0, Enum.GetValues(typeof(RequestType)).Length);
+		NextRequest = (RequestType)UnityEngine.Random.Range(0, Enum.GetValues(typeof(RequestType)).Length);
 	}
 
-	private enum RequestType
+	public enum RequestType
 	{
 		PayRaise,
 		Holidays
 	}
-
-	private RequestType nextRequest;
 
 	private float timeSinceLastGeneration;
 	private int holidayEnd;
