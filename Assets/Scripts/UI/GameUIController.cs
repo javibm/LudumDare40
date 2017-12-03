@@ -8,8 +8,7 @@ public class GameUIController : MonoBehaviour
 	void Awake()
 	{
     // Buttons listeners
-    expandOfficeButton.onClick.AddListener(OnExpandOfficeButtonClick);
-    spawnEmployeeButton.onClick.AddListener(OnSpawnEmployeeButtonClick);
+    	expandOfficeButton.onClick.AddListener(OnExpandOfficeButtonClick);
 		cvAcceptButton.onClick.AddListener(OnCVAcceptButtonClick);
 		cvRejectButton.onClick.AddListener(OnCVRejectButtonClick);
 	}
@@ -36,15 +35,10 @@ public class GameUIController : MonoBehaviour
 		GameMetaManager.Office.TryExpand();
 	}
 
-  private void OnSpawnEmployeeButtonClick()
-  {
-	GameMetaManager.Employee.TryCreateNewEmployee();
-  }
-
 	private void OnCVAcceptButtonClick()
 	{
+		GameMetaManager.Employee.TryCreateNewEmployee(GameMetaManager.CVs.PendingCV.EmployeeStats);
 		GameMetaManager.CVs.AcceptPendingCV();
-		GameMetaManager.Employee.TryCreateNewEmployee();
 		ShowCV(false);
 	}
 	private void OnCVRejectButtonClick()
@@ -130,9 +124,6 @@ public class GameUIController : MonoBehaviour
 
 	[SerializeField]
 	private Text gameOverLabelText;
-
-  [SerializeField]
-  private Button spawnEmployeeButton;
 
 	[SerializeField]
 	private GameObject cvGameObject;
