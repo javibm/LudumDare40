@@ -12,7 +12,9 @@ public class WorkAgainDecision : Decision {
 
 	private bool GoToWork(EmployeeController controller)
 	{
-		return controller.EmployeeStateController.ForceWork && controller.EmployeeStateController.Happiness > 0;
+		bool requestCompleted = controller.EmployeeStateController.ForceWork;
+		bool waitTimeUp = controller.EmployeeStateController.LastActionTime >= controller.EmployeeStateController.NextRequestTime;
+		return (requestCompleted || waitTimeUp) && controller.EmployeeStateController.Happiness > 0;
 	}
 
 }

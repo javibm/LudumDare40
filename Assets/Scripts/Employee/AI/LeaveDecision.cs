@@ -12,7 +12,9 @@ public class LeaveDecision : Decision {
 
 	private bool LeaveOffice(EmployeeController controller)
 	{
-		return controller.EmployeeStateController.ForceWork && controller.EmployeeStateController.Happiness <= 0;
+		bool requestCompleted = controller.EmployeeStateController.ForceWork;
+		bool waitTimeUp = controller.EmployeeStateController.LastActionTime >= controller.EmployeeStateController.NextRequestTime;
+		return (requestCompleted || waitTimeUp) && controller.EmployeeStateController.Happiness <= 0;	
 	}
 
 }
