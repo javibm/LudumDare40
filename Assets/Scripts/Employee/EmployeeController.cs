@@ -53,7 +53,8 @@ public class EmployeeController : MonoBehaviour
 		EmployeeUIController.DisableAll();
 
 		EmployeeUIController.OnRequestAnswered += OnRequestAnswered;
-		EmployeeUIController.OnForceWork += OnForceWork;
+		EmployeeUIController.OnForceWork 			 += OnForceWork;
+		EmployeeUIController.OnFired 					 += OnFired;
 
 		SetNextRequest();
 	}
@@ -96,6 +97,11 @@ public class EmployeeController : MonoBehaviour
 			EmployeeStateController.ForceWorkAgain();
 		}
 		EmployeeUIController.CloseRequest();
+	}
+
+	public void OnFired()
+	{
+		Destroy(gameObject);
 	}
 
 	public void ApplyRequest()
@@ -149,8 +155,12 @@ public class EmployeeController : MonoBehaviour
 
 	public void ReleaseEmployee()
 	{
-		EmployeeMovementController.MoveToCrazyTarget();
-		EmployeeUIController.OnRequestAnswered -= OnRequestAnswered;
+		if (!releasing)
+		{
+			EmployeeMovementController.MoveToCrazyTarget();
+			EmployeeUIController.EnableFire();
+			EmployeeUIController.OnRequestAnswered -= OnRequestAnswered;
+		}
 	}
 
 	public enum RequestType
@@ -161,4 +171,5 @@ public class EmployeeController : MonoBehaviour
 
 	private float timeSinceLastGeneration;
 	private int holidayEnd;
+	private bool releasing = false;
 }
