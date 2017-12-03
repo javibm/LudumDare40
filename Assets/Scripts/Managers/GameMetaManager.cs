@@ -10,6 +10,7 @@ public class GameMetaManager : Singleton<GameMetaManager>
 	public static AudioManager Audio { get { return Instance.audio; }}
 	public static TimeManager 		Time 		 { get { return Instance.time;      }}
 	public static CVManager       CVs      { get { return Instance.cvs;       }}
+	public static CameraManager		Camera	 { get { return Instance.cameraManager;}}
 
 	public static int DaysWithNegativeMoney
 	{
@@ -37,6 +38,7 @@ public class GameMetaManager : Singleton<GameMetaManager>
 		employees = new EmployeeManager(employeeGenerator, employeeStats);
 		audio = GetComponent<AudioManager>();
 		time = gameObject.GetComponent<TimeManager>();
+		cameraManager = gameObject.GetComponent<CameraManager>();
 		cvs = new CVManager(cvGenerationStats);
 
 		// TO DO INSTANCIACION DE PRUEBA
@@ -46,6 +48,7 @@ public class GameMetaManager : Singleton<GameMetaManager>
 	void Start()
 	{
 		cvs.Init();
+		cameraManager.Init();
 
 		Money.OnMoneyChangeToNegative += OnMoneyChangeToNegative;
 		Money.OnMoneyChangeToPositive += OnMoneyChangeToPositive;
@@ -87,6 +90,7 @@ public class GameMetaManager : Singleton<GameMetaManager>
 	private EmployeeManager employees;
 	private AudioManager audio;
 	private TimeManager time;
+	private CameraManager cameraManager;
 	private CVManager cvs;
 
 	private int consecutiveDaysWithNegativeMoney;

@@ -33,6 +33,8 @@ public class OfficeManager
 		get {return officeGenerator.DoorPoint;}
 	}
 
+	public event System.Action OnExpansion;
+
   public OfficeManager(int initialSize, OfficeGenerator officeGenerator, OfficeStats officeStats)
 	{
 		this.officeGenerator = officeGenerator;
@@ -95,6 +97,15 @@ public class OfficeManager
 	private void ExpandOffice()
 	{
 		officeGenerator.ExpandOffice();
+		NotifyOnExpansion();
+	}
+
+	private void NotifyOnExpansion()
+	{
+		if(OnExpansion != null)
+		{
+			OnExpansion();
+		}
 	}
 
 	private OfficeGenerator officeGenerator = null;
