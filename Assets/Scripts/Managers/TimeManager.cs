@@ -14,8 +14,14 @@ public class TimeManager : MonoBehaviour
 
 	void Start()
 	{
+		GameMetaManager.OnLoseGame += OnLoseGame;
 		DaysPassed = 0;
 		StartCoroutine(DaysCounter(gameStats.DayDurationInSeconds));
+	}
+
+	private void OnLoseGame()
+	{
+		StopAllCoroutines();
 	}
 
 	private IEnumerator DaysCounter(int daySecondsDuration)
