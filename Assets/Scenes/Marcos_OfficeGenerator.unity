@@ -531,6 +531,7 @@ MonoBehaviour:
   bossPrefab: {fileID: 0}
   doorPrefab: {fileID: 0}
   idlePrefabs: []
+  objectSpawnDelay: 0.1
 --- !u!1001 &1601087073
 Prefab:
   m_ObjectHideFlags: 0
