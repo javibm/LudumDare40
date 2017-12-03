@@ -22,20 +22,25 @@ public class AudioManager : MonoBehaviour
 		Typing,
 		BackToWork,
 		Cry,
-		Yay
+		Yay,
+		UI,
+		LevelUp
 	}
 
 	void Start ()
 	{
 		// DontDestroyOnLoad (gameObject);
 		// PlaySound (AudioType.Main);
-		PlaySound(AudioType.Loop);
-		PlaySound(AudioType.Typing);
+		PlaySound(AudioType.Loop, true);
+		PlaySound(AudioType.Typing, true);
 		GameMetaManager.Employee.OnBackToWork += PlayBackToWork;
 		GameMetaManager.Employee.OnEmployeeCreated += PlayDoor;
 		GameMetaManager.Employee.OnAnswerCry += PlayCry;
 		GameMetaManager.Employee.OnAnswerYay += PlayYay;
 		GameMetaManager.CVs.OnNewCVGenerated += PlayCV;
+		GameMetaManager.OnUIButtonClicked += PlayUI;
+		GameMetaManager.Office.OnExpansion += PlayLevelUp;
+		GameMetaManager.OnLoseGame += PlayGameOver;
 	}
 
 	private void PlaySound (AudioType audioType, bool loop = false)
@@ -74,6 +79,21 @@ public class AudioManager : MonoBehaviour
 	private void PlayYay()
 	{
 		PlaySound (AudioType.Yay);
+	}
+
+	private void PlayUI()
+	{
+		PlaySound (AudioType.UI);
+	}
+
+	private void PlayLevelUp()
+	{
+		PlaySound (AudioType.LevelUp);
+	}
+
+	private void PlayGameOver()
+	{
+		PlaySound (AudioType.Gameover);
 	}
 
   [SerializeField]

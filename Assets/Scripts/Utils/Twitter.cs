@@ -7,7 +7,7 @@ public class Twitter : MonoBehaviour {
   private static string appStoreLink = "https://javibm.github.io/HellaWork/";
   private string hashtag = "#hellawork";
 
-  public void ShareToTW(string linkParameter)
+  public void ShareToTW()
   {
     string nameParameter = "I have reached the level " + GameMetaManager.Office.CurrentSize + " in " +  GameMetaManager.Time.DaysPassed +" days.Can you beat me? ";
     Application.OpenURL(TWITTER_ADDRESS +
