@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: GameStats
   m_EditorClassIdentifier: 
   DayDurationInSeconds: 1
-  InitialMoney: 100
+  InitialMoney: 50
   MaxDaysWithNegativeMoney: 15
   OfficeInitialSize: 3

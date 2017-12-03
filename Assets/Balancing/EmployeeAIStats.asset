@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Name: EmployeeAIStats
   m_EditorClassIdentifier: 
   minRequestTime: 5
-  maxRequestTime: 8
+  maxRequestTime: 10
   minProcrastinateTime: 5
-  maxProcrastinateTime: 8
-  minInitialHappiness: 0.5
-  maxInitialHappiness: 1
+  maxProcrastinateTime: 10
   requestAcceptedHappiness: 0.3
   requestDeniedHappiness: 0.4

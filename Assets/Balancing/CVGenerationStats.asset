@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef4d7efc94190f4792af200757fe1d1, type: 3}
   m_Name: CVGenerationStats
   m_EditorClassIdentifier: 
-  DaysBeforeFirstCV: 5
-  MinDaysForNextCV: 2
+  DaysBeforeFirstCV: 3
+  MinDaysForNextCV: 5
   MaxDaysForNextCV: 10
