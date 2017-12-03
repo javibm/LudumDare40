@@ -11,6 +11,9 @@ public class GameUIController : MonoBehaviour
     expandOfficeButton.onClick.AddListener(OnExpandOfficeButtonClick);
 		cvAcceptButton.onClick.AddListener(OnCVAcceptButtonClick);
 		cvRejectButton.onClick.AddListener(OnCVRejectButtonClick);
+		gameOverPlayAgainButton.onClick.AddListener(OnGameOverPlayAgainButtonClick);
+		gameOverTweetButton.onClick.AddListener(OnGameOverTweetButtonClick);
+		gameOverMenuButton.onClick.AddListener(OnGameOverMenuButtonClick);
 	}
 	
 	void Start () 
@@ -47,6 +50,22 @@ public class GameUIController : MonoBehaviour
 		ShowCV(false);
 	}
 
+	private void OnGameOverPlayAgainButtonClick()
+	{
+		// TODO
+	}
+	
+	private void OnGameOverTweetButtonClick()
+	{
+		// TODO
+	}
+	
+	private void OnGameOverMenuButtonClick()
+	{
+		// TODO
+	}
+	
+
 	private void OnMoneyChanged()
 	{
 		UpdateMoney();
@@ -82,6 +101,7 @@ public class GameUIController : MonoBehaviour
 	private void OnLoseGame()
 	{
 		ShowGameOverText(true);
+		ShowCV(false);
 		GameMetaManager.Time.OnDayPassed -= OnDayPassed;
 	}
 	
@@ -137,6 +157,12 @@ public class GameUIController : MonoBehaviour
 
 	[SerializeField]
 	private GameObject gameOverObject;
+	[SerializeField]
+	private Button gameOverPlayAgainButton;
+	[SerializeField]
+	private Button gameOverTweetButton;
+	[SerializeField]
+	private Button gameOverMenuButton;
 
 	[SerializeField]
 	private GameObject cvGameObject;

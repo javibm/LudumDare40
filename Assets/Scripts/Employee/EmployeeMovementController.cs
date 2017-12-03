@@ -131,6 +131,11 @@ public class EmployeeMovementController : MonoBehaviour {
     GameMetaManager.Employee.OnEmployeeClosed(windowPoint);
   }
 
+  public void ReleaseDesk()
+  {
+    personalOfficeDesk.Filled = false;
+  }
+
   private void selectNewTarget()
   {
     Target = GameMetaManager.Office.GetRandomIdle().transform;

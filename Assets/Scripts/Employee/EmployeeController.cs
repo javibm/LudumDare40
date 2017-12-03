@@ -81,6 +81,7 @@ public class EmployeeController : MonoBehaviour
 
 	public void OnForceWork()
 	{
+		GameMetaManager.Employee.OnBackToWork();
 		EmployeeStateController.ForceWorkAgain();
 		EmployeeUIController.DisableAll();
 	}
@@ -101,6 +102,7 @@ public class EmployeeController : MonoBehaviour
 
 	public void OnFired()
 	{
+		GameMetaManager.Employee.ReleaseEmployee(this);
 		Destroy(gameObject);
 	}
 
