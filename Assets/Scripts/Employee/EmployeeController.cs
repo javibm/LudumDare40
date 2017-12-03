@@ -29,10 +29,16 @@ public class EmployeeController : MonoBehaviour {
 		set;
 	}
 
+	public EmployeeStats employeeStats
+	{
+		get {return GameMetaManager.Employee.EmployeeStats;}
+	}
 
-	public void Init(OfficeDesk officeDesk)
+
+	public void Init(OfficeDesk officeDesk, float happiness)
 	{
 		EmployeeStateController = GetComponent<EmployeeStateController>();
+		EmployeeStateController.Happiness = happiness;
 		EmployeeMovementController = GetComponent<EmployeeMovementController>();
 		EmployeeUIController = GetComponentInChildren<EmployeeUIController>();
 
@@ -120,7 +126,4 @@ public class EmployeeController : MonoBehaviour {
 
 	private float timeSinceLastGeneration;
 	private int holidayEnd;
-
-	[SerializeField]
-	private EmployeeStats employeeStats;
 }

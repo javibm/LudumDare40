@@ -33,12 +33,12 @@ public class GameMetaManager : Singleton<GameMetaManager>
 		base.Awake();
 		office = new OfficeManager(gameStats.OfficeInitialSize, officeGenerator, officeStats);
 		money = new MoneyManager(gameStats.InitialMoney);
-		employees = new EmployeeManager(employeeGenerator);
+		employees = new EmployeeManager(employeeGenerator, employeeStats);
 		time = gameObject.GetComponent<TimeManager>();
 		cvs = new CVManager(cvGenerationStats);
 
 		// TO DO INSTANCIACION DE PRUEBA
-		employees.CreateNewEmployee(office.DeskList[0]);
+		// employees.CreateNewEmployee(office.DeskList[0]);
 	}
 
 	void Start()
@@ -96,6 +96,9 @@ public class GameMetaManager : Singleton<GameMetaManager>
 	private OfficeGenerator officeGenerator;
 	[SerializeField]
 	private OfficeStats officeStats;
+
+	[SerializeField]
+	private EmployeeStats employeeStats;
 	[SerializeField]
 	private EmployeeGenerator employeeGenerator;
 }
