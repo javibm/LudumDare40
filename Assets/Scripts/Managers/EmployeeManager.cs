@@ -37,6 +37,8 @@ public class EmployeeManager {
 	public System.Action OnAnswerCry;
 
 	public System.Action OnAnswerYay;
+	
+	public System.Action OnFired;
 
 	public EmployeeManager(EmployeeGenerator employeeGenerator, EmployeeStats employeeStats)
 	{

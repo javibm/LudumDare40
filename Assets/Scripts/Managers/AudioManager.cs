@@ -26,8 +26,8 @@ public class AudioManager : MonoBehaviour
 		UI,
 		LevelUp,
 		RageWindow,
-
-		RageDestroy
+		RageDestroy,
+		Fired
 	}
 
 	void Start ()
@@ -46,6 +46,7 @@ public class AudioManager : MonoBehaviour
 		GameMetaManager.OnLoseGame += PlayGameOver;
 		GameMetaManager.Employee.OnRageWindow += PlayRageWindow;
 		GameMetaManager.Employee.OnRageDestroy += PlayRageDestroy;
+		GameMetaManager.Employee.OnFired += PlayFired;
 	}
 
 	private void PlaySound (AudioType audioType, bool loop = false)
@@ -109,6 +110,11 @@ public class AudioManager : MonoBehaviour
 	private void PlayRageDestroy()
 	{
 		PlaySound (AudioType.RageDestroy);
+	}
+
+	private void PlayFired()
+	{
+		PlaySound (AudioType.Fired);
 	}
 
   [SerializeField]
