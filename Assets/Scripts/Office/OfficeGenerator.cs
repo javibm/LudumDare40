@@ -59,7 +59,7 @@ public class OfficeGenerator : MonoBehaviour
         go = Instantiate(bossPrefab);
         go.transform.SetParent(transform);
         go.transform.localRotation = Quaternion.Euler(new Vector3(0f, 90f, 0f));
-        go.transform.localPosition = new Vector3(cellSize * i, 0f, cellSize * (step - 1));
+        go.transform.localPosition = new Vector3(cellSize * i, 0.1f, cellSize * (step - 1));
       }
       else
       {
@@ -81,20 +81,20 @@ public class OfficeGenerator : MonoBehaviour
 
     if (step > 1)
     {
-		  // Wall generation
-		  go = Instantiate(wallPrefab);
-		  go.transform.SetParent(transform);
-		  go.transform.localPosition = new Vector3(cellSize * (step-1), 0f, 0f);
-		  go.transform.eulerAngles = new Vector3(0f, -90, 0f);
+      // Wall generation
+      go = Instantiate((step % 2 == 0) ? wallPrefab : wallWindowPrefab);
+      go.transform.SetParent(transform);
+      go.transform.localPosition = new Vector3(cellSize * (step - 1), 0f, 0f);
+      go.transform.eulerAngles = new Vector3(0f, -90, 0f);
 
-		  go = Instantiate(wallPrefab);
-		  go.transform.SetParent(transform);
-		  go.transform.localPosition = new Vector3(0f, 0f, cellSize * (step-1));
-		  go.transform.eulerAngles = new Vector3(0f, 0, 0f);
+      go = Instantiate((step % 2 != 0) ? wallPrefab : wallWindowPrefab);
+      go.transform.SetParent(transform);
+      go.transform.localPosition = new Vector3(0f, 0f, cellSize * (step - 1));
+      go.transform.eulerAngles = new Vector3(0f, 0, 0f);
 
 		  // Desk generation
 		  OfficeDesk desk;
-		  for(int i = 0; i < step; ++i)
+		  for(int i = 1; i < step; ++i)
 		  {
 			  desk = Instantiate(deskPrefab);
 			  desk.transform.SetParent(transform);
@@ -109,11 +109,11 @@ public class OfficeGenerator : MonoBehaviour
 				  deskList.Add(desk);
           idleList.Add(desk.GetComponentInChildren<IdlePoint>());
 			  }
-    }
-    if (navMeshSurface != null)
-    {
-      NavigationBaker.BakeNavMesh(navMeshSurface);
-    }
+      }
+      if (navMeshSurface != null)
+      {
+        NavigationBaker.BakeNavMesh(navMeshSurface);
+      }
 		}
 	}
 	
@@ -126,6 +126,8 @@ public class OfficeGenerator : MonoBehaviour
 	private OfficeDesk deskPrefab;
 	[SerializeField]
 	private GameObject wallPrefab;
+  [SerializeField]
+  private GameObject wallWindowPrefab;
   [SerializeField]
   private GameObject bossPrefab;
 

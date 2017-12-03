@@ -14,4 +14,4 @@ MonoBehaviour:
   DayDurationInSeconds: 1
   InitialMoney: 100
   MaxDaysWithNegativeMoney: 15
-  OfficeInitialSize: 2
+  OfficeInitialSize: 3

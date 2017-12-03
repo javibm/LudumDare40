@@ -4,37 +4,11 @@ using UnityEngine;
 
 public class GameMetaManager : Singleton<GameMetaManager> 
 {
-	public static OfficeManager Office
-	{
-		get
-		{
-			return Instance.office;
-		}
-	}
-
-	public static MoneyManager Money
-	{
-		get
-		{
-			return Instance.money;
-		}
-	}
-
-	public static EmployeeManager Employee
-	{
-		get
-		{
-			return Instance.employees;
-		}
-	}
-
-	public static TimeManager Time
-	{
-		get
-		{
-			return Instance.time;
-		}
-	}
+	public static OfficeManager 	Office   { get { return Instance.office;    }}
+	public static MoneyManager  	Money  	 { get { return Instance.money;     }}
+	public static EmployeeManager Employee { get { return Instance.employees; }}
+	public static TimeManager 		Time 		 { get { return Instance.time;      }}
+	public static CVManager       CVs      { get { return Instance.cvs;       }}
 
 	public static int DaysWithNegativeMoney
 	{
@@ -61,13 +35,16 @@ public class GameMetaManager : Singleton<GameMetaManager>
 		money = new MoneyManager(gameStats.InitialMoney);
 		employees = new EmployeeManager(employeeGenerator);
 		time = gameObject.GetComponent<TimeManager>();
+		cvs = new CVManager(cvGenerationStats);
 
-		//TO DO INSTANCIACION DE PRUEBA
+		// TO DO INSTANCIACION DE PRUEBA
 		employees.CreateNewEmployee(office.DeskList[0]);
 	}
 
 	void Start()
 	{
+		cvs.Init();
+
 		Money.OnMoneyChangeToNegative += OnMoneyChangeToNegative;
 		Money.OnMoneyChangeToPositive += OnMoneyChangeToPositive;
 		Time.OnDayPassed += OnDayPassed;
@@ -107,11 +84,14 @@ public class GameMetaManager : Singleton<GameMetaManager>
 	private MoneyManager money;
 	private EmployeeManager employees;
 	private TimeManager time;
+	private CVManager cvs;
 
 	private int consecutiveDaysWithNegativeMoney;
 	
 	[SerializeField]
 	private GameStats gameStats;
+	[SerializeField]
+	private EmployeeCVGenerationStats cvGenerationStats;
 	[SerializeField]
 	private OfficeGenerator officeGenerator;
 	[SerializeField]

@@ -10,6 +10,8 @@ public class GameUIController : MonoBehaviour
     // Buttons listeners
     expandOfficeButton.onClick.AddListener(OnExpandOfficeButtonClick);
     spawnEmployeeButton.onClick.AddListener(OnSpawnEmployeeButtonClick);
+		cvAcceptButton.onClick.AddListener(OnCVAcceptButtonClick);
+		cvRejectButton.onClick.AddListener(OnCVRejectButtonClick);
 	}
 	
 	void Start () 
@@ -19,11 +21,13 @@ public class GameUIController : MonoBehaviour
 		GameMetaManager.Money.OnMoneyChangeToNegative += OnMoneyChangeToNegative;
 		GameMetaManager.Money.OnMoneyChangeToPositive += OnMoneyChangeToPositive;
 		GameMetaManager.Time.OnDayPassed += OnDayPassed;
+		GameMetaManager.CVs.OnNewCVGenerated += OnNewCVGenerated;
 		GameMetaManager.OnLoseGame += OnLoseGame;
 
 		UpdateMoney();
 		UpdateDaysPassed();
 		ShowDaysWithNegativeMoneyTimer(false);
+		ShowCV(false);
 		ShowGameOverText(false);
 	}
 
@@ -34,11 +38,20 @@ public class GameUIController : MonoBehaviour
 
   private void OnSpawnEmployeeButtonClick()
   {
-    if (GameMetaManager.Office.GetEmptyDeskCount() > 0)
-    {
-      GameMetaManager.Employee.CreateNewEmployee(GameMetaManager.Office.GetEmptyDesk());
-    }
+	GameMetaManager.Employee.TryCreateNewEmployee();
   }
+
+	private void OnCVAcceptButtonClick()
+	{
+		GameMetaManager.CVs.AcceptPendingCV();
+		GameMetaManager.Employee.TryCreateNewEmployee();
+		ShowCV(false);
+	}
+	private void OnCVRejectButtonClick()
+	{
+		GameMetaManager.CVs.RejectPendingCV();
+		ShowCV(false);
+	}
 
 	private void OnMoneyChanged()
 	{
@@ -61,6 +74,13 @@ public class GameUIController : MonoBehaviour
 	{
 		UpdateDaysPassed();
 		daysWithNegativeMoneyTimerImage.transform.localScale = new Vector2((float)GameMetaManager.DaysWithNegativeMoney / (float)GameMetaManager.MaxDaysWithNegativeMoney, 1f);
+	}
+
+	private void OnNewCVGenerated()
+	{
+		EmployeeCV cv = GameMetaManager.CVs.PendingCV;
+		// TODO en cv habrá la info del personaje
+		ShowCV(true);
 	}
 
 	private void OnLoseGame()
@@ -88,6 +108,11 @@ public class GameUIController : MonoBehaviour
 	{
 		gameOverLabelText.gameObject.SetActive(show);
 	}
+
+	private void ShowCV(bool show)
+	{
+		cvGameObject.SetActive(show);
+	}
 	
 	[SerializeField]
 	private Text moneyLabelText;
@@ -108,4 +133,11 @@ public class GameUIController : MonoBehaviour
 
   [SerializeField]
   private Button spawnEmployeeButton;
+
+	[SerializeField]
+	private GameObject cvGameObject;
+	[SerializeField]
+	private Button cvAcceptButton;
+	[SerializeField]
+	private Button cvRejectButton;
 }
