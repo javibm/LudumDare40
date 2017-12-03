@@ -29,6 +29,7 @@ public class CVManager
 	{
 		PendingCV = null;
 		resetDaysForNextCV();
+
 	}
 
 	public void RejectPendingCV()
@@ -39,6 +40,10 @@ public class CVManager
 
 	private void OnDayPassed()
 	{
+		if(GameMetaManager.Office.GetEmptyDeskCount() <= 0)
+		{
+			return;
+		}
 		daysForNextCV--;
 		if(daysForNextCV <= 0 && PendingCV == null)
 		{
