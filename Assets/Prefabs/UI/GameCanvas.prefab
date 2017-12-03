@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 114270558952663144}
   - component: {fileID: 114687247810421884}
   m_Layer: 5
-  m_Name: DaysWithNegativeMoneyTimerBG
+  m_Name: MoneyProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 222612760378187236}
   - component: {fileID: 114171773422563772}
   m_Layer: 5
-  m_Name: DaysWithNegativeMoneyTimerBG (1)
+  m_Name: MoneyProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -373,7 +373,7 @@ MonoBehaviour:
   moneyLabelText: {fileID: 114486868500470706}
   daysPassedLabelText: {fileID: 114664658867569708}
   daysWithNegativeMoneyTimerGameObject: {fileID: 1427703138827000}
-  daysWithNegativeMoneyTimerImage: {fileID: 114171773422563772}
+  moneyProgressBarImage: {fileID: 114171773422563772}
   expandOfficeButton: {fileID: 114440852916426312}
   gameOverLabelText: {fileID: 114704297312173296}
   cvGameObject: {fileID: 1172031048042048}
@@ -382,9 +382,9 @@ MonoBehaviour:
   cvMotivationBarImage: {fileID: 114575918977986030}
   cvAcceptButton: {fileID: 114200150519259114}
   cvRejectButton: {fileID: 114680505484918066}
-  nameCV: {fileID: 114957405098681890}
-  moneyCostCV: {fileID: 114773193114168848}
-  happinnesCostCV: {fileID: 0}
+  barRedSprite: {fileID: 21300000, guid: eee8435a3f02fae468f4864b8b06c113, type: 3}
+  barOrangeSprite: {fileID: 21300000, guid: c3283a12effb686409224fda68132a79, type: 3}
+  barGreenSprite: {fileID: 21300000, guid: 615bc42ff99344140985192283596b15, type: 3}
 --- !u!114 &114034829995863866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -451,7 +451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:

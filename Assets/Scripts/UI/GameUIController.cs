@@ -22,11 +22,10 @@ public class GameUIController : MonoBehaviour
 		GameMetaManager.Time.OnDayPassed += OnDayPassed;
 		GameMetaManager.CVs.OnNewCVGenerated += OnNewCVGenerated;
 		GameMetaManager.OnLoseGame += OnLoseGame;
-		
 
 		UpdateMoney();
 		UpdateDaysPassed();
-		ShowDaysWithNegativeMoneyTimer(false);
+		UpdateProgressBar();
 		ShowCV(false);
 		ShowGameOverText(false);
 	}
@@ -51,24 +50,23 @@ public class GameUIController : MonoBehaviour
 	private void OnMoneyChanged()
 	{
 		UpdateMoney();
+		UpdateProgressBar();
 	}
 
 	private void OnMoneyChangeToNegative()
 	{
 		UpdateMoney();
-		ShowDaysWithNegativeMoneyTimer(true);
 	}
 
 	private void OnMoneyChangeToPositive()
 	{
 		UpdateMoney();
-		ShowDaysWithNegativeMoneyTimer(false);
 	}
 
 	private void OnDayPassed()
 	{
 		UpdateDaysPassed();
-		daysWithNegativeMoneyTimerImage.fillAmount = (float)GameMetaManager.DaysWithNegativeMoney / (float)GameMetaManager.MaxDaysWithNegativeMoney;
+		UpdateProgressBar();
 	}
 
 	private void OnNewCVGenerated()
@@ -77,6 +75,7 @@ public class GameUIController : MonoBehaviour
 		cvNameText.text = string.Format(cvText, cv.Name);
 		cvMoneyText.text = string.Format(moneyText, cv.MoneyCost.ToString("0.00"));
 		cvMotivationBarImage.fillAmount = cv.Happiness;
+		cvMotivationBarImage.sprite = (cv.Happiness >= 0.75f ? barGreenSprite : (cv.Happiness >= 0.5f ? barOrangeSprite : barRedSprite));
 		ShowCV(true);
 	}
 
@@ -96,9 +95,20 @@ public class GameUIController : MonoBehaviour
 		daysPassedLabelText.text = GameMetaManager.Time.DaysPassed.ToString();
 	}
 
-	private void ShowDaysWithNegativeMoneyTimer(bool show)
+	private void UpdateProgressBar()
 	{
-		daysWithNegativeMoneyTimerGameObject.SetActive(show);
+		float fillAmount;
+		if(GameMetaManager.DaysWithNegativeMoney > 0)
+		{
+			// Barra roja
+			fillAmount = 0.5f - 0.5f * ((float)GameMetaManager.DaysWithNegativeMoney / (float)GameMetaManager.MaxDaysWithNegativeMoney);
+		}
+		else
+		{
+			fillAmount = 0.5f + 0.5f * ((float)Mathf.Clamp(GameMetaManager.Money.CurrentMoney, 0, float.MaxValue) / (float)GameMetaManager.Office.GetExpandTarget());
+		}
+		moneyProgressBarImage.fillAmount = fillAmount;
+		moneyProgressBarImage.sprite = (fillAmount >= 0.75f ? barGreenSprite : (fillAmount >= 0.5f ? barOrangeSprite : barRedSprite));
 	}
 
 	private void ShowGameOverText(bool show)
@@ -120,7 +130,7 @@ public class GameUIController : MonoBehaviour
 	[SerializeField]
 	private GameObject daysWithNegativeMoneyTimerGameObject;
 	[SerializeField]
-	private Image daysWithNegativeMoneyTimerImage;
+	private Image moneyProgressBarImage;
 
 	[SerializeField]
 	private Button expandOfficeButton;
@@ -142,13 +152,11 @@ public class GameUIController : MonoBehaviour
 	private Button cvRejectButton;
 
 	[SerializeField]
-	private Text nameCV;
-
+	private Sprite barRedSprite;
 	[SerializeField]
-	private Text moneyCostCV;
-
+	private Sprite barOrangeSprite;
 	[SerializeField]
-	private Text happinnesCostCV;
+	private Sprite barGreenSprite;
 
 	private string cvText = "CV: {0}";
 	private string moneyText = "$ {0}";
