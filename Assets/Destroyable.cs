@@ -10,4 +10,9 @@ public class Destroyable : MonoBehaviour {
 		GameMetaManager.Employee.ReleaseEmployee(GetComponent<EmployeeController>());
 		Destroy(gameObject);
 	}
+
+	public void InitScream()
+	{
+		GameMetaManager.Employee.OnRageWindow();
+	}
 }

@@ -94,6 +94,7 @@ public class EmployeeMovementController : MonoBehaviour {
   {
     if (Target == personalOfficeDesk.Transform)
     {
+      GameMetaManager.Employee.OnRageDestroy();     
       navigate(DestroyAnim);
       selectNewTarget();      
     }

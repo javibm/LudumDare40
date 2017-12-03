@@ -24,7 +24,10 @@ public class AudioManager : MonoBehaviour
 		Cry,
 		Yay,
 		UI,
-		LevelUp
+		LevelUp,
+		RageWindow,
+		RageDestroy,
+		Fired
 	}
 
 	void Start ()
@@ -41,6 +44,9 @@ public class AudioManager : MonoBehaviour
 		GameMetaManager.OnUIButtonClicked += PlayUI;
 		GameMetaManager.Office.OnExpansion += PlayLevelUp;
 		GameMetaManager.OnLoseGame += PlayGameOver;
+		GameMetaManager.Employee.OnRageWindow += PlayRageWindow;
+		GameMetaManager.Employee.OnRageDestroy += PlayRageDestroy;
+		GameMetaManager.Employee.OnFired += PlayFired;
 	}
 
 	private void PlaySound (AudioType audioType, bool loop = false)
@@ -94,6 +100,21 @@ public class AudioManager : MonoBehaviour
 	private void PlayGameOver()
 	{
 		PlaySound (AudioType.Gameover);
+	}
+
+	private void PlayRageWindow()
+	{
+		PlaySound (AudioType.RageWindow);
+	}
+
+	private void PlayRageDestroy()
+	{
+		PlaySound (AudioType.RageDestroy);
+	}
+
+	private void PlayFired()
+	{
+		PlaySound (AudioType.Fired);
 	}
 
   [SerializeField]
