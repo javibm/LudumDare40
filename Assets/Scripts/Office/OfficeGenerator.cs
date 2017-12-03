@@ -110,7 +110,7 @@ public class OfficeGenerator : MonoBehaviour
         go.transform.SetParent(transform);
         go.transform.localPosition = new Vector3(0f, 0f, cellSize * (step - 1));
         go.transform.eulerAngles = new Vector3(0f, 0, 0f);
-        DoorPoint = go.transform;
+        DoorPoint = go.GetComponentInChildren<DoorPoint>().transform;
       }
       else
       {

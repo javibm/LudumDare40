@@ -23,6 +23,8 @@ public class EmployeeManager {
 		}
 	}
 
+	public System.Action OnEmployeeCreated;
+
 	public EmployeeManager(EmployeeGenerator employeeGenerator, EmployeeStats employeeStats)
 	{
 		this.employeeGenerator = employeeGenerator;
@@ -44,6 +46,10 @@ public class EmployeeManager {
     {
       CreateNewEmployee(GameMetaManager.Office.GetEmptyDesk(), happiness);
 			GameMetaManager.Money.RemoveMoney(money);
+			if(OnEmployeeCreated != null)
+			{
+				OnEmployeeCreated();
+			}
 			return true;
     }
 		else

@@ -44,7 +44,14 @@ public class OfficeManager
 
 	public int GetExpandCost()
 	{
-		return officeStats.officeExpansionPrices[CurrentSize + 1];
+		if(CurrentSize < officeStats.officeExpansionPrices.Count - 1)
+		{
+			return officeStats.officeExpansionPrices[CurrentSize + 1];
+		}
+		else
+		{
+			return officeStats.officeExpansionPrices[officeStats.officeExpansionPrices.Count - 1];
+		}
 	}
 
 	public bool CanPayExpandCost()
