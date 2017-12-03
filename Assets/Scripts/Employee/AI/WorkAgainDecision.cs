@@ -14,6 +14,10 @@ public class WorkAgainDecision : Decision {
 	{
 		bool requestCompleted = controller.EmployeeStateController.ForceWork;
 		bool waitTimeUp = controller.EmployeeStateController.LastActionTime >= controller.EmployeeStateController.NextRequestTime;
+		if (requestCompleted || waitTimeUp)
+		{
+			controller.OnRequestAnswered(false);
+		}
 		return (requestCompleted || waitTimeUp) && controller.EmployeeStateController.Happiness > 0;
 	}
 

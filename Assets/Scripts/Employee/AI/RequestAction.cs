@@ -15,7 +15,7 @@ public class RequestAction : Action {
 		controller.EmployeeStateController.IncreaseLastActionTime();
 		if (!controller.EmployeeStateController.ForceWork)
 		{
-			controller.EmployeeUIController.EnableUI(controller.NextRequest);
+			controller.EmployeeUIController.EnableUI(controller.NextRequest, controller.RequestValue.ToString());
 		}
 		Debug.Log ("WAITING FOR REQUEST");
 	}
