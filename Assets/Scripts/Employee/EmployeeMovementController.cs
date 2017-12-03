@@ -33,13 +33,25 @@ public class EmployeeMovementController : MonoBehaviour {
     if (Target == personalOfficeDesk.Transform)
     {
       selectNewTarget();
-      navigate(Idle);
+      float randomFloat = Random.Range(0.0f, 1.0f);
+      if(randomFloat > 0.0f && randomFloat < 0.35f)
+      {
+        navigate(Idle);
+      }
+      else if(randomFloat > 0.35f && randomFloat < 0.75f)
+      {
+        navigate(Idle2);
+      }
+      else
+      {
+        navigate(Idle3);
+      }
     }
   }
 
   public void MoveToCrazyTarget()
   {
-    if(Random.Range(0.0f, 1.0f) > 0.5f)
+    if(Random.Range(0.0f, 1.0f) > 0.6f)
     {
       GoToDestroy();
     }
@@ -95,6 +107,16 @@ public class EmployeeMovementController : MonoBehaviour {
   public void Idle()
   {
     animController.IdleAnim();
+  }
+
+  public void Idle2()
+  {
+    animController.IdleAnim2();
+  }
+
+  public void Idle3()
+  {
+    animController.IdleAnim3();
   }
 
   public void DestroyAnim()
