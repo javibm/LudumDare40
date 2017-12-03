@@ -32,11 +32,12 @@ public class EmployeeManager {
     EmployeeList.Add(employeeController);
   }
 
-	public bool TryCreateNewEmployee()
+	public bool TryCreateNewEmployee(EmployeeStats stats)
 	{
     if (GameMetaManager.Office.GetEmptyDeskCount() > 0)
     {
       CreateNewEmployee(GameMetaManager.Office.GetEmptyDesk());
+			GameMetaManager.Money.RemoveMoney(stats.MoneyCost);
 			return true;
     }
 		else

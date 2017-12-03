@@ -8,4 +8,5 @@ public class EmployeeStats : ScriptableObject {
 	public int HolidayTime = 15;
 	public int MinPayRaise = 10;
 	public int MaxPayRaise = 20;
+	public int MoneyCost = 10;
 }

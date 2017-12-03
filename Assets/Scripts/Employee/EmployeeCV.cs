@@ -4,5 +4,13 @@ using UnityEngine;
 
 public class EmployeeCV 
 {
+    public EmployeeStats EmployeeStats
+    {
+        get;
+        private set;
+    }
 
+    public void GetRandomEmployeeStats()
+    {
+    }
 }
