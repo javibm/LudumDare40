@@ -637,6 +637,9 @@ MonoBehaviour:
   moneyProgressBarImage: {fileID: 114171773422563772}
   expandOfficeButton: {fileID: 114440852916426312}
   gameOverObject: {fileID: 1047468578988968}
+  gameOverPlayAgainButton: {fileID: 114023712126788602}
+  gameOverTweetButton: {fileID: 114178629711671346}
+  gameOverMenuButton: {fileID: 114752536102937858}
   cvGameObject: {fileID: 1172031048042048}
   cvNameText: {fileID: 114957405098681890}
   cvMoneyText: {fileID: 114773193114168848}
