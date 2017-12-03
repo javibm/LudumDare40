@@ -22,6 +22,7 @@ public class GameUIController : MonoBehaviour
 		GameMetaManager.Time.OnDayPassed += OnDayPassed;
 		GameMetaManager.CVs.OnNewCVGenerated += OnNewCVGenerated;
 		GameMetaManager.OnLoseGame += OnLoseGame;
+		
 
 		UpdateMoney();
 		UpdateDaysPassed();
@@ -73,6 +74,9 @@ public class GameUIController : MonoBehaviour
 	private void OnNewCVGenerated()
 	{
 		EmployeeCV cv = GameMetaManager.CVs.PendingCV;
+		nameCV.text = string.Format(nameCV.text, cv.Name);
+		moneyCostCV.text = string.Format(moneyCostCV.text, cv.MoneyCost.ToString("0.00"));
+		happinnesCostCV.text = string.Format(happinnesCostCV.text, cv.Happiness.ToString("0.00"));
 		// TODO en cv habrá la info del personaje
 		ShowCV(true);
 	}
@@ -131,4 +135,13 @@ public class GameUIController : MonoBehaviour
 	private Button cvAcceptButton;
 	[SerializeField]
 	private Button cvRejectButton;
+
+	[SerializeField]
+	private Text nameCV;
+
+	[SerializeField]
+	private Text moneyCostCV;
+
+	[SerializeField]
+	private Text happinnesCostCV;
 }
