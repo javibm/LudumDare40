@@ -74,9 +74,9 @@ public class GameUIController : MonoBehaviour
 	private void OnNewCVGenerated()
 	{
 		EmployeeCV cv = GameMetaManager.CVs.PendingCV;
-		nameCV.text = string.Format(nameCV.text, cv.Name);
-		moneyCostCV.text = string.Format(moneyCostCV.text, cv.MoneyCost.ToString("0.00"));
-		happinnesCostCV.text = string.Format(happinnesCostCV.text, cv.Happiness.ToString("0.00"));
+		nameCV.text = string.Format(cvText, cv.Name);
+		moneyCostCV.text = string.Format(moneyText, cv.MoneyCost.ToString("0.00"));
+		happinnesCostCV.text = string.Format(happinnesText, cv.Happiness.ToString("0.00"));
 		// TODO en cv habrá la info del personaje
 		ShowCV(true);
 	}
@@ -144,4 +144,8 @@ public class GameUIController : MonoBehaviour
 
 	[SerializeField]
 	private Text happinnesCostCV;
+
+	private string cvText = "CV: {0}";
+	private string moneyText = "Money: {0}";
+	private string happinnesText = "Happiness: {0}";
 }
