@@ -92,6 +92,24 @@ public class OfficeGenerator : MonoBehaviour
       go.transform.localPosition = new Vector3(0f, 0f, cellSize * (step - 1));
       go.transform.eulerAngles = new Vector3(0f, 0, 0f);
 
+      // Idle places generation
+      if(step % 2 == 0)
+      {
+        go = Instantiate(getNextIdleObject());
+        go.transform.SetParent(transform);
+        go.transform.localPosition = new Vector3(cellSize * (step - 1), 0f, 0f);
+        go.transform.eulerAngles = new Vector3(0f, -90, 0f);
+        idleList.Add(go.GetComponentInChildren<IdlePoint>());
+      }
+      else
+      {
+        go = Instantiate(getNextIdleObject());
+        go.transform.SetParent(transform);
+        go.transform.localPosition = new Vector3(0f, 0f, cellSize * (step - 1));
+        go.transform.eulerAngles = new Vector3(0f, 0, 0f);
+        idleList.Add(go.GetComponentInChildren<IdlePoint>());
+      }
+
 		  // Desk generation
 		  OfficeDesk desk;
 		  for(int i = 1; i < step; ++i)
@@ -116,6 +134,16 @@ public class OfficeGenerator : MonoBehaviour
       }
 		}
 	}
+
+  private int idleObjectCount = -1;
+  private GameObject getNextIdleObject()
+  {
+    // TODO: random o no?
+    //int offset = Random.Range(-1f, 1f) > 0 ? 1 : 2;
+    int offset = 1;
+    idleObjectCount = (idleObjectCount + offset) % idlePrefabs.Length;
+    return idlePrefabs[idleObjectCount];
+  }
 	
 	[SerializeField]
 	private float cellSize = 1f;
@@ -130,6 +158,8 @@ public class OfficeGenerator : MonoBehaviour
   private GameObject wallWindowPrefab;
   [SerializeField]
   private GameObject bossPrefab;
+  [SerializeField]
+  private GameObject[] idlePrefabs;
 
 	private NavMeshSurface navMeshSurface;
 	private List<OfficeDesk> deskList;
