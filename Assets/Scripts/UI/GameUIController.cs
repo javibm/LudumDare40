@@ -8,7 +8,7 @@ public class GameUIController : MonoBehaviour
 	void Awake()
 	{
     // Buttons listeners
-    expandOfficeButton.onClick.AddListener(OnExpandOfficeButtonClick);
+    	expandOfficeButton.onClick.AddListener(OnExpandOfficeButtonClick);
 		cvAcceptButton.onClick.AddListener(OnCVAcceptButtonClick);
 		cvRejectButton.onClick.AddListener(OnCVRejectButtonClick);
 		gameOverPlayAgainButton.onClick.AddListener(OnGameOverPlayAgainButtonClick);
@@ -52,12 +52,12 @@ public class GameUIController : MonoBehaviour
 
 	private void OnGameOverPlayAgainButtonClick()
 	{
-		// TODO
+		UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
 	}
 	
 	private void OnGameOverTweetButtonClick()
 	{
-		// TODO
+		GetComponent<Twitter>().ShareToTW();
 	}
 	
 	private void OnGameOverMenuButtonClick()
