@@ -21,6 +21,12 @@ public class OfficeGenerator : MonoBehaviour
     }
   }
 
+  public Transform DoorPoint
+  {
+    get;
+    private set;
+  }
+
   public int CurrentSize
 	{
 		get;
@@ -87,10 +93,22 @@ public class OfficeGenerator : MonoBehaviour
       go.transform.localPosition = new Vector3(cellSize * (step - 1), 0f, 0f);
       go.transform.eulerAngles = new Vector3(0f, -90, 0f);
 
-      go = Instantiate((step % 2 != 0) ? wallPrefab : wallWindowPrefab);
-      go.transform.SetParent(transform);
-      go.transform.localPosition = new Vector3(0f, 0f, cellSize * (step - 1));
-      go.transform.eulerAngles = new Vector3(0f, 0, 0f);
+      if(step == 2)
+      {
+        go = Instantiate(doorPrefab);
+        go.transform.SetParent(transform);
+        go.transform.localPosition = new Vector3(0f, 0f, cellSize * (step - 1));
+        go.transform.eulerAngles = new Vector3(0f, 0, 0f);
+        DoorPoint = go.transform;
+      }
+      else
+      {
+        go = Instantiate((step % 2 != 0) ? wallPrefab : wallWindowPrefab);
+        go.transform.SetParent(transform);
+        go.transform.localPosition = new Vector3(0f, 0f, cellSize * (step - 1));
+        go.transform.eulerAngles = new Vector3(0f, 0, 0f);
+      }
+      
 
       // Idle places generation
       if(step % 2 == 0)
@@ -158,6 +176,8 @@ public class OfficeGenerator : MonoBehaviour
   private GameObject wallWindowPrefab;
   [SerializeField]
   private GameObject bossPrefab;
+  [SerializeField]
+  private GameObject doorPrefab;
   [SerializeField]
   private GameObject[] idlePrefabs;
 
