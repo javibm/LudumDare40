@@ -101,6 +101,7 @@ public class EmployeeController : MonoBehaviour
 
 	public void OnFired()
 	{
+		GameMetaManager.Employee.ReleaseEmployee(this);
 		Destroy(gameObject);
 	}
 

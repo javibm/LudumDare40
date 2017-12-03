@@ -62,6 +62,12 @@ public class EmployeeManager {
 		}
 	}
 
+	public void ReleaseEmployee(EmployeeController employeeController)
+	{
+		employeeController.EmployeeMovementController.ReleaseDesk();
+		EmployeeList.Remove(employeeController);
+	}
+
 
 	private EmployeeGenerator employeeGenerator;
 
