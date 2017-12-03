@@ -18,6 +18,7 @@ public class WorkAgainDecision : Decision {
 		{
 			controller.OnRequestAnswered(false);
 		}
+		Debug.Log("GO TO WORK " + (requestCompleted || waitTimeUp) + " HAPPINESS " + controller.EmployeeStateController.Happiness);
 		return (requestCompleted || waitTimeUp) && controller.EmployeeStateController.Happiness > 0;
 	}
 
