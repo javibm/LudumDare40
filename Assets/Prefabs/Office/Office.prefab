@@ -57,4 +57,6 @@ MonoBehaviour:
   deskPrefab: {fileID: 114184026159839892, guid: 35f8b624c6253534f9eb8e6b2c894208,
     type: 2}
   wallPrefab: {fileID: 1092904710249904, guid: 563c11fcb28a73f479ebbdbc4c573998, type: 2}
-  navigationBaker: {fileID: 0}
+  wallWindowPrefab: {fileID: 1553835306450938, guid: d7cb62d815de41b4ca3b85ed4841b774,
+    type: 2}
+  bossPrefab: {fileID: 1212405215654792, guid: 5c05b1c2b245e3c4a8f5cbab387dc559, type: 2}
