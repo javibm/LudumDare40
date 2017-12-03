@@ -52,7 +52,7 @@ public class MoneyManager
 
 	private void CheckNotifyMoneySignChange(int previous, int next)
 	{
-		if(previous < 0 && next > 0)
+		if(previous < 0 && next >= 0)
 		{
 			if(OnMoneyChangeToPositive != null)
 			{
