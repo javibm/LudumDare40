@@ -6,7 +6,10 @@ public class EmployeeParticlesController : MonoBehaviour
 {
 	public void PlayDestroyComputerParticles()
 	{
-		destroyComputerParticles.Play();
+		if(destroyComputerParticles != null)
+		{
+			destroyComputerParticles.Play();
+		}
 	}
 	[SerializeField]
 	private ParticleSystem destroyComputerParticles;
