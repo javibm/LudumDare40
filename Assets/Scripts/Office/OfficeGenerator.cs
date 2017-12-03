@@ -203,7 +203,6 @@ public class OfficeGenerator : MonoBehaviour
   private IEnumerator BakeNavMeshDelayedCoroutine()
   {
     yield return new WaitForSeconds(0.5f);
-    Debug.LogError("BAKING!");
     NavigationBaker.BakeNavMesh(navMeshSurface);
   }
 
