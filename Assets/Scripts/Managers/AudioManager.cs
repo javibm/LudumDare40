@@ -27,7 +27,8 @@ public class AudioManager : MonoBehaviour
 		LevelUp,
 		RageWindow,
 		RageDestroy,
-		Fired
+		Fired,
+		Plane
 	}
 
 	void Start ()
@@ -47,6 +48,7 @@ public class AudioManager : MonoBehaviour
 		GameMetaManager.Employee.OnRageWindow += PlayRageWindow;
 		GameMetaManager.Employee.OnRageDestroy += PlayRageDestroy;
 		GameMetaManager.Employee.OnFired += PlayFired;
+		GameMetaManager.Employee.OnPlane += PlayPlane;
 	}
 
 	private void PlaySound (AudioType audioType, bool loop = false)
@@ -117,7 +119,12 @@ public class AudioManager : MonoBehaviour
 		PlaySound (AudioType.Fired);
 	}
 
-  [SerializeField]
+	private void PlayPlane()
+	{
+		PlaySound (AudioType.Plane);
+	}
+
+  	[SerializeField]
 	private AudioStruct[] _audios;
 
 }

@@ -124,6 +124,7 @@ public class EmployeeController : MonoBehaviour
 	public void TakeHolidays()
 	{
 		GetComponentInChildren<Renderer>().enabled = false;
+		GameMetaManager.Employee.OnPlane();
 		OnHolidayTaked(true);
 		holidayEnd = RequestValue;
 		GameMetaManager.Time.OnDayPassed += CheckEndOfHolidays;
@@ -137,6 +138,7 @@ public class EmployeeController : MonoBehaviour
 		}
 		if (holidayEnd == 0)
 		{
+			GameMetaManager.Employee.OnPlane();
 			OnHolidayTaked(false);
 			GetComponentInChildren<Renderer>().enabled = true;
 			GameMetaManager.Time.OnDayPassed -= CheckEndOfHolidays;
