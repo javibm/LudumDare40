@@ -48,7 +48,7 @@ public class EmployeeController : MonoBehaviour {
 		EmployeeMovementController = GetComponent<EmployeeMovementController>();
 		EmployeeUIController = GetComponentInChildren<EmployeeUIController>();
 
-		EmployeeMovementController.Init(officeDesk, GetComponent<NavMeshController>(), GetComponent<EmployeeAnimationController>());
+		EmployeeMovementController.Init(officeDesk, GetComponent<NavMeshController>(), GetComponent<EmployeeAnimationController>(), GetComponent<EmployeeParticlesController>());
 		EmployeeUIController.DisableAll();
 
 		EmployeeUIController.OnRequestAnswered += OnRequestAnswered;

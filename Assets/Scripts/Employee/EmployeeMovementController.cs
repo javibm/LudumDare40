@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class EmployeeMovementController : MonoBehaviour {
 
@@ -14,13 +16,14 @@ public class EmployeeMovementController : MonoBehaviour {
     set;
   }
 
-  public void Init(OfficeDesk officeDesk, NavMeshController navMeshController, EmployeeAnimationController animController)
+  public void Init(OfficeDesk officeDesk, NavMeshController navMeshController, EmployeeAnimationController animController, EmployeeParticlesController particlesController)
   {
     personalOfficeDesk = officeDesk;
     personalOfficeDesk.Filled = true;
 
     this.navMeshController = navMeshController;
     this.animController = animController;
+    this.particlesController = particlesController;
 
     Speed = 1;
   }
@@ -36,6 +39,7 @@ public class EmployeeMovementController : MonoBehaviour {
 
   public void MoveToCrazyTarget()
   {
+    GoToDestroy();
     // DESPUÉS DE LA ANIMACIÓN RECORDAR EL DESTROY Y personalOfficeDesk.Filled = false!
   }
 
@@ -56,10 +60,10 @@ public class EmployeeMovementController : MonoBehaviour {
 
   public void GoToDestroy()
   {
-    if (Target != personalOfficeDesk.Transform)
+    if (Target == personalOfficeDesk.Transform)
     {
-      Target = personalOfficeDesk.Transform;
       navigate(DestroyAnim);
+      selectNewTarget();      
     }
   }
 
@@ -76,6 +80,7 @@ public class EmployeeMovementController : MonoBehaviour {
   public void DestroyAnim()
   {
     animController.DestroyAnim();
+    particlesController.PlayDestroyComputerParticles();
   }
 
   private void selectNewTarget()
@@ -92,5 +97,7 @@ public class EmployeeMovementController : MonoBehaviour {
   private OfficeDesk personalOfficeDesk;
   private NavMeshController navMeshController;
   private EmployeeAnimationController animController;
+
+  private EmployeeParticlesController particlesController;
 
 }
