@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 114960287426127788}
   - component: {fileID: 114077061807684148}
   - component: {fileID: 114373982983643672}
+  - component: {fileID: 114121585148297338}
   m_Layer: 0
   m_Name: Employea
   m_TagString: Untagged
@@ -377,6 +378,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114121585148297338
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1305403814224198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004dfbf2d7685bd4e808153169457c3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114175072056663908
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -28,6 +28,14 @@ public class OfficeManager
     }
   }
 
+  public List<WindowPoint> WindowList
+  {
+    get
+    {
+      return officeGenerator.WindowList;
+    }
+  }
+
 	public Transform DoorPoint
 	{
 		get {return officeGenerator.DoorPoint;}
@@ -91,10 +99,15 @@ public class OfficeManager
 		return null;
 	}
 
-  public IdlePoint GetRandomIdle()
-  {
-    return IdleList[Random.Range(0, IdleList.Count)];
-  }
+	public IdlePoint GetRandomIdle()
+	{
+		return IdleList[Random.Range(0, IdleList.Count)];
+	}
+
+	public WindowPoint GetRandomWindow()
+	{
+		return WindowList[Random.Range(0, WindowList.Count)];
+	}
 
 	private void PayExpand()
 	{

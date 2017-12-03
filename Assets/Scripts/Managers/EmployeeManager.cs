@@ -24,6 +24,9 @@ public class EmployeeManager {
 	}
 
 	public System.Action OnEmployeeCreated;
+	public System.Action<WindowPoint> OnEmployeeWindow;
+
+	public System.Action<WindowPoint> OnEmployeeClosed;
 
 	public EmployeeManager(EmployeeGenerator employeeGenerator, EmployeeStats employeeStats)
 	{

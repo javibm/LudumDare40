@@ -33,13 +33,20 @@ public class EmployeeMovementController : MonoBehaviour {
     if (Target == personalOfficeDesk.Transform)
     {
       selectNewTarget();
-      navigate(GoToRandom);
+      navigate(Idle);
     }
   }
 
   public void MoveToCrazyTarget()
   {
-    GoToDestroy();
+    if(Random.Range(0.0f, 1.0f) > 0.5f)
+    {
+      GoToDestroy();
+    }
+    else
+    {
+      GoToWindow();
+    }
     // DESPUÉS DE LA ANIMACIÓN RECORDAR EL DESTROY Y personalOfficeDesk.Filled = false!
   }
 
@@ -55,6 +62,19 @@ public class EmployeeMovementController : MonoBehaviour {
     {
       Target = personalOfficeDesk.Transform;
       navigate(Work);
+    }
+  }
+
+  public void GoToWindow()
+  {
+    if (Target == personalOfficeDesk.Transform)
+    {
+      windowPoint = GameMetaManager.Office.GetRandomWindow();
+      Target = windowPoint.transform;
+      GameMetaManager.Employee.OnEmployeeWindow(windowPoint);
+      personalOfficeDesk.Filled = false;
+      navigate(JumpAnim);
+      selectNewTarget();      
     }
   }
 
@@ -83,6 +103,12 @@ public class EmployeeMovementController : MonoBehaviour {
     particlesController.PlayDestroyComputerParticles();
   }
 
+  public void JumpAnim()
+  {
+    animController.JumpAnim();
+    GameMetaManager.Employee.OnEmployeeClosed(windowPoint);
+  }
+
   private void selectNewTarget()
   {
     Target = GameMetaManager.Office.GetRandomIdle().transform;
@@ -99,5 +125,7 @@ public class EmployeeMovementController : MonoBehaviour {
   private EmployeeAnimationController animController;
 
   private EmployeeParticlesController particlesController;
+
+  private WindowPoint windowPoint;
 
 }

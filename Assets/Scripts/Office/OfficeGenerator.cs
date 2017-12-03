@@ -21,6 +21,14 @@ public class OfficeGenerator : MonoBehaviour
     }
   }
 
+  public List<WindowPoint> WindowList
+  {
+    get
+    {
+      return windowList;
+    }
+  }
+
   public Transform DoorPoint
   {
     get;
@@ -51,6 +59,7 @@ public class OfficeGenerator : MonoBehaviour
 	{
 		deskList = new List<OfficeDesk>();
     idleList = new List<IdlePoint>();
+    windowList = new List<WindowPoint>();
     CurrentSize = 0;
 	}
 
@@ -114,7 +123,15 @@ public class OfficeGenerator : MonoBehaviour
       }
       else
       {
-        go = Instantiate((step % 2 != 0) ? wallPrefab : wallWindowPrefab);
+        if((step % 2 != 0))
+        {
+          go = Instantiate(wallPrefab);
+        }
+        else
+        {
+          go = Instantiate(wallWindowPrefab);
+          //windowList.Add(go.GetComponentInChildren<WindowPoint>());
+        }
         go.transform.SetParent(transform);
         go.transform.localPosition = new Vector3(0f, 0f, cellSize * (step - 1));
         go.transform.eulerAngles = new Vector3(0f, 0, 0f);
@@ -122,7 +139,15 @@ public class OfficeGenerator : MonoBehaviour
 
       yield return new WaitForSeconds(objectSpawnDelay);
 
-      go = Instantiate((step % 2 == 0) ? wallPrefab : wallWindowPrefab);
+      if((step % 2 == 0))
+      {
+        go = Instantiate(wallPrefab);
+      }
+      else
+      {
+        go = Instantiate(wallWindowPrefab);
+        windowList.Add(go.GetComponentInChildren<WindowPoint>());
+      }
       go.transform.SetParent(transform);
       go.transform.localPosition = new Vector3(cellSize * (step - 1), 0f, 0f);
       go.transform.eulerAngles = new Vector3(0f, -90, 0f);
@@ -143,7 +168,7 @@ public class OfficeGenerator : MonoBehaviour
         go.transform.SetParent(transform);
         go.transform.localPosition = new Vector3(cellSize * (step - 1), 0f, 0f);
         go.transform.eulerAngles = new Vector3(0f, -90, 0f);
-        idleList.Add(go.GetComponentInChildren<IdlePoint>());
+        idleList.AddRange(go.GetComponentsInChildren<IdlePoint>());
       }
       else
       {
@@ -151,7 +176,7 @@ public class OfficeGenerator : MonoBehaviour
         go.transform.SetParent(transform);
         go.transform.localPosition = new Vector3(0f, 0f, cellSize * (step - 1));
         go.transform.eulerAngles = new Vector3(0f, 0, 0f);
-        idleList.Add(go.GetComponentInChildren<IdlePoint>());
+        idleList.AddRange(go.GetComponentsInChildren<IdlePoint>());
       }
     }
     OnGenerationCoroutineEnded();
@@ -240,4 +265,6 @@ public class OfficeGenerator : MonoBehaviour
 	private NavMeshSurface navMeshSurface;
 	private List<OfficeDesk> deskList;
   private List<IdlePoint> idleList;
+
+  private List<WindowPoint> windowList;
 }
