@@ -144,13 +144,14 @@ public class EmployeeController : MonoBehaviour
 
 	public void SetNextRequest()
 	{
-		NextRequest = (RequestType)UnityEngine.Random.Range(0, Enum.GetValues(typeof(RequestType)).Length);
-		if (NextRequest == RequestType.PayRaise)	
-		{
+		if(UnityEngine.Random.Range(0.0f, 1.0f) < employeeStats.payRaiseProbability)
+    {
+    	NextRequest = RequestType.PayRaise;
 			RequestValue = UnityEngine.Random.Range(employeeStats.MinPayRaise, employeeStats.MaxPayRaise);
-		}
-		else if (NextRequest == RequestType.Holidays)
-		{
+    }
+    else
+    {
+    	NextRequest = RequestType.Holidays;
 			RequestValue = employeeStats.HolidayTime;
 		}
 	}
