@@ -11,4 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f5b41d66b9b4bf4dacd5e6be7137e43, type: 3}
   m_Name: EmployeeStats
   m_EditorClassIdentifier: 
-  MoneyGenerated: 1
+  MoneyGenerated: 3
+  HolidayTime: 20
+  MinPayRaise: 10
+  MaxPayRaise: 20
+  minInitialHappiness: 0.5
+  maxInitialHappiness: 1
+  moneyFactor: 10
