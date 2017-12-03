@@ -16,10 +16,16 @@ public class OfficeDesk : MonoBehaviour
 		set;
 	}
 
+	public SetAnimationDesk HolidayDesk
+	{
+		get { return setAnimationDesk; }
+	}
+
 	void Awake()
 	{
 		Transform = gameObject.transform;
+		setAnimationDesk = GetComponent<SetAnimationDesk>();
 	}
 
-
+	private SetAnimationDesk setAnimationDesk;
 }

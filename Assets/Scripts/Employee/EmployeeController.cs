@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class EmployeeController : MonoBehaviour {
-
+public class EmployeeController : MonoBehaviour 
+{
 	public EmployeeStateController EmployeeStateController
 	{
 		get;
@@ -40,6 +40,7 @@ public class EmployeeController : MonoBehaviour {
 		get {return GameMetaManager.Employee.EmployeeStats;}
 	}
 
+	public System.Action<bool> OnHolidayTaked;
 
 	public void Init(OfficeDesk officeDesk, float happiness)
 	{
@@ -114,6 +115,7 @@ public class EmployeeController : MonoBehaviour {
 	public void TakeHolidays()
 	{
 		GetComponentInChildren<Renderer>().enabled = false;
+		OnHolidayTaked(true);
 		holidayEnd = RequestValue;
 		GameMetaManager.Time.OnDayPassed += CheckEndOfHolidays;
 	}
@@ -126,6 +128,7 @@ public class EmployeeController : MonoBehaviour {
 		}
 		if (holidayEnd == 0)
 		{
+			OnHolidayTaked(false);
 			GetComponentInChildren<Renderer>().enabled = true;
 			GameMetaManager.Time.OnDayPassed -= CheckEndOfHolidays;
 		}
