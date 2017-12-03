@@ -27,12 +27,19 @@ public class EmployeeCV
 
     public void GetRandomEmployeeStats()
     {
-        Name = GenerateName(Random.Range(5, 8));
+        if(Random.Range(0.0f, 1.0f) > 0.8f)
+        {
+            Name = GetRandomSpecialName();
+        }
+        else
+        {
+            Name = GenerateName(Random.Range(5, 8));
+        }
         Happiness = Random.Range(GameMetaManager.Employee.EmployeeStats.minInitialHappiness, GameMetaManager.Employee.EmployeeStats.maxInitialHappiness);
         MoneyCost = Mathf.CeilToInt(Happiness * GameMetaManager.Employee.EmployeeStats.moneyFactor);
     }
 
-    public string GenerateName(int len)
+    private string GenerateName(int len)
     {
         System.Random r = new  System.Random();
         string[] consonants = { "b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "l", "n", "p", "q", "r", "s", "sh", "zh", "t", "v", "w", "x" };
@@ -51,4 +58,11 @@ public class EmployeeCV
 
         return Name;
     }
+
+    private string GetRandomSpecialName()
+    {
+        return SpecialNames[Random.Range(0, SpecialNames.Length)];
+    }
+
+    private string[] SpecialNames = new string[]{"Puñales", "Javote", "Ajota", "Jocheider", "Francoc", "Yisus", "Marcos", "Carlota", "MadMellow", "Lewandowski", "Triyisus", "Gustavo", "Miguel el Gordo", "Sergar", "Cabrote", "Maceta", "Bolardo","Estivi","Vargas","Gitano","Altea","Pepper", "Gustin", "Pablo Iglesias"};
 }
