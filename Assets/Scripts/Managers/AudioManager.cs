@@ -33,6 +33,8 @@ public class AudioManager : MonoBehaviour
 		PlaySound(AudioType.Typing);
 		GameMetaManager.Employee.OnBackToWork += PlayBackToWork;
 		GameMetaManager.Employee.OnEmployeeCreated += PlayDoor;
+		GameMetaManager.Employee.OnAnswerCry += PlayCry;
+		GameMetaManager.Employee.OnAnswerYay += PlayYay;
 		GameMetaManager.CVs.OnNewCVGenerated += PlayCV;
 	}
 
