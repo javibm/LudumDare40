@@ -73,7 +73,7 @@ public class GameUIController : MonoBehaviour
 	{
 		EmployeeCV cv = GameMetaManager.CVs.PendingCV;
 		cvNameText.text = string.Format(cvText, cv.Name);
-		cvMoneyText.text = string.Format(moneyText, cv.MoneyCost.ToString("0.00"));
+		cvMoneyText.text = string.Format(moneyText, cv.MoneyCost.ToString());
 		cvMotivationBarImage.fillAmount = cv.Happiness;
 		cvMotivationBarImage.sprite = (cv.Happiness >= 0.75f ? barGreenSprite : (cv.Happiness >= 0.5f ? barOrangeSprite : barRedSprite));
 		ShowCV(true);
@@ -87,7 +87,7 @@ public class GameUIController : MonoBehaviour
 	
 	private void UpdateMoney()
 	{
-		moneyLabelText.text = GameMetaManager.Money.CurrentMoney.ToString();
+		moneyLabelText.text = string.Format(moneyText, GameMetaManager.Money.CurrentMoney.ToString());
 	}
 
 	private void UpdateDaysPassed()
@@ -108,12 +108,12 @@ public class GameUIController : MonoBehaviour
 			fillAmount = 0.5f + 0.5f * ((float)Mathf.Clamp(GameMetaManager.Money.CurrentMoney, 0, float.MaxValue) / (float)GameMetaManager.Office.GetExpandTarget());
 		}
 		moneyProgressBarImage.fillAmount = fillAmount;
-		moneyProgressBarImage.sprite = (fillAmount >= 0.75f ? barGreenSprite : (fillAmount >= 0.5f ? barOrangeSprite : barRedSprite));
+		moneyProgressBarImage.color = (fillAmount >= 0.75f ? barGreenColor : (fillAmount >= 0.5f ? barOrangeColor : barRedColor));
 	}
 
 	private void ShowGameOverText(bool show)
 	{
-		gameOverLabelText.gameObject.SetActive(show);
+		gameOverObject.SetActive(show);
 	}
 
 	private void ShowCV(bool show)
@@ -136,7 +136,7 @@ public class GameUIController : MonoBehaviour
 	private Button expandOfficeButton;
 
 	[SerializeField]
-	private Text gameOverLabelText;
+	private GameObject gameOverObject;
 
 	[SerializeField]
 	private GameObject cvGameObject;
@@ -157,6 +157,13 @@ public class GameUIController : MonoBehaviour
 	private Sprite barOrangeSprite;
 	[SerializeField]
 	private Sprite barGreenSprite;
+
+	[SerializeField]
+	private Color barRedColor;
+	[SerializeField]
+	private Color barOrangeColor;
+	[SerializeField]
+	private Color barGreenColor;
 
 	private string cvText = "CV: {0}";
 	private string moneyText = "$ {0}";
