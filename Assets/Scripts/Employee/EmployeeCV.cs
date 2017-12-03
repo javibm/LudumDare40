@@ -27,12 +27,12 @@ public class EmployeeCV
 
     public void GetRandomEmployeeStats()
     {
-        Name = GenerateName(5);
+        Name = GenerateName(Random.Range(5, 8));
         Happiness = Random.Range(GameMetaManager.Employee.EmployeeStats.minInitialHappiness, GameMetaManager.Employee.EmployeeStats.maxInitialHappiness);
         MoneyCost = Mathf.CeilToInt(Happiness * GameMetaManager.Employee.EmployeeStats.moneyFactor);
     }
 
-    public static string GenerateName(int len)
+    public string GenerateName(int len)
     {
         System.Random r = new  System.Random();
         string[] consonants = { "b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "l", "n", "p", "q", "r", "s", "sh", "zh", "t", "v", "w", "x" };
@@ -40,7 +40,7 @@ public class EmployeeCV
         string Name = "";
         Name += consonants[r.Next(consonants.Length)].ToUpper();
         Name += vowels[r.Next(vowels.Length)];
-        int b = 2; //b tells how many times a new letter has been added. It's 2 right now because the first two letters are already in the name.
+        int b = 2;
         while (b < len)
         {
             Name += consonants[r.Next(consonants.Length)];
