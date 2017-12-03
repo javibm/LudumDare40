@@ -171,7 +171,6 @@ public class OfficeGenerator : MonoBehaviour
         desk.transform.SetParent(transform);
         desk.transform.localPosition = new Vector3(cellSize * i, 0f, cellSize * (step-1));
         deskList.Add(desk);
-        idleList.Add(desk.GetComponentInChildren<IdlePoint>());
         yield return new WaitForSeconds(objectSpawnDelay);
         if (i < step-1)
         {
@@ -179,7 +178,6 @@ public class OfficeGenerator : MonoBehaviour
           desk.transform.SetParent(transform);
           desk.transform.localPosition = new Vector3(cellSize * (step-1), 0f, cellSize * i);
           deskList.Add(desk);
-          idleList.Add(desk.GetComponentInChildren<IdlePoint>());
           yield return new WaitForSeconds(objectSpawnDelay);
         }
       }

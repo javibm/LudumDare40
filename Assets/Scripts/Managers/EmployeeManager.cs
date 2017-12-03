@@ -36,6 +36,7 @@ public class EmployeeManager {
 	public void CreateNewEmployee(OfficeDesk officeDesk, float happiness)
 	{
 		EmployeeController employeeController = employeeGenerator.InstantiateEmployeePrefab(GameMetaManager.Office.DoorPoint);
+		employeeController.OnHolidayTaked += officeDesk.HolidayDesk.ActivateHolidayCartel;
 		employeeController.Init(officeDesk, happiness);
     EmployeeList.Add(employeeController);
   }
@@ -43,7 +44,7 @@ public class EmployeeManager {
 	public bool TryCreateNewEmployee(int money, float happiness)
 	{
     if (GameMetaManager.Office.GetEmptyDeskCount() > 0)
-    {
+    {			
       CreateNewEmployee(GameMetaManager.Office.GetEmptyDesk(), happiness);
 			GameMetaManager.Money.RemoveMoney(money);
 			if(OnEmployeeCreated != null)
