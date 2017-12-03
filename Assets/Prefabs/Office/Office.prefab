@@ -60,6 +60,7 @@ MonoBehaviour:
   wallWindowPrefab: {fileID: 1553835306450938, guid: d7cb62d815de41b4ca3b85ed4841b774,
     type: 2}
   bossPrefab: {fileID: 1212405215654792, guid: 5c05b1c2b245e3c4a8f5cbab387dc559, type: 2}
+  doorPrefab: {fileID: 1182627935046476, guid: e668270d907921748b729f319dbc4c5e, type: 2}
   idlePrefabs:
   - {fileID: 1981988443118500, guid: 6c11193b87247d349aab39a94558a4d6, type: 2}
   - {fileID: 1013593491223832, guid: 03c1a163c2105f243939a85d99926f99, type: 2}
