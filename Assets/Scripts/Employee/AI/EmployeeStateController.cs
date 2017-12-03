@@ -97,7 +97,6 @@ public class EmployeeStateController : MonoBehaviour {
 	public void ForceWorkAgain()
 	{
 		ForceWork = true;
-		Happiness -= employeeAIStats.requestDeniedHappiness;
 	}
 
 	[SerializeField]
