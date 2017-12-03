@@ -64,5 +64,5 @@ public class EmployeeCV
         return SpecialNames[Random.Range(0, SpecialNames.Length)];
     }
 
-    private string[] SpecialNames = new string[]{"Puñales", "Javote", "Ajota", "Jocheider", "Francoc", "Yisus", "Marcos", "Carlota", "MadMellow", "Lewandowski", "Triyisus", "Gustavo", "Miguel el Gordo", "Sergar", "Cabrote", "Maceta", "Bolardo","Estivi","Vargas","Gitano","Altea","Pepper", "Gustin", "Pablo Iglesias"};
+    private string[] SpecialNames = new string[]{"Puñales", "Javote", "Ajota", "Jocheider", "Francoc", "Yisus", "Marcos", "Carlota", "MadMellow", "Lewandowski", "Triyisus", "Gustavo", "Miguel el Gordo", "Sergar", "Cabrote", "Maceta", "Bolardo","Estivi","Vargas","Gitano","Altea","Pepper", "Gustin", "Pablo Iglesias", "Fiu Fiu", "Angel David", "Oscar", "Velen"};
 }
