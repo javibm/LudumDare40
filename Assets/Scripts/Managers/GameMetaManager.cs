@@ -7,6 +7,7 @@ public class GameMetaManager : Singleton<GameMetaManager>
 	public static OfficeManager 	Office   { get { return Instance.office;    }}
 	public static MoneyManager  	Money  	 { get { return Instance.money;     }}
 	public static EmployeeManager Employee { get { return Instance.employees; }}
+	public static AudioManager Audio { get { return Instance.audio; }}
 	public static TimeManager 		Time 		 { get { return Instance.time;      }}
 	public static CVManager       CVs      { get { return Instance.cvs;       }}
 
@@ -34,6 +35,7 @@ public class GameMetaManager : Singleton<GameMetaManager>
 		office = new OfficeManager(gameStats.OfficeInitialSize, officeGenerator, officeStats);
 		money = new MoneyManager(gameStats.InitialMoney);
 		employees = new EmployeeManager(employeeGenerator, employeeStats);
+		audio = GetComponent<AudioManager>();
 		time = gameObject.GetComponent<TimeManager>();
 		cvs = new CVManager(cvGenerationStats);
 
@@ -83,6 +85,7 @@ public class GameMetaManager : Singleton<GameMetaManager>
 	private OfficeManager office;
 	private MoneyManager money;
 	private EmployeeManager employees;
+	private AudioManager audio;
 	private TimeManager time;
 	private CVManager cvs;
 

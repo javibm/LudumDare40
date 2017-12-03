@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 114202479753193084}
   - component: {fileID: 114960287426127788}
   - component: {fileID: 114077061807684148}
-  - component: {fileID: 114244875862478032}
+  - component: {fileID: 114338052950505908}
   m_Layer: 0
   m_Name: Employee
   m_TagString: Untagged
@@ -621,18 +621,6 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 100
---- !u!114 &114244875862478032
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1305403814224198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47e34894203762046ab73294f40c3f53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyComputerParticles: {fileID: 0}
 --- !u!114 &114288941305779652
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -676,6 +664,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114338052950505908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1305403814224198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47e34894203762046ab73294f40c3f53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyComputerParticles: {fileID: 0}
 --- !u!114 &114371695114493474
 MonoBehaviour:
   m_ObjectHideFlags: 1
