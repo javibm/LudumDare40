@@ -37,7 +37,7 @@ public class GameUIController : MonoBehaviour
 
 	private void OnCVAcceptButtonClick()
 	{
-		GameMetaManager.Employee.TryCreateNewEmployee(GameMetaManager.CVs.PendingCV.EmployeeStats);
+		GameMetaManager.Employee.TryCreateNewEmployee(GameMetaManager.CVs.PendingCV.MoneyCost, GameMetaManager.CVs.PendingCV.Happiness);
 		GameMetaManager.CVs.AcceptPendingCV();
 		ShowCV(false);
 	}

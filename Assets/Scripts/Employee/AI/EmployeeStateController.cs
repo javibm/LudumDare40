@@ -42,13 +42,18 @@ public class EmployeeStateController : MonoBehaviour {
 		}
 	}
 
+	public EmployeeStats EmployeeStats
+	{
+		get {return GameMetaManager.Employee.EmployeeStats;}
+	}
+
 	/// <summary>
 	/// Awake is called when the script instance is being loaded.
 	/// </summary>
 	void Awake()
 	{
-			Happiness = Random.Range(employeeAIStats.minInitialHappiness, employeeAIStats.maxInitialHappiness);
-			ResetTimes();
+		Happiness = Random.Range(EmployeeStats.minInitialHappiness, EmployeeStats.maxInitialHappiness);
+		ResetTimes();
 	}
 
 	/// <summary>

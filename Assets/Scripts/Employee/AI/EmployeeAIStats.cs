@@ -12,10 +12,6 @@ public class EmployeeAIStats : ScriptableObject {
 	public float minProcrastinateTime = 3;
 	public float maxProcrastinateTime = 10;
 
-	[Header("Initial Happiness")]
-	public float minInitialHappiness = 0.7f;
-	public float maxInitialHappiness = 1.0f;
-
 	[Header("Happiness Changes")]
 	public float requestAcceptedHappiness = 0.3f;
 	public float requestDeniedHappiness = 0.4f;

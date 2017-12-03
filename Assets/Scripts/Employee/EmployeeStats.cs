@@ -8,5 +8,10 @@ public class EmployeeStats : ScriptableObject {
 	public int HolidayTime = 15;
 	public int MinPayRaise = 10;
 	public int MaxPayRaise = 20;
-	public int MoneyCost = 10;
+
+	[Header("Initial Happiness")]
+	public float minInitialHappiness = 0.7f;
+	public float maxInitialHappiness = 1.0f;
+
+	public float moneyFactor = 1f;
 }

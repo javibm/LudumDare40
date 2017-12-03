@@ -10,6 +10,11 @@ public class EmployeeManager {
 		private set;
 	}
 
+	public EmployeeStats EmployeeStats
+	{
+		get{return employeeStats;}
+	}
+
 	public int CurrentEmployees
 	{
 		get
@@ -18,26 +23,27 @@ public class EmployeeManager {
 		}
 	}
 
-	public EmployeeManager(EmployeeGenerator employeeGenerator)
+	public EmployeeManager(EmployeeGenerator employeeGenerator, EmployeeStats employeeStats)
 	{
 		this.employeeGenerator = employeeGenerator;
+		this.employeeStats = employeeStats;
     EmployeeList = new List<EmployeeController>();
 		//TO-DO ESTO ES UNA INSTANCIACIÓN DE PRUEBA!
 	}
 	
-	public void CreateNewEmployee(OfficeDesk officeDesk)
+	public void CreateNewEmployee(OfficeDesk officeDesk, float happiness)
 	{
 		EmployeeController employeeController = employeeGenerator.InstantiateEmployeePrefab(officeDesk.transform);
-		employeeController.Init(officeDesk);
+		employeeController.Init(officeDesk, happiness);
     EmployeeList.Add(employeeController);
   }
 
-	public bool TryCreateNewEmployee(EmployeeStats stats)
+	public bool TryCreateNewEmployee(int money, float happiness)
 	{
     if (GameMetaManager.Office.GetEmptyDeskCount() > 0)
     {
-      CreateNewEmployee(GameMetaManager.Office.GetEmptyDesk());
-			GameMetaManager.Money.RemoveMoney(stats.MoneyCost);
+      CreateNewEmployee(GameMetaManager.Office.GetEmptyDesk(), happiness);
+			GameMetaManager.Money.RemoveMoney(money);
 			return true;
     }
 		else
@@ -49,4 +55,5 @@ public class EmployeeManager {
 
 	private EmployeeGenerator employeeGenerator;
 
+	private EmployeeStats employeeStats;
 }
