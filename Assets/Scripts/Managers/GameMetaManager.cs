@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class GameMetaManager : Singleton<GameMetaManager> 
 {
-	public static OfficeManager 	Office   { get { return Instance.office;    }}
-	public static MoneyManager  	Money  	 { get { return Instance.money;     }}
-	public static EmployeeManager Employee { get { return Instance.employees; }}
-	public static TimeManager 		Time 		 { get { return Instance.time;      }}
-	public static CVManager       CVs      { get { return Instance.cvs;       }}
+	public static OfficeManager 	Office   { get { return Instance.office;    	 }}
+	public static MoneyManager  	Money  	 { get { return Instance.money;    		 }}
+	public static EmployeeManager Employee { get { return Instance.employees;		 }}
+	public static TimeManager 		Time 		 { get { return Instance.time;      	 }}
+	public static CameraManager		Camera	 { get { return Instance.cameraManager;}}
+	public static CVManager       CVs      { get { return Instance.cvs;       	 }}
 
 	public static int DaysWithNegativeMoney
 	{
@@ -35,6 +36,7 @@ public class GameMetaManager : Singleton<GameMetaManager>
 		money = new MoneyManager(gameStats.InitialMoney);
 		employees = new EmployeeManager(employeeGenerator, employeeStats);
 		time = gameObject.GetComponent<TimeManager>();
+		cameraManager = gameObject.GetComponent<CameraManager>();
 		cvs = new CVManager(cvGenerationStats);
 
 		// TO DO INSTANCIACION DE PRUEBA
@@ -44,6 +46,7 @@ public class GameMetaManager : Singleton<GameMetaManager>
 	void Start()
 	{
 		cvs.Init();
+		cameraManager.Init();
 
 		Money.OnMoneyChangeToNegative += OnMoneyChangeToNegative;
 		Money.OnMoneyChangeToPositive += OnMoneyChangeToPositive;
@@ -84,6 +87,7 @@ public class GameMetaManager : Singleton<GameMetaManager>
 	private MoneyManager money;
 	private EmployeeManager employees;
 	private TimeManager time;
+	private CameraManager cameraManager;
 	private CVManager cvs;
 
 	private int consecutiveDaysWithNegativeMoney;
