@@ -16,14 +16,24 @@ public class AudioManager : MonoBehaviour
 		Default,
 		Main,
 		Gameover,
-		Loop
+		Loop,
+		Door,
+		CV,
+		Typing,
+		BackToWork,
+		Cry,
+		Yay
 	}
 
-
-	void Awake ()
+	void Start ()
 	{
 		// DontDestroyOnLoad (gameObject);
 		// PlaySound (AudioType.Main);
+		PlaySound(AudioType.Loop);
+		PlaySound(AudioType.Typing);
+		GameMetaManager.Employee.OnBackToWork += PlayBackToWork;
+		GameMetaManager.Employee.OnEmployeeCreated += PlayDoor;
+		GameMetaManager.CVs.OnNewCVGenerated += PlayCV;
 	}
 
 	private void PlaySound (AudioType audioType, bool loop = false)
@@ -37,6 +47,31 @@ public class AudioManager : MonoBehaviour
 	private void OnAnimationStart ()
 	{
 		PlaySound (AudioType.Loop);
+	}
+
+	private void PlayDoor()
+	{
+		PlaySound (AudioType.Door);
+	}
+
+	private void PlayCV()
+	{
+		PlaySound (AudioType.CV);
+	}
+
+	private void PlayBackToWork()
+	{
+		PlaySound (AudioType.BackToWork);
+	}
+
+	private void PlayCry()
+	{
+		PlaySound (AudioType.Cry);
+	}
+
+	private void PlayYay()
+	{
+		PlaySound (AudioType.Yay);
 	}
 
   [SerializeField]

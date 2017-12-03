@@ -28,6 +28,12 @@ public class EmployeeManager {
 
 	public System.Action<WindowPoint> OnEmployeeClosed;
 
+	public System.Action OnBackToWork;
+
+	public System.Action OnAnswerCry;
+
+	public System.Action OnAnswerYay;
+
 	public EmployeeManager(EmployeeGenerator employeeGenerator, EmployeeStats employeeStats)
 	{
 		this.employeeGenerator = employeeGenerator;
