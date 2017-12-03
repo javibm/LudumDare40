@@ -62,6 +62,30 @@ public class OfficeManager
 		}
 	}
 
+	public int GetExpandTarget()
+	{
+		if(CurrentSize < officeStats.officeExpansionMoneyTarget.Count - 1)
+		{
+			return officeStats.officeExpansionMoneyTarget[CurrentSize + 1];
+		}
+		else
+		{
+			return officeStats.officeExpansionMoneyTarget[officeStats.officeExpansionMoneyTarget.Count - 1];
+		}
+	}
+
+	public int GetDailyCost()
+	{
+		if(CurrentSize < officeStats.officeDailyCost.Count)
+		{
+			return officeStats.officeDailyCost[CurrentSize];
+		}
+		else
+		{
+			return officeStats.officeDailyCost[officeStats.officeDailyCost.Count - 1];
+		}
+	}
+
 	public bool CanPayExpandCost()
 	{
 		return GameMetaManager.Money.CanPay(GetExpandCost());

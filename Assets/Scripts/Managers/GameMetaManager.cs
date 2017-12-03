@@ -67,6 +67,15 @@ public class GameMetaManager : Singleton<GameMetaManager>
 		Time.OnDayPassed += OnDayPassed;
 	}
 
+	// TODO: BORRAR!!!!!!!!!!
+	void Update()
+	{
+		if(Input.GetKey(KeyCode.M))
+		{
+			money.AddMoney(10);
+		}
+	}
+
 	private void OnDayPassed()
 	{
 		if(Money.CurrentMoney < 0)
@@ -77,6 +86,12 @@ public class GameMetaManager : Singleton<GameMetaManager>
 				NotifyOnLoseGame();
 			}
 		}
+		else if(Money.CurrentMoney >= office.GetExpandTarget())
+		{
+			office.TryExpand();
+		}
+		// Paying taxes
+		money.RemoveMoney(office.GetDailyCost());
 	}
 
 	private void OnMoneyChangeToNegative()
