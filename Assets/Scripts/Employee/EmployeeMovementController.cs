@@ -34,6 +34,11 @@ public class EmployeeMovementController : MonoBehaviour {
     }
   }
 
+  public void MoveToCrazyTarget()
+  {
+    // DESPUÉS DE LA ANIMACIÓN RECORDAR EL DESTROY Y personalOfficeDesk.Filled = false!
+  }
+
   public void GoToRandom()
   {
     selectNewTarget();

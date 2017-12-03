@@ -29,6 +29,11 @@ public class EmployeeController : MonoBehaviour {
 		set;
 	}
 
+		public int RequestValue
+	{
+		get;
+		set;
+	}
 
 	public void Init(OfficeDesk officeDesk)
 	{
@@ -40,6 +45,8 @@ public class EmployeeController : MonoBehaviour {
 		EmployeeUIController.DisableAll();
 
 		EmployeeUIController.OnRequestAnswered += OnRequestAnswered;
+
+		SetNextRequest();
 	}
 
 	void Update()
@@ -71,7 +78,7 @@ public class EmployeeController : MonoBehaviour {
 		{
 			EmployeeStateController.ForceWorkAgain();
 		}
-		EmployeeUIController.DisableAll();
+		EmployeeUIController.CloseRequest();
 	}
 
 	public void ApplyRequest()
@@ -79,7 +86,7 @@ public class EmployeeController : MonoBehaviour {
 		Debug.Log("REQUEST " + NextRequest);
 		if (NextRequest == RequestType.PayRaise)
 		{
-			GameMetaManager.Money.RemoveMoney(UnityEngine.Random.Range(employeeStats.MinPayRaise, employeeStats.MaxPayRaise));
+			GameMetaManager.Money.RemoveMoney(RequestValue);
 		}
 		else if (NextRequest == RequestType.Holidays)
 		{
@@ -90,7 +97,7 @@ public class EmployeeController : MonoBehaviour {
 	public void TakeHolidays()
 	{
 		GetComponentInChildren<Renderer>().enabled = false;
-		holidayEnd = employeeStats.HolidayTime;
+		holidayEnd = RequestValue;
 		GameMetaManager.Time.OnDayPassed += CheckEndOfHolidays;
 	}
 
@@ -110,6 +117,20 @@ public class EmployeeController : MonoBehaviour {
 	public void SetNextRequest()
 	{
 		NextRequest = (RequestType)UnityEngine.Random.Range(0, Enum.GetValues(typeof(RequestType)).Length);
+		if (NextRequest == RequestType.PayRaise)	
+		{
+			RequestValue = UnityEngine.Random.Range(employeeStats.MinPayRaise, employeeStats.MaxPayRaise);
+		}
+		else if (NextRequest == RequestType.Holidays)
+		{
+			RequestValue = employeeStats.HolidayTime;
+		}
+	}
+
+	public void ReleaseEmployee()
+	{
+		EmployeeMovementController.MoveToCrazyTarget();
+		EmployeeUIController.OnRequestAnswered -= OnRequestAnswered;
 	}
 
 	public enum RequestType

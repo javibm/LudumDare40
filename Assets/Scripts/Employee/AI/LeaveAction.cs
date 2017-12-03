@@ -12,7 +12,7 @@ public class LeaveAction : Action {
 
 	private void LeaveTheOffice(EmployeeController controller)
 	{
+		controller.ReleaseEmployee();
 		Debug.Log("RAGEQUIT");
-		Destroy(controller.gameObject);
 	}
 }

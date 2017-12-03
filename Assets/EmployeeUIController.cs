@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EmployeeUIController : MonoBehaviour {
 
 	public System.Action<bool> OnRequestAnswered = delegate {};
 
-	public void EnableUI(EmployeeController.RequestType requestType)
+	public void EnableUI(EmployeeController.RequestType requestType, string text)
 	{
 		if (requestClicked)
 		{
@@ -14,24 +15,26 @@ public class EmployeeUIController : MonoBehaviour {
 		}
 		else if (requestType == EmployeeController.RequestType.PayRaise)
 		{
-			EnablePayRaise();
+			EnablePayRaise(text);
 		}
 		else if (requestType == EmployeeController.RequestType.Holidays)
 		{
-			EnableHolidays();
+			EnableHolidays(text);
 		}
 	}
 
-	public void EnablePayRaise()
+	public void EnablePayRaise(string text)
 	{
 		DisableAll();
 		payRaise.SetActive(true);
+		payRaiseText.text = text;
 	}
 
-	public void EnableHolidays()
+	public void EnableHolidays(string text)
 	{
 		DisableAll();
 		holidays.SetActive(true);
+		holidaysText.text = text;
 	}
 
 	public void EnableAnswerRequest()
@@ -39,6 +42,12 @@ public class EmployeeUIController : MonoBehaviour {
 		requestClicked = true;
 		DisableAll();
 		answerRequest.SetActive(true);
+	}
+
+	public void CloseRequest()
+	{
+		requestClicked = false;
+		DisableAll();
 	}
 
 	public void DisableAll()
@@ -66,6 +75,12 @@ public class EmployeeUIController : MonoBehaviour {
 
 	[SerializeField]
 	private GameObject answerRequest;
+
+	[SerializeField]
+	private Text payRaiseText;
+
+	[SerializeField]
+	private Text holidaysText;
 
 	private bool requestClicked = false;
 }
