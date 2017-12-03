@@ -8,7 +8,7 @@ public class GameUIController : MonoBehaviour
 	void Awake()
 	{
     // Buttons listeners
-    	expandOfficeButton.onClick.AddListener(OnExpandOfficeButtonClick);
+    expandOfficeButton.onClick.AddListener(OnExpandOfficeButtonClick);
 		cvAcceptButton.onClick.AddListener(OnCVAcceptButtonClick);
 		cvRejectButton.onClick.AddListener(OnCVRejectButtonClick);
 	}
@@ -68,16 +68,15 @@ public class GameUIController : MonoBehaviour
 	private void OnDayPassed()
 	{
 		UpdateDaysPassed();
-		daysWithNegativeMoneyTimerImage.transform.localScale = new Vector2((float)GameMetaManager.DaysWithNegativeMoney / (float)GameMetaManager.MaxDaysWithNegativeMoney, 1f);
+		daysWithNegativeMoneyTimerImage.fillAmount = (float)GameMetaManager.DaysWithNegativeMoney / (float)GameMetaManager.MaxDaysWithNegativeMoney;
 	}
 
 	private void OnNewCVGenerated()
 	{
 		EmployeeCV cv = GameMetaManager.CVs.PendingCV;
-		nameCV.text = string.Format(cvText, cv.Name);
-		moneyCostCV.text = string.Format(moneyText, cv.MoneyCost.ToString("0.00"));
-		happinnesCostCV.text = string.Format(happinnesText, cv.Happiness.ToString("0.00"));
-		// TODO en cv habrá la info del personaje
+		cvNameText.text = string.Format(cvText, cv.Name);
+		cvMoneyText.text = string.Format(moneyText, cv.MoneyCost.ToString("0.00"));
+		cvMotivationBarImage.fillAmount = cv.Happiness;
 		ShowCV(true);
 	}
 
@@ -132,6 +131,12 @@ public class GameUIController : MonoBehaviour
 	[SerializeField]
 	private GameObject cvGameObject;
 	[SerializeField]
+	private Text cvNameText;
+	[SerializeField]
+	private Text cvMoneyText;
+	[SerializeField]
+	private Image cvMotivationBarImage;
+	[SerializeField]
 	private Button cvAcceptButton;
 	[SerializeField]
 	private Button cvRejectButton;
@@ -146,6 +151,5 @@ public class GameUIController : MonoBehaviour
 	private Text happinnesCostCV;
 
 	private string cvText = "CV: {0}";
-	private string moneyText = "Money: {0}";
-	private string happinnesText = "Happiness: {0}";
+	private string moneyText = "$ {0}";
 }
