@@ -66,3 +66,4 @@ MonoBehaviour:
   - {fileID: 1013593491223832, guid: 03c1a163c2105f243939a85d99926f99, type: 2}
   - {fileID: 1033955903309066, guid: 9ad39d02561d9ea41bae4771b1411361, type: 2}
   - {fileID: 1608640958223608, guid: 818f5846896bedb4daa8df91bef180bc, type: 2}
+  objectSpawnDelay: 0.03

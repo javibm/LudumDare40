@@ -6,33 +6,28 @@ using UnityEngine;
 namespace Utils.UI
 {
   /// <summary>
-  /// Rotation Tweener to animate UI transforms
+  /// Position Tweener to animate UI transforms
   /// </summary>
-  public class RotationTweener : TransformTweener
+  public class PositionTweener : TransformTweener
   {
 
     /**********************************************************************************************/
     /*  Members                                                                                   */
     /**********************************************************************************************/
-    [SerializeField]
-    private float initialRotation;
 
     [SerializeField]
-    private float finalRotation;
+    private Vector3 initialPosition;
 
-    private static readonly Vector3 ZComponentModifier = new Vector3(0, 0, 1);
-
+    [SerializeField]
+    private Vector3 finalPosition;
 
     /**********************************************************************************************/
     /*  Protected Methods                                                                         */
     /**********************************************************************************************/
+
     protected override void UpdateTransform(float curveValue)
     {
-      cachedRectTransform.localEulerAngles = ZComponentModifier * Mathf.Lerp(initialRotation, finalRotation, curveValue);
+      cachedTransform.localPosition = initialPosition + ((finalPosition - initialPosition) * curveValue);
     }
-
-
-
-
   }
 }

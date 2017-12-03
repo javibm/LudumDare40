@@ -14,14 +14,14 @@ namespace Utils.UI
     /**********************************************************************************************/
     /*  Members                                                                                   */
     /**********************************************************************************************/
-    protected RectTransform cachedRectTransform;
+    protected Transform cachedTransform;
 
     /**********************************************************************************************/
     /*  MonoBehaviour Methods                                                                     */
     /**********************************************************************************************/
     void Awake()
     {
-      cachedRectTransform = transform as RectTransform;
+      cachedTransform = transform;
     }
 
   }

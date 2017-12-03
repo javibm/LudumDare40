@@ -56,6 +56,15 @@ public class OfficeGenerator : MonoBehaviour
 
   private void generateOfficeStep(int step)
   {
+    runningGenerationCoroutines += 4;
+    StartCoroutine(FloorGenerationCoroutine(step));
+    StartCoroutine(WallGenerationCoroutine(step));
+    StartCoroutine(IdlePlacesGenerationCoroutine(step));
+    StartCoroutine(DeskGenerationCoroutine(step));
+	}
+
+  private IEnumerator FloorGenerationCoroutine(int step)
+  {
     GameObject go;
     // Floor generation
     for (int i = 0; i < step; ++i)
@@ -72,6 +81,7 @@ public class OfficeGenerator : MonoBehaviour
         go = Instantiate(floorPrefab);
         go.transform.SetParent(transform);
         go.transform.localPosition = new Vector3(cellSize * i, 0f, cellSize * (step - 1));
+        yield return new WaitForSeconds(objectSpawnDelay);
       }
       if (step == 2)
       {
@@ -82,17 +92,18 @@ public class OfficeGenerator : MonoBehaviour
         go = Instantiate(floorPrefab);
         go.transform.SetParent(transform);
         go.transform.localPosition = new Vector3(cellSize * (step - 1), 0f, cellSize * i);
+        yield return new WaitForSeconds(objectSpawnDelay);
       }
     }
+    OnGenerationCoroutineEnded();
+    yield return null;
+  }
 
-    if (step > 1)
+  private IEnumerator WallGenerationCoroutine(int step)
+  {
+    GameObject go;
+    if(step > 1)
     {
-      // Wall generation
-      go = Instantiate((step % 2 == 0) ? wallPrefab : wallWindowPrefab);
-      go.transform.SetParent(transform);
-      go.transform.localPosition = new Vector3(cellSize * (step - 1), 0f, 0f);
-      go.transform.eulerAngles = new Vector3(0f, -90, 0f);
-
       if(step == 2)
       {
         go = Instantiate(doorPrefab);
@@ -108,11 +119,26 @@ public class OfficeGenerator : MonoBehaviour
         go.transform.localPosition = new Vector3(0f, 0f, cellSize * (step - 1));
         go.transform.eulerAngles = new Vector3(0f, 0, 0f);
       }
-      
 
-      // Idle places generation
+      yield return new WaitForSeconds(objectSpawnDelay);
+
+      go = Instantiate((step % 2 == 0) ? wallPrefab : wallWindowPrefab);
+      go.transform.SetParent(transform);
+      go.transform.localPosition = new Vector3(cellSize * (step - 1), 0f, 0f);
+      go.transform.eulerAngles = new Vector3(0f, -90, 0f);
+    }
+    OnGenerationCoroutineEnded();
+    yield return null;
+  }
+
+  private IEnumerator IdlePlacesGenerationCoroutine(int step)
+  {
+    if(step > 1)
+    {
+      GameObject go;
       if(step % 2 == 0)
       {
+        yield return new WaitForSeconds(objectSpawnDelay);
         go = Instantiate(getNextIdleObject());
         go.transform.SetParent(transform);
         go.transform.localPosition = new Vector3(cellSize * (step - 1), 0f, 0f);
@@ -127,31 +153,59 @@ public class OfficeGenerator : MonoBehaviour
         go.transform.eulerAngles = new Vector3(0f, 0, 0f);
         idleList.Add(go.GetComponentInChildren<IdlePoint>());
       }
+    }
+    OnGenerationCoroutineEnded();
+    yield return null;
+  }
 
-		  // Desk generation
-		  OfficeDesk desk;
-		  for(int i = 1; i < step; ++i)
-		  {
-			  desk = Instantiate(deskPrefab);
-			  desk.transform.SetParent(transform);
-			  desk.transform.localPosition = new Vector3(cellSize * i, 0f, cellSize * (step-1));
-			  deskList.Add(desk);
+  private IEnumerator DeskGenerationCoroutine(int step)
+  {
+    if(step > 1)
+    {
+      OfficeDesk desk;
+      yield return new WaitForSeconds(objectSpawnDelay);
+      yield return new WaitForSeconds(objectSpawnDelay);
+      for(int i = 1; i < step; ++i)
+      {
+        desk = Instantiate(deskPrefab);
+        desk.transform.SetParent(transform);
+        desk.transform.localPosition = new Vector3(cellSize * i, 0f, cellSize * (step-1));
+        deskList.Add(desk);
         idleList.Add(desk.GetComponentInChildren<IdlePoint>());
+        yield return new WaitForSeconds(objectSpawnDelay);
         if (i < step-1)
-			  {
-				  desk = Instantiate(deskPrefab);
-				  desk.transform.SetParent(transform);
-				  desk.transform.localPosition = new Vector3(cellSize * (step-1), 0f, cellSize * i);
-				  deskList.Add(desk);
+        {
+          desk = Instantiate(deskPrefab);
+          desk.transform.SetParent(transform);
+          desk.transform.localPosition = new Vector3(cellSize * (step-1), 0f, cellSize * i);
+          deskList.Add(desk);
           idleList.Add(desk.GetComponentInChildren<IdlePoint>());
-			  }
+          yield return new WaitForSeconds(objectSpawnDelay);
+        }
       }
+    }
+    OnGenerationCoroutineEnded();
+    yield return null;
+  }
+
+  private void OnGenerationCoroutineEnded()
+  {
+    runningGenerationCoroutines--;
+    if(runningGenerationCoroutines == 0)
+    {
       if (navMeshSurface != null)
       {
-        NavigationBaker.BakeNavMesh(navMeshSurface);
+        StartCoroutine(BakeNavMeshDelayedCoroutine());    
       }
-		}
-	}
+    }
+  }
+
+  private IEnumerator BakeNavMeshDelayedCoroutine()
+  {
+    yield return new WaitForSeconds(0.5f);
+    Debug.LogError("BAKING!");
+    NavigationBaker.BakeNavMesh(navMeshSurface);
+  }
 
   private int idleObjectCount = -1;
   private GameObject getNextIdleObject()
@@ -162,6 +216,8 @@ public class OfficeGenerator : MonoBehaviour
     idleObjectCount = (idleObjectCount + offset) % idlePrefabs.Length;
     return idlePrefabs[idleObjectCount];
   }
+
+  private int runningGenerationCoroutines = 0;
 	
 	[SerializeField]
 	private float cellSize = 1f;
@@ -180,6 +236,9 @@ public class OfficeGenerator : MonoBehaviour
   private GameObject doorPrefab;
   [SerializeField]
   private GameObject[] idlePrefabs;
+
+  [SerializeField]
+  private float objectSpawnDelay = 0.1f;
 
 	private NavMeshSurface navMeshSurface;
 	private List<OfficeDesk> deskList;
