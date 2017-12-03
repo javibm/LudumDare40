@@ -33,13 +33,32 @@ public class EmployeeMovementController : MonoBehaviour {
     if (Target == personalOfficeDesk.Transform)
     {
       selectNewTarget();
-      navigate(GoToRandom);
+      float randomFloat = Random.Range(0.0f, 1.0f);
+      if(randomFloat > 0.0f && randomFloat < 0.35f)
+      {
+        navigate(Idle);
+      }
+      else if(randomFloat > 0.35f && randomFloat < 0.75f)
+      {
+        navigate(Idle2);
+      }
+      else
+      {
+        navigate(Idle3);
+      }
     }
   }
 
   public void MoveToCrazyTarget()
   {
-    GoToDestroy();
+    if(Random.Range(0.0f, 1.0f) > 0.6f)
+    {
+      GoToDestroy();
+    }
+    else
+    {
+      GoToWindow();
+    }
     // DESPUÉS DE LA ANIMACIÓN RECORDAR EL DESTROY Y personalOfficeDesk.Filled = false!
   }
 
@@ -55,6 +74,19 @@ public class EmployeeMovementController : MonoBehaviour {
     {
       Target = personalOfficeDesk.Transform;
       navigate(Work);
+    }
+  }
+
+  public void GoToWindow()
+  {
+    if (Target == personalOfficeDesk.Transform)
+    {
+      windowPoint = GameMetaManager.Office.GetRandomWindow();
+      Target = windowPoint.transform;
+      GameMetaManager.Employee.OnEmployeeWindow(windowPoint);
+      personalOfficeDesk.Filled = false;
+      navigate(JumpAnim);
+      selectNewTarget();      
     }
   }
 
@@ -77,10 +109,26 @@ public class EmployeeMovementController : MonoBehaviour {
     animController.IdleAnim();
   }
 
+  public void Idle2()
+  {
+    animController.IdleAnim2();
+  }
+
+  public void Idle3()
+  {
+    animController.IdleAnim3();
+  }
+
   public void DestroyAnim()
   {
     animController.DestroyAnim();
     particlesController.PlayDestroyComputerParticles();
+  }
+
+  public void JumpAnim()
+  {
+    animController.JumpAnim();
+    GameMetaManager.Employee.OnEmployeeClosed(windowPoint);
   }
 
   private void selectNewTarget()
@@ -99,5 +147,7 @@ public class EmployeeMovementController : MonoBehaviour {
   private EmployeeAnimationController animController;
 
   private EmployeeParticlesController particlesController;
+
+  private WindowPoint windowPoint;
 
 }

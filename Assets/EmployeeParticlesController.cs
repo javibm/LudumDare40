@@ -11,6 +11,17 @@ public class EmployeeParticlesController : MonoBehaviour
 			destroyComputerParticles.Play();
 		}
 	}
+
+	public void PlayWindowParticles()
+	{
+		if(windowParticles != null)
+		{
+			windowParticles.SetActive(true);
+		}
+	}
 	[SerializeField]
 	private ParticleSystem destroyComputerParticles;
+
+	[SerializeField]
+	private GameObject windowParticles;
 }

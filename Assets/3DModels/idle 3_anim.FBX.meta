@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 262f840445d08af41918f868fe673700
-timeCreated: 1512313746
+guid: 4f5bb780302b11641b5e750ee05ca2d8
+timeCreated: 1512332539
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -55,11 +55,11 @@ ModelImporter:
     400044: Base HumanSpine1
     400046: Base HumanSpine2
     400048: //RootNode
-    7400000: Sleep
+    7400000: Idle3
     9500000: //RootNode
   externalObjects: {}
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 0
@@ -85,10 +85,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Sleep
+      name: Idle3
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 70
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

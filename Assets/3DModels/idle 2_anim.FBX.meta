@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 262f840445d08af41918f868fe673700
-timeCreated: 1512313746
+guid: 4afe038b547340a4192d21a56e826dbe
+timeCreated: 1512330995
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -55,9 +55,77 @@ ModelImporter:
     400044: Base HumanSpine1
     400046: Base HumanSpine2
     400048: //RootNode
-    7400000: Sleep
+    2300000: Base HumanHead
+    2300002: Base HumanLCalf
+    2300004: Base HumanLCollarbone
+    2300006: Base HumanLFoot
+    2300008: Base HumanLForearm
+    2300010: Base HumanLPalm
+    2300012: Base HumanLThigh
+    2300014: Base HumanLUpperarm
+    2300016: Base HumanNeck1
+    2300018: Base HumanNeck2
+    2300020: Base HumanPelvis
+    2300022: Base HumanRCalf
+    2300024: Base HumanRCollarbone
+    2300026: Base HumanRFoot
+    2300028: Base HumanRForearm
+    2300030: Base HumanRibcage
+    2300032: Base HumanRPalm
+    2300034: Base HumanRThigh
+    2300036: Base HumanRUpperarm
+    2300038: Base HumanSpine1
+    2300040: Base HumanSpine2
+    3300000: Base HumanHead
+    3300002: Base HumanLCalf
+    3300004: Base HumanLCollarbone
+    3300006: Base HumanLFoot
+    3300008: Base HumanLForearm
+    3300010: Base HumanLPalm
+    3300012: Base HumanLThigh
+    3300014: Base HumanLUpperarm
+    3300016: Base HumanNeck1
+    3300018: Base HumanNeck2
+    3300020: Base HumanPelvis
+    3300022: Base HumanRCalf
+    3300024: Base HumanRCollarbone
+    3300026: Base HumanRFoot
+    3300028: Base HumanRForearm
+    3300030: Base HumanRibcage
+    3300032: Base HumanRPalm
+    3300034: Base HumanRThigh
+    3300036: Base HumanRUpperarm
+    3300038: Base HumanSpine1
+    3300040: Base HumanSpine2
+    4300000: Base HumanPelvis
+    4300002: Base HumanLThigh
+    4300004: Base HumanLCalf
+    4300006: Base HumanLFoot
+    4300008: Base HumanRThigh
+    4300010: Base HumanRCalf
+    4300012: Base HumanRFoot
+    4300014: Base HumanSpine1
+    4300016: Base HumanSpine2
+    4300018: Base HumanRibcage
+    4300020: Base HumanLCollarbone
+    4300022: Base HumanLUpperarm
+    4300024: Base HumanLForearm
+    4300026: Base HumanLPalm
+    4300028: Base HumanRCollarbone
+    4300030: Base HumanRUpperarm
+    4300032: Base HumanRForearm
+    4300034: Base HumanRPalm
+    4300036: Base HumanNeck1
+    4300038: Base HumanNeck2
+    4300040: Base HumanHead
+    7400000: Idle2
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: b8dec338cd4a03e4a82b2e33550a1703, type: 2}
   materials:
     importMaterials: 0
     materialName: 0
@@ -85,10 +153,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Sleep
+      name: Idle2
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 120
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

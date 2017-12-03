@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 262f840445d08af41918f868fe673700
-timeCreated: 1512313746
+guid: 89cd7e24c79649d41a5da1b2f0a05ae0
+timeCreated: 1512322798
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -29,7 +29,8 @@ ModelImporter:
     100042: Base HumanRUpperarm
     100044: Base HumanSpine1
     100046: Base HumanSpine2
-    100048: //RootNode
+    100048: chica_peliroja
+    100050: //RootNode
     400000: Base Human
     400002: Base HumanHead
     400004: Base HumanLCalf
@@ -54,10 +55,18 @@ ModelImporter:
     400042: Base HumanRUpperarm
     400044: Base HumanSpine1
     400046: Base HumanSpine2
-    400048: //RootNode
-    7400000: Sleep
+    400048: chica_peliroja
+    400050: //RootNode
+    4300000: chica_peliroja
+    7400000: Take 001
     9500000: //RootNode
-  externalObjects: {}
+    13700000: chica_peliroja
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #2712'
+    second: {fileID: 2100000, guid: 8f0442bf19792b94c9f2a156a0684934, type: 2}
   materials:
     importMaterials: 0
     materialName: 0
@@ -83,35 +92,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Sleep
-      takeName: Take 001
-      firstFrame: 0
-      lastFrame: 30
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -138,7 +119,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
