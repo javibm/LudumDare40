@@ -20,7 +20,15 @@ public class OfficeManager
 		}
 	}
 
-	public OfficeManager(int initialSize, OfficeGenerator officeGenerator, OfficeStats officeStats)
+  public List<IdlePoint> IdleList
+  {
+    get
+    {
+      return officeGenerator.IdleList;
+    }
+  }
+
+  public OfficeManager(int initialSize, OfficeGenerator officeGenerator, OfficeStats officeStats)
 	{
 		this.officeGenerator = officeGenerator;
 		this.officeGenerator.InitOffice(initialSize);
@@ -68,6 +76,11 @@ public class OfficeManager
 		}
 		return null;
 	}
+
+  public IdlePoint GetRandomIdle()
+  {
+    return IdleList[Random.Range(0, IdleList.Count)];
+  }
 
 	private void PayExpand()
 	{

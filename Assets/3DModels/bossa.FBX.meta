@@ -1,22 +1,47 @@
 fileFormatVersion: 2
-guid: 5c272894bed58294cb5be52117cf1021
-timeCreated: 1512259427
+guid: 90486235fb190e148accdb625f53202e
+timeCreated: 1512257010
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: despacho
+    100004: Dummy001
+    100006: Dummy002
+    100008: Dummy003
+    100010: Dummy004
+    100012: SUELO JEFE
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Pared
+    400002: despacho
+    400004: Dummy001
+    400006: Dummy002
+    400008: Dummy003
+    400010: Dummy004
+    400012: SUELO JEFE
+    2300000: SUELO JEFE
+    3300000: SUELO JEFE
+    4300000: SUELO JEFE
+    4300002: despacho
+    7400000: Idle
     9500000: //RootNode
+    13700000: despacho
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: 'Material #1054'
-    second: {fileID: 2100000, guid: 8d9966c86368e2b408a8439c351ad7b3, type: 2}
+      name: 'Material #1081'
+    second: {fileID: 2100000, guid: 347f2c213ba329e479830ed9d011fac4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #2617'
+    second: {fileID: 2100000, guid: 7e806f5a315282442a15adba70cdc7ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #2618'
+    second: {fileID: 2100000, guid: 1dc39e970828e8443b71eb12c4be51ce, type: 2}
   materials:
     importMaterials: 0
     materialName: 0
@@ -42,7 +67,35 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -69,7 +122,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -88,7 +141,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

@@ -1,15 +1,20 @@
 fileFormatVersion: 2
-guid: 5c272894bed58294cb5be52117cf1021
+guid: f3d583e54b5c6f74cb82c8695647ce84
 timeCreated: 1512259427
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Pared
+    100000: ventana
+    100002: //RootNode
+    400000: ventana
+    400002: //RootNode
+    2300000: ventana
+    2300002: //RootNode
+    3300000: ventana
+    3300002: //RootNode
+    4300000: pared ventana
+    4300002: ventana
     9500000: //RootNode
   externalObjects:
   - first:
@@ -17,6 +22,26 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: 'Material #1054'
     second: {fileID: 2100000, guid: 8d9966c86368e2b408a8439c351ad7b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #2393'
+    second: {fileID: 2100000, guid: 8328e5932fe7c77408cabbd9c9fd1a11, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #2394'
+    second: {fileID: 2100000, guid: 5e397c9584b0da34cb80cde73e9adc58, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #2406'
+    second: {fileID: 2100000, guid: 1bba96e19ccc6ac40a9f1876ded455bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #2479'
+    second: {fileID: 2100000, guid: 820e87dbef0504f4ba75d9cd82abf50c, type: 2}
   materials:
     importMaterials: 0
     materialName: 0

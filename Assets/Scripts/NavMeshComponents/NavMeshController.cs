@@ -8,18 +8,22 @@ public class NavMeshController : MonoBehaviour
   void Start()
   {
     agent = GetComponent<NavMeshAgent>();
-    agent.autoBraking = true;
+    agent.updateRotation = false;
   }
 
   void Update()
   {
-    if ((!agent.pathPending && agent.remainingDistance < 0.1f && target != null) || agent.isStopped)
+    if (target != null)
+    {
+      Quaternion newRotation = Quaternion.LookRotation(target.position - transform.position);
+      newRotation.x = 0f;
+      newRotation.z = 0f;
+      transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * 10f);
+    }
+
+    if ((!agent.pathPending && agent.remainingDistance < 0.2f && target != null) || agent.isStopped)
     {
       agent.isStopped = true;
-      var lookPos = target.position - transform.position;
-      lookPos.y = 0;
-      var rotation = Quaternion.LookRotation(lookPos);
-      transform.rotation = rotation;
       transform.position = target.position;
 
       if (NavigateFinishedCallback != null)
@@ -38,8 +42,6 @@ public class NavMeshController : MonoBehaviour
     NavigateFinishedCallback = del;
   }
 
-  private float time = 2.0f;
-  private float elapsedTime;
   private Transform target;
   private NavMeshAgent agent;
   public delegate void OnNavigateFinished();

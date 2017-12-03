@@ -25,18 +25,19 @@ public class EmployeeMovementController : MonoBehaviour {
     Speed = 1;
   }
 
-  void Test()
-  {
-    animController.WorkAnim();
-  }
-
   public void MoveToProcrastinationTarget()
   {
     if (Target == personalOfficeDesk.Transform)
     {
       selectNewTarget();
-      navigate(Idle);
+      navigate(GoToRandom);
     }
+  }
+
+  public void GoToRandom()
+  {
+    selectNewTarget();
+    navigate(GoToRandom);
   }
 
   public void MoveToDesk()
@@ -45,6 +46,15 @@ public class EmployeeMovementController : MonoBehaviour {
     {
       Target = personalOfficeDesk.Transform;
       navigate(Work);
+    }
+  }
+
+  public void GoToDestroy()
+  {
+    if (Target != personalOfficeDesk.Transform)
+    {
+      Target = personalOfficeDesk.Transform;
+      navigate(DestroyAnim);
     }
   }
 
@@ -58,9 +68,14 @@ public class EmployeeMovementController : MonoBehaviour {
     animController.IdleAnim();
   }
 
+  public void DestroyAnim()
+  {
+    animController.DestroyAnim();
+  }
+
   private void selectNewTarget()
   {
-    Target = GameMetaManager.Office.DeskList[Random.Range(0, GameMetaManager.Office.DeskList.Count)].transform;
+    Target = GameMetaManager.Office.GetRandomIdle().transform;
   }
 
   private void navigate(NavMeshController.OnNavigateFinished del)

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EmployeeGenerator : MonoBehaviour {
 
-	public EmployeeController InstantiateEmployeePrefab()
+	public EmployeeController InstantiateEmployeePrefab(Transform transform)
 	{
-		return Instantiate(getRandomEmployeePrefab(), Vector3.zero, Quaternion.identity).GetComponent<EmployeeController>();
+		return Instantiate(getRandomEmployeePrefab(), transform.position, Quaternion.identity).GetComponent<EmployeeController>();
 	}
 
 	private GameObject getRandomEmployeePrefab()

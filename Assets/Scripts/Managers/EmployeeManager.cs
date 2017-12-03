@@ -27,7 +27,7 @@ public class EmployeeManager {
 	
 	public void CreateNewEmployee(OfficeDesk officeDesk)
 	{
-		EmployeeController employeeController = employeeGenerator.InstantiateEmployeePrefab();
+		EmployeeController employeeController = employeeGenerator.InstantiateEmployeePrefab(officeDesk.transform);
 		employeeController.Init(officeDesk);
     EmployeeList.Add(employeeController);
   }
