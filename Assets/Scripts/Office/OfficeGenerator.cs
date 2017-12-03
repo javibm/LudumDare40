@@ -94,7 +94,7 @@ public class OfficeGenerator : MonoBehaviour
 
 		  // Desk generation
 		  OfficeDesk desk;
-		  for(int i = 0; i < step; ++i)
+		  for(int i = 1; i < step; ++i)
 		  {
 			  desk = Instantiate(deskPrefab);
 			  desk.transform.SetParent(transform);
@@ -109,11 +109,11 @@ public class OfficeGenerator : MonoBehaviour
 				  deskList.Add(desk);
           idleList.Add(desk.GetComponentInChildren<IdlePoint>());
 			  }
-    }
-    if (navMeshSurface != null)
-    {
-      NavigationBaker.BakeNavMesh(navMeshSurface);
-    }
+      }
+      if (navMeshSurface != null)
+      {
+        NavigationBaker.BakeNavMesh(navMeshSurface);
+      }
 		}
 	}
 	
