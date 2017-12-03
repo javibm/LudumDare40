@@ -9,6 +9,8 @@ public class EmployeeUIController : MonoBehaviour {
 	public System.Action<bool> OnRequestAnswered = delegate {};
 	public System.Action OnForceWork = delegate {};
 
+	public System.Action OnFired = delegate {};
+
 	void Start()
 	{
 		moneyBalanceChange.gameObject.SetActive(false);
@@ -30,6 +32,12 @@ public class EmployeeUIController : MonoBehaviour {
 	{
 		DisableAll();
 		forceWork.SetActive(true);
+	}
+
+	public void EnableFire()
+	{
+		DisableAll();
+		fire.SetActive(true);
 	}
 
 	public void EnablePayRaise(string text)
@@ -60,6 +68,7 @@ public class EmployeeUIController : MonoBehaviour {
 		holidays.SetActive(false);
 		answerRequest.SetActive(false);
 		forceWork.SetActive(false);
+		fire.SetActive(false);
 	}
 
 	public void ForceWork()
@@ -75,6 +84,11 @@ public class EmployeeUIController : MonoBehaviour {
 	public void DeclineRequest()
 	{
 		OnRequestAnswered(false);
+	}
+
+	public void Fire()
+	{
+		OnFired();
 	}
 
 	public void EnableMoneyChange(int money)
@@ -99,6 +113,10 @@ public class EmployeeUIController : MonoBehaviour {
 	[Header("Force Work")]
 	[SerializeField]
 	private GameObject forceWork;
+
+	[Header("Fire")]
+	[SerializeField]
+	private GameObject fire;
 
 	[Header("Requests")]
 	[SerializeField]
