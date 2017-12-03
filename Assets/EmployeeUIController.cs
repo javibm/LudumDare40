@@ -9,11 +9,7 @@ public class EmployeeUIController : MonoBehaviour {
 
 	public void EnableUI(EmployeeController.RequestType requestType, string text)
 	{
-		if (requestClicked)
-		{
-		  EnableAnswerRequest();
-		}
-		else if (requestType == EmployeeController.RequestType.PayRaise)
+		if (requestType == EmployeeController.RequestType.PayRaise)
 		{
 			EnablePayRaise(text);
 		}
@@ -27,6 +23,7 @@ public class EmployeeUIController : MonoBehaviour {
 	{
 		DisableAll();
 		payRaise.SetActive(true);
+		answerRequest.SetActive(true);
 		payRaiseText.text = text;
 	}
 
@@ -34,14 +31,8 @@ public class EmployeeUIController : MonoBehaviour {
 	{
 		DisableAll();
 		holidays.SetActive(true);
-		holidaysText.text = text;
-	}
-
-	public void EnableAnswerRequest()
-	{
-		requestClicked = true;
-		DisableAll();
 		answerRequest.SetActive(true);
+		holidaysText.text = text;
 	}
 
 	public void CloseRequest()
