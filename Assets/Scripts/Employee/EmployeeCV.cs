@@ -10,7 +10,24 @@ public class EmployeeCV
         private set;
     }
 
+    public int Happiness
+    {
+        get;
+        private set;
+    }
+    public int MoneyCost
+    {
+        get;
+        private set;
+    }
+    public string name
+    {
+        get;
+        private set;
+    }
+
     public void GetRandomEmployeeStats()
     {
+        
     }
 }
