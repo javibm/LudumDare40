@@ -38,15 +38,13 @@ public class GameUIController : MonoBehaviour
 
   private void OnSpawnEmployeeButtonClick()
   {
-    if (GameMetaManager.Office.GetEmptyDeskCount() > 0)
-    {
-      GameMetaManager.Employee.CreateNewEmployee(GameMetaManager.Office.GetEmptyDesk());
-    }
+	GameMetaManager.Employee.TryCreateNewEmployee();
   }
 
 	private void OnCVAcceptButtonClick()
 	{
 		GameMetaManager.CVs.AcceptPendingCV();
+		GameMetaManager.Employee.TryCreateNewEmployee();
 		ShowCV(false);
 	}
 	private void OnCVRejectButtonClick()

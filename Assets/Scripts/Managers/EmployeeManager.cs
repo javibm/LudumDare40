@@ -32,6 +32,19 @@ public class EmployeeManager {
     EmployeeList.Add(employeeController);
   }
 
+	public bool TryCreateNewEmployee()
+	{
+    if (GameMetaManager.Office.GetEmptyDeskCount() > 0)
+    {
+      CreateNewEmployee(GameMetaManager.Office.GetEmptyDesk());
+			return true;
+    }
+		else
+		{
+			return false;
+		}
+	}
+
 
 	private EmployeeGenerator employeeGenerator;
 
