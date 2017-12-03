@@ -28,6 +28,11 @@ public class OfficeManager
     }
   }
 
+	public Transform DoorPoint
+	{
+		get {return officeGenerator.DoorPoint;}
+	}
+
   public OfficeManager(int initialSize, OfficeGenerator officeGenerator, OfficeStats officeStats)
 	{
 		this.officeGenerator = officeGenerator;

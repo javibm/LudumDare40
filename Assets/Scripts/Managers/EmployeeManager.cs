@@ -33,7 +33,7 @@ public class EmployeeManager {
 	
 	public void CreateNewEmployee(OfficeDesk officeDesk, float happiness)
 	{
-		EmployeeController employeeController = employeeGenerator.InstantiateEmployeePrefab(officeDesk.transform);
+		EmployeeController employeeController = employeeGenerator.InstantiateEmployeePrefab(GameMetaManager.Office.DoorPoint);
 		employeeController.Init(officeDesk, happiness);
     EmployeeList.Add(employeeController);
   }
