@@ -2,10 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Utils.UI;
 
 public class EmployeeUIController : MonoBehaviour {
 
 	public System.Action<bool> OnRequestAnswered = delegate {};
+	public System.Action OnForceWork = delegate {};
+
+	void Start()
+	{
+		moneyBalanceChange.gameObject.SetActive(false);
+	}
 
 	public void EnableUI(EmployeeController.RequestType requestType, string text)
 	{
@@ -17,6 +24,12 @@ public class EmployeeUIController : MonoBehaviour {
 		{
 			EnableHolidays(text);
 		}
+	}
+
+	public void EnableForceWork()
+	{
+		DisableAll();
+		forceWork.SetActive(true);
 	}
 
 	public void EnablePayRaise(string text)
@@ -46,6 +59,12 @@ public class EmployeeUIController : MonoBehaviour {
 		payRaise.SetActive(false);
 		holidays.SetActive(false);
 		answerRequest.SetActive(false);
+		forceWork.SetActive(false);
+	}
+
+	public void ForceWork()
+	{
+		OnForceWork();
 	}
 
 	public void AcceptRequest()
@@ -58,6 +77,30 @@ public class EmployeeUIController : MonoBehaviour {
 		OnRequestAnswered(false);
 	}
 
+	public void EnableMoneyChange(int money)
+	{
+		moneyBalanceChange.AddOnFinishedCallback(DisableMoneyChange);
+		moneyBalanceChangeText.text = money.ToString();
+		moneyBalanceChange.gameObject.SetActive(true);
+	}
+
+	private void DisableMoneyChange()
+	{
+		moneyBalanceChange.ResetTweener();
+		moneyBalanceChange.gameObject.SetActive(false);
+	}
+
+	[Header("Money Change")]
+	[SerializeField]
+	private Tweener moneyBalanceChange;
+	[SerializeField]
+	private Text moneyBalanceChangeText;
+
+	[Header("Force Work")]
+	[SerializeField]
+	private GameObject forceWork;
+
+	[Header("Requests")]
 	[SerializeField]
 	private GameObject payRaise;
 
