@@ -27,19 +27,7 @@ public class GameMetaManager : Singleton<GameMetaManager>
 			return Instance.gameStats.MaxDaysWithNegativeMoney;
 		}
 	}
-
-	void Update()
-	{
-		if(Input.GetKeyDown(KeyCode.Space))
-		{
-			GameMetaManager.Office.TryExpand();
-		}
-		if(Input.GetKeyDown(KeyCode.M))
-		{
-			GameMetaManager.Employee.TryCreateNewEmployee(0,1);
-		}
-	}
-
+	
 	public static System.Action OnLoseGame;
 
 	protected new void Awake()
@@ -73,6 +61,14 @@ public class GameMetaManager : Singleton<GameMetaManager>
 		if(Input.GetKey(KeyCode.M))
 		{
 			money.AddMoney(10);
+		}
+		if(Input.GetKeyDown(KeyCode.Space))
+		{
+			GameMetaManager.Office.TryExpand();
+		}
+		if(Input.GetKeyDown(KeyCode.L))
+		{
+			GameMetaManager.Employee.TryCreateNewEmployee(0,1);
 		}
 	}
 
