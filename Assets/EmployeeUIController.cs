@@ -20,7 +20,7 @@ public class EmployeeUIController : MonoBehaviour {
 	{
 		if (requestType == EmployeeController.RequestType.PayRaise)
 		{
-			EnablePayRaise(text);
+			EnablePayRaise("$"+text);
 		}
 		else if (requestType == EmployeeController.RequestType.Holidays)
 		{
@@ -28,31 +28,49 @@ public class EmployeeUIController : MonoBehaviour {
 		}
 	}
 
+	private GameObject activeObject = null;
+
 	public void EnableForceWork()
 	{
-		DisableAll();
-		forceWork.SetActive(true);
+		if(activeObject != forceWork)
+		{
+			DisableAll();
+			forceWork.SetActive(true);
+			activeObject = forceWork;
+		}
 	}
 
 	public void EnableFire()
 	{
-		DisableAll();
-		fire.SetActive(true);
+		if(activeObject != fire)
+		{
+			DisableAll();
+			fire.SetActive(true);
+			activeObject = fire;
+		}
 	}
 
 	public void EnablePayRaise(string text)
 	{
-		DisableAll();
-		payRaise.SetActive(true);
-		answerRequest.SetActive(true);
+		if(activeObject != payRaise)
+		{
+			DisableAll();
+			payRaise.SetActive(true);
+			answerRequest.SetActive(true);
+			activeObject = payRaise;
+		}
 		payRaiseText.text = text;
 	}
 
 	public void EnableHolidays(string text)
 	{
-		DisableAll();
-		holidays.SetActive(true);
-		answerRequest.SetActive(true);
+		if(activeObject != holidays)
+		{
+			DisableAll();
+			holidays.SetActive(true);
+			answerRequest.SetActive(true);
+			activeObject = holidays;
+		}
 		holidaysText.text = text;
 	}
 
@@ -96,7 +114,8 @@ public class EmployeeUIController : MonoBehaviour {
 	public void EnableMoneyChange(int money)
 	{
 		moneyBalanceChange.AddOnFinishedCallback(DisableMoneyChange);
-		moneyBalanceChangeText.text = money.ToString();
+		moneyBalanceChangeText.color = money > 0 ? greenColor : redColor;
+		moneyBalanceChangeText.text = (money > 0 ? "+$" : "-$") + money.ToString();
 		moneyBalanceChange.gameObject.SetActive(true);
 	}
 
@@ -135,6 +154,12 @@ public class EmployeeUIController : MonoBehaviour {
 
 	[SerializeField]
 	private Text holidaysText;
+
+	[Header("Money Colors")]
+	[SerializeField]
+	private Color greenColor;
+	[SerializeField]
+	private Color redColor;
 
 	private bool requestClicked = false;
 }

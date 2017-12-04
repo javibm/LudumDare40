@@ -17,6 +17,8 @@ namespace Utils.UI
 
     [SerializeField]
     private bool playOnStart;
+    [SerializeField]
+    private bool disableOnFinished;
 
     [SerializeField]
     private AnimationCurve tweenerCurve;
@@ -94,7 +96,10 @@ namespace Utils.UI
       do
       {
         UpdateTransform(tweenerCurve.Evaluate(0));
-        yield return new WaitForSeconds(startDelay);
+        if(startDelay > 0)
+        {
+          yield return new WaitForSeconds(startDelay);
+        }
         currentTime = 0;
         while (currentTime < duration)
         {
@@ -106,6 +111,10 @@ namespace Utils.UI
 
         onFinishedCallback();
       } while (tweenerType == TweenerType.Loop);
+      if(disableOnFinished)
+      {
+        gameObject.SetActive(false);
+      }
     }
 
   }

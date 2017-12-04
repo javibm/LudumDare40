@@ -47,8 +47,10 @@ public class EmployeeController : MonoBehaviour
 		EmployeeStateController = GetComponent<EmployeeStateController>();
 		EmployeeStateController.Happiness = happiness;
 		EmployeeMovementController = GetComponent<EmployeeMovementController>();
-		EmployeeUIController = GetComponentInChildren<EmployeeUIController>();
-
+		EmployeeUIController = Instantiate(employeeUIControllerPrefab);
+		// EmployeeUIController.transform.SetParent(transform, false);
+		// EmployeeUIController.GetComponent<Canvas>().worldCamera = GameMetaManager.Camera.Camera;
+		
 		EmployeeMovementController.Init(officeDesk, GetComponent<NavMeshController>(), GetComponent<EmployeeAnimationController>(), GetComponent<EmployeeParticlesController>());
 		EmployeeUIController.DisableAll();
 
@@ -61,6 +63,7 @@ public class EmployeeController : MonoBehaviour
 
 	void Update()
 	{
+		EmployeeUIController.transform.localPosition = transform.localPosition;
 		if (holidayEnd == 0)
 		{
 			EmployeeStateController.UpdateState(this);
@@ -103,7 +106,13 @@ public class EmployeeController : MonoBehaviour
 	public void OnFired()
 	{
 		GameMetaManager.Employee.OnFired();
+		DestroyEmployee();
+	}
+
+	public void DestroyEmployee()
+	{
 		GameMetaManager.Employee.ReleaseEmployee(this);
+		Destroy(EmployeeUIController.gameObject);
 		Destroy(gameObject);
 	}
 
@@ -114,6 +123,7 @@ public class EmployeeController : MonoBehaviour
 		{
 			GameMetaManager.Money.RemoveMoney(RequestValue);
 			EmployeeUIController.EnableMoneyChange(-RequestValue);
+			GameMetaManager.Employee.OnPayMoney();
 		}
 		else if (NextRequest == RequestType.Holidays)
 		{
@@ -124,6 +134,7 @@ public class EmployeeController : MonoBehaviour
 	public void TakeHolidays()
 	{
 		GetComponentInChildren<Renderer>().enabled = false;
+		GameMetaManager.Employee.OnPlane();
 		OnHolidayTaked(true);
 		holidayEnd = RequestValue;
 		GameMetaManager.Time.OnDayPassed += CheckEndOfHolidays;
@@ -137,6 +148,7 @@ public class EmployeeController : MonoBehaviour
 		}
 		if (holidayEnd == 0)
 		{
+			GameMetaManager.Employee.OnPlane();
 			OnHolidayTaked(false);
 			GetComponentInChildren<Renderer>().enabled = true;
 			GameMetaManager.Time.OnDayPassed -= CheckEndOfHolidays;
@@ -159,10 +171,18 @@ public class EmployeeController : MonoBehaviour
 
 	public void ReleaseEmployee()
 	{
-		if (!releasing)
+		if (!releasing && !magicFlag)
 		{
-			EmployeeMovementController.MoveToCrazyTarget();
-			EmployeeUIController.EnableFire();
+			if(UnityEngine.Random.Range(0.0f, 1.0f) > 0.6f)
+			{
+				EmployeeMovementController.MoveToCrazyTarget(true);
+				EmployeeUIController.EnableFire();
+			}
+			else
+			{
+				EmployeeMovementController.MoveToCrazyTarget(false);
+			}
+			magicFlag = true;
 			EmployeeUIController.OnRequestAnswered -= OnRequestAnswered;
 		}
 	}
@@ -176,4 +196,9 @@ public class EmployeeController : MonoBehaviour
 	private float timeSinceLastGeneration;
 	private int holidayEnd;
 	private bool releasing = false;
+
+	private bool magicFlag = false;
+
+	[SerializeField]
+	private EmployeeUIController employeeUIControllerPrefab;
 }

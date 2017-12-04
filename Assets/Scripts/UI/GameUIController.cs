@@ -33,6 +33,16 @@ public class GameUIController : MonoBehaviour
 		ShowGameOverText(false);
 	}
 
+	void OnDestroy()
+	{
+		GameMetaManager.Money.OnMoneyChanged -= OnMoneyChanged;
+		GameMetaManager.Money.OnMoneyChangeToNegative -= OnMoneyChangeToNegative;
+		GameMetaManager.Money.OnMoneyChangeToPositive -= OnMoneyChangeToPositive;
+		GameMetaManager.Time.OnDayPassed -= OnDayPassed;
+		GameMetaManager.CVs.OnNewCVGenerated -= OnNewCVGenerated;
+		GameMetaManager.OnLoseGame -= OnLoseGame;
+	}
+
 	private void OnExpandOfficeButtonClick()
 	{
 		GameMetaManager.OnUIButtonClicked();
@@ -68,7 +78,7 @@ public class GameUIController : MonoBehaviour
 	private void OnGameOverMenuButtonClick()
 	{
 		GameMetaManager.OnUIButtonClicked();
-		// TODO
+		UnityEngine.SceneManagement.SceneManager.LoadScene(0);
 	}
 	
 
@@ -92,6 +102,8 @@ public class GameUIController : MonoBehaviour
 	{
 		UpdateDaysPassed();
 		UpdateProgressBar();
+		daysPassedFallingAnimationObject.SetActive(true);
+		daysPassedFallingSheetText.text = (GameMetaManager.Time.DaysPassed-1).ToString();
 	}
 
 	private void OnNewCVGenerated()
@@ -152,6 +164,10 @@ public class GameUIController : MonoBehaviour
 	
 	[SerializeField]
 	private Text daysPassedLabelText;
+	[SerializeField]
+	private GameObject daysPassedFallingAnimationObject;
+	[SerializeField]
+	private Text daysPassedFallingSheetText;
 
 	[SerializeField]
 	private GameObject daysWithNegativeMoneyTimerGameObject;

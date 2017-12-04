@@ -19,6 +19,12 @@ public class TimeManager : MonoBehaviour
 		StartCoroutine(DaysCounter(gameStats.DayDurationInSeconds));
 	}
 
+	void OnDestroy()
+	{
+		GameMetaManager.OnLoseGame -= OnLoseGame;
+	}
+	
+
 	private void OnLoseGame()
 	{
 		StopAllCoroutines();

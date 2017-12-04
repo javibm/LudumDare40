@@ -49,9 +49,9 @@ public class EmployeeMovementController : MonoBehaviour {
     }
   }
 
-  public void MoveToCrazyTarget()
+  public void MoveToCrazyTarget(bool isDestroy)
   {
-    if(Random.Range(0.0f, 1.0f) > 0.6f)
+    if(isDestroy)
     {
       GoToDestroy();
     }
@@ -59,7 +59,6 @@ public class EmployeeMovementController : MonoBehaviour {
     {
       GoToWindow();
     }
-    // DESPUÉS DE LA ANIMACIÓN RECORDAR EL DESTROY Y personalOfficeDesk.Filled = false!
   }
 
   public void GoToRandom()

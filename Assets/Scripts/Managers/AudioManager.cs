@@ -27,15 +27,25 @@ public class AudioManager : MonoBehaviour
 		LevelUp,
 		RageWindow,
 		RageDestroy,
-		Fired
+		Fired,
+		Plane,
+		PayMoney
 	}
 
 	void Start ()
 	{
-		// DontDestroyOnLoad (gameObject);
-		// PlaySound (AudioType.Main);
+		DontDestroyOnLoad (gameObject);
+		 if (FindObjectsOfType(GetType()).Length > 1)
+         {
+             Destroy(gameObject);
+         }
+		PlaySound (AudioType.Main, true);
 		PlaySound(AudioType.Loop, true);
 		PlaySound(AudioType.Typing, true);
+	}
+
+	public void SubscribeEvents()
+	{
 		GameMetaManager.Employee.OnBackToWork += PlayBackToWork;
 		GameMetaManager.Employee.OnEmployeeCreated += PlayDoor;
 		GameMetaManager.Employee.OnAnswerCry += PlayCry;
@@ -47,6 +57,8 @@ public class AudioManager : MonoBehaviour
 		GameMetaManager.Employee.OnRageWindow += PlayRageWindow;
 		GameMetaManager.Employee.OnRageDestroy += PlayRageDestroy;
 		GameMetaManager.Employee.OnFired += PlayFired;
+		GameMetaManager.Employee.OnPlane += PlayPlane;
+		GameMetaManager.Employee.OnPayMoney += PlayPayMoney;
 	}
 
 	private void PlaySound (AudioType audioType, bool loop = false)
@@ -117,7 +129,17 @@ public class AudioManager : MonoBehaviour
 		PlaySound (AudioType.Fired);
 	}
 
-  [SerializeField]
+	private void PlayPlane()
+	{
+		PlaySound (AudioType.Plane);
+	}
+
+	private void PlayPayMoney()
+	{
+		PlaySound (AudioType.PayMoney);
+	}
+
+  	[SerializeField]
 	private AudioStruct[] _audios;
 
 }
