@@ -63,10 +63,13 @@ public class EmployeeController : MonoBehaviour
 
 	void Update()
 	{
-		EmployeeUIController.transform.localPosition = transform.localPosition;
-		if (holidayEnd == 0)
+		if(EmployeeUIController)
 		{
-			EmployeeStateController.UpdateState(this);
+			EmployeeUIController.transform.localPosition = transform.localPosition;
+			if (holidayEnd == 0)
+			{
+				EmployeeStateController.UpdateState(this);
+			}
 		}
 	}
 
@@ -106,14 +109,18 @@ public class EmployeeController : MonoBehaviour
 	public void OnFired()
 	{
 		GameMetaManager.Employee.OnFired();
-		DestroyEmployee();
+		EmployeeMovementController.Fire();
+		DestroyEmployee(false);
 	}
 
-	public void DestroyEmployee()
+	public void DestroyEmployee(bool destroy)
 	{
 		GameMetaManager.Employee.ReleaseEmployee(this);
 		Destroy(EmployeeUIController.gameObject);
-		Destroy(gameObject);
+		if(destroy)
+		{
+			Destroy(gameObject);
+		}
 	}
 
 	public void ApplyRequest()
@@ -133,7 +140,7 @@ public class EmployeeController : MonoBehaviour
 	}
 	public void TakeHolidays()
 	{
-		GetComponentInChildren<Renderer>().enabled = false;
+		EmployeeMovementController.Holidays();
 		GameMetaManager.Employee.OnPlane();
 		OnHolidayTaked(true);
 		holidayEnd = RequestValue;
@@ -151,6 +158,9 @@ public class EmployeeController : MonoBehaviour
 			GameMetaManager.Employee.OnPlane();
 			OnHolidayTaked(false);
 			GetComponentInChildren<Renderer>().enabled = true;
+			GetComponent<NavMeshController>().enabled = true;
+			//GetComponentInChildren<CapsuleCollider>().enabled = true;
+			GameMetaManager.Employee.OnDoorFired();
 			GameMetaManager.Time.OnDayPassed -= CheckEndOfHolidays;
 		}
 	}

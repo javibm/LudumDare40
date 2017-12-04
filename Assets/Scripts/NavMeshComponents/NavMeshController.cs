@@ -21,7 +21,7 @@ public class NavMeshController : MonoBehaviour
       transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * 10f);
     }
 
-    if ((!agent.pathPending && agent.remainingDistance < 0.2f && target != null) || agent.isStopped)
+    if ((!agent.pathPending && agent.remainingDistance < 0.1f && target != null) || agent.isStopped)
     {
       agent.isStopped = true;
       transform.rotation = target.rotation;

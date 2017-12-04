@@ -9,6 +9,7 @@ public class DoorAnimation : MonoBehaviour {
 		if(GameMetaManager.Instance != null)
 		{
 			GameMetaManager.Employee.OnEmployeeCreated += PlayAnimation;
+			GameMetaManager.Employee.OnDoorFired += PlayAnimation;
 			animatorController = GetComponent<Animator>();
 		}
 	}

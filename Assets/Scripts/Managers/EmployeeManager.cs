@@ -44,6 +44,8 @@ public class EmployeeManager {
 
 	public System.Action OnPayMoney;
 
+	public System.Action OnDoorFired;
+
 	public EmployeeManager(EmployeeGenerator employeeGenerator, EmployeeStats employeeStats)
 	{
 		this.employeeGenerator = employeeGenerator;

@@ -67,6 +67,31 @@ public class EmployeeMovementController : MonoBehaviour {
     navigate(GoToRandom);
   }
 
+  public void Fire()
+  {
+    Target = GameMetaManager.Office.DoorPoint.transform;
+    navigate(Destroy);
+  }
+
+  public void Holidays()
+  {
+    Target = GameMetaManager.Office.DoorPoint.transform;
+    navigate(Disable);
+  }
+
+  public void Disable()
+  {
+    GetComponentInChildren<Renderer>().enabled = false;
+    GetComponent<NavMeshController>().enabled = false;
+    //GetComponentInChildren<CapsuleCollider>().enabled = false;
+    GameMetaManager.Employee.OnDoorFired();
+  }
+  public void Destroy()
+  {
+    GameMetaManager.Employee.OnDoorFired();
+    Destroy(gameObject);
+  }
+
   public void MoveToDesk()
   {
     if (Target != personalOfficeDesk.Transform)

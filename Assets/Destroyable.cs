@@ -7,7 +7,7 @@ public class Destroyable : MonoBehaviour
 	public void DestroyMe()
 	{
 		GetComponent<EmployeeParticlesController>().PlayWindowParticles();
-		GetComponent<EmployeeController>().DestroyEmployee();
+		GetComponent<EmployeeController>().DestroyEmployee(true);
 	}
 
 	public void InitScream()
