@@ -16,15 +16,22 @@ public class EmployeeUIController : MonoBehaviour {
 		moneyBalanceChange.gameObject.SetActive(false);
 	}
 
+	private bool uiEnabled = false;
 	public void EnableUI(EmployeeController.RequestType requestType, string text)
 	{
+		if(uiEnabled)
+		{
+			return;
+		}
 		if (requestType == EmployeeController.RequestType.PayRaise)
 		{
 			EnablePayRaise("$"+text);
+			uiEnabled = true;
 		}
 		else if (requestType == EmployeeController.RequestType.Holidays)
 		{
 			EnableHolidays(text);
+			uiEnabled = true;
 		}
 	}
 
@@ -58,12 +65,14 @@ public class EmployeeUIController : MonoBehaviour {
 
 	public void CloseRequest()
 	{
+		uiEnabled = false;
 		requestClicked = false;
 		DisableAll();
 	}
 
 	public void DisableAll()
 	{
+		uiEnabled = false;
 		payRaise.SetActive(false);
 		holidays.SetActive(false);
 		answerRequest.SetActive(false);

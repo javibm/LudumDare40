@@ -48,8 +48,8 @@ public class EmployeeController : MonoBehaviour
 		EmployeeStateController.Happiness = happiness;
 		EmployeeMovementController = GetComponent<EmployeeMovementController>();
 		EmployeeUIController = Instantiate(employeeUIControllerPrefab);
-		EmployeeUIController.transform.SetParent(transform, false);
-		EmployeeUIController.transform.localPosition = Vector3.zero;
+		// EmployeeUIController.transform.SetParent(transform, false);
+		// EmployeeUIController.GetComponent<Canvas>().worldCamera = GameMetaManager.Camera.Camera;
 		
 		EmployeeMovementController.Init(officeDesk, GetComponent<NavMeshController>(), GetComponent<EmployeeAnimationController>(), GetComponent<EmployeeParticlesController>());
 		EmployeeUIController.DisableAll();
@@ -63,6 +63,7 @@ public class EmployeeController : MonoBehaviour
 
 	void Update()
 	{
+		EmployeeUIController.transform.localPosition = transform.localPosition;
 		if (holidayEnd == 0)
 		{
 			EmployeeStateController.UpdateState(this);
@@ -105,7 +106,13 @@ public class EmployeeController : MonoBehaviour
 	public void OnFired()
 	{
 		GameMetaManager.Employee.OnFired();
+		DestroyEmployee();
+	}
+
+	public void DestroyEmployee()
+	{
 		GameMetaManager.Employee.ReleaseEmployee(this);
+		Destroy(EmployeeUIController.gameObject);
 		Destroy(gameObject);
 	}
 

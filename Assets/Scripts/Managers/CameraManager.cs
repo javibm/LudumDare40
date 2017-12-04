@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour 
 {
+	public Camera Camera
+	{
+		get
+		{
+			return mainCamera;
+		}
+	}
 
 	public void Init()
 	{
