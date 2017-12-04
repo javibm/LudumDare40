@@ -8,14 +8,21 @@ public class MainMenuUIController : MonoBehaviour
 	void Awake()
 	{
     // Buttons listeners
+		howToPlayButton.onClick.AddListener(OnHowToPlayButtonClick);
 		playButton.onClick.AddListener(OnPlayButtonClick);
 		creditsButton.onClick.AddListener(OnCreditsButtonClick);
 		creditsObject.SetActive(false);
+		howToPlayPanel.SetActive(false);
 	}
 	
 	void Start () 
 	{
 		// Eventos
+	}
+
+	private void OnHowToPlayButtonClick()
+	{
+		howToPlayPanel.SetActive(true);
 	}
 
 	private void OnPlayButtonClick()
@@ -45,11 +52,15 @@ public class MainMenuUIController : MonoBehaviour
 	}
 	
 	[SerializeField]
+	private Button howToPlayButton;
+	[SerializeField]
 	private Button playButton;
 	[SerializeField]
 	private Button creditsButton;
 	[SerializeField]
 	private GameObject creditsObject;
+	[SerializeField]
+	private GameObject howToPlayPanel;
 	[SerializeField]
 	private List<Text> creditLabelsList;
 }
