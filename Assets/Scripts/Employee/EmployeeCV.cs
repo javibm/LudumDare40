@@ -69,5 +69,5 @@ public class EmployeeCV
     "Maceta", "Bolardo","Estivi","Vargas","Gitano","Altea","Pepper", "Gustin", "Pablo Iglesias", "Fiu Fiu", "Angel David", 
     "Oscar", "Velen", "Tomas", "Mate", "Diego", "Jorge", "Juanjo", "Adrian", "Zhang", "QA Luis", "QAngel", "Carolina", 
     "Bob Morate", "Qarrillo", "Clicker Boy", "Indalo", "Machango", "Rayco", "Fotingo", "Almeria", "Bisbal", "Leprous", "Taburete", "Willy",
-    "Jari", "Devin", "Einar", "Mikael", "Twinbot" };
+    "Jari", "Devin", "Einar", "Mikael", "Twinbot", "Crema", "Ludipo", "Cuevecita", "Redneck", "Guille", "Marina", "Juen", "Mateu", "Eingel Deivid" };
 }
