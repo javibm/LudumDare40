@@ -52,6 +52,7 @@ GameObject:
   - component: {fileID: 4911369918933492}
   - component: {fileID: 95298477690012536}
   - component: {fileID: 208285336575733098}
+  - component: {fileID: 114703675557181274}
   m_Layer: 0
   m_Name: bossa
   m_TagString: Untagged
@@ -319,6 +320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playOnStart: 1
+  disableOnFinished: 0
   tweenerCurve:
     serializedVersion: 2
     m_Curve:
@@ -348,6 +350,17 @@ MonoBehaviour:
   duration: 0.3
   initialLocalScale: {x: 0, y: 0, z: 0}
   finalLocalScale: {x: 1, y: 1, z: 1}
+--- !u!114 &114703675557181274
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1212405215654792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01b55e5fb0e1584493b9dc54d4816fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!137 &137245179377655924
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
