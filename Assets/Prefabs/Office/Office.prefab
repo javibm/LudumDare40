@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1115671546987576}
+  m_IsPrefabParent: 1
+--- !u!1 &1115671546987576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4169175502584968}
+  - component: {fileID: 114971774976811792}
+  m_Layer: 0
+  m_Name: Office
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4169175502584968
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1115671546987576}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114971774976811792
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1115671546987576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3eef4ef8feb883459fba02aa25e8f75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellSize: 1
+  floorPrefab: {fileID: 1271744229201292, guid: 8352d91f340553747b966ac56741e1d7,
+    type: 2}
+  deskPrefab: {fileID: 114184026159839892, guid: 35f8b624c6253534f9eb8e6b2c894208,
+    type: 2}
+  wallPrefab: {fileID: 1092904710249904, guid: 563c11fcb28a73f479ebbdbc4c573998, type: 2}
+  wallWindowPrefab: {fileID: 1553835306450938, guid: d7cb62d815de41b4ca3b85ed4841b774,
+    type: 2}
+  bossPrefab: {fileID: 1212405215654792, guid: 5c05b1c2b245e3c4a8f5cbab387dc559, type: 2}
+  doorPrefab: {fileID: 1182627935046476, guid: e668270d907921748b729f319dbc4c5e, type: 2}
+  idlePrefabs:
+  - {fileID: 1981988443118500, guid: 6c11193b87247d349aab39a94558a4d6, type: 2}
+  - {fileID: 1013593491223832, guid: 03c1a163c2105f243939a85d99926f99, type: 2}
+  - {fileID: 1033955903309066, guid: 9ad39d02561d9ea41bae4771b1411361, type: 2}
+  - {fileID: 1608640958223608, guid: 818f5846896bedb4daa8df91bef180bc, type: 2}
+  objectSpawnDelay: 0.03
