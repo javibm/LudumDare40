@@ -114,6 +114,7 @@ public class EmployeeController : MonoBehaviour
 		{
 			GameMetaManager.Money.RemoveMoney(RequestValue);
 			EmployeeUIController.EnableMoneyChange(-RequestValue);
+			GameMetaManager.Employee.OnPayMoney();
 		}
 		else if (NextRequest == RequestType.Holidays)
 		{

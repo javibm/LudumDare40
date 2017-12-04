@@ -28,7 +28,8 @@ public class AudioManager : MonoBehaviour
 		RageWindow,
 		RageDestroy,
 		Fired,
-		Plane
+		Plane,
+		PayMoney
 	}
 
 	void Start ()
@@ -49,6 +50,7 @@ public class AudioManager : MonoBehaviour
 		GameMetaManager.Employee.OnRageDestroy += PlayRageDestroy;
 		GameMetaManager.Employee.OnFired += PlayFired;
 		GameMetaManager.Employee.OnPlane += PlayPlane;
+		GameMetaManager.Employee.OnPayMoney += PlayPayMoney;
 	}
 
 	private void PlaySound (AudioType audioType, bool loop = false)
@@ -122,6 +124,11 @@ public class AudioManager : MonoBehaviour
 	private void PlayPlane()
 	{
 		PlaySound (AudioType.Plane);
+	}
+
+	private void PlayPayMoney()
+	{
+		PlaySound (AudioType.PayMoney);
 	}
 
   	[SerializeField]
