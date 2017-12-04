@@ -91,6 +91,7 @@ public class EmployeeStateController : MonoBehaviour {
 	{
 		ForceWork = true;
 		Happiness += employeeAIStats.requestAcceptedHappiness;
+		Happiness = Mathf.Clamp(Happiness, 0, 1);
 		UpdateState(initialState);
 	}
 
