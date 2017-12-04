@@ -13,6 +13,7 @@ public class LeaveAction : Action {
 	private void LeaveTheOffice(EmployeeController controller)
 	{
 		controller.ReleaseEmployee();
+		controller.UngenerateMoney();
 		Debug.Log("RAGEQUIT");
 	}
 }

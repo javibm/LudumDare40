@@ -79,7 +79,21 @@ public class EmployeeController : MonoBehaviour
 			timeSinceLastGeneration = 0;
 			EmployeeUIController.EnableMoneyChange(employeeStats.MoneyGenerated);
 		}
+	}
 
+	public void UngenerateMoney()
+	{
+		if (raging)
+		{
+			timeSinceLastGeneration += Time.deltaTime;
+			if (timeSinceLastGeneration > 1)
+			{
+				GameMetaManager.Money.RemoveMoney(employeeStats.MoneyLostRage);
+				timeSinceLastGeneration = 0;
+				EmployeeUIController.EnableMoneyChange(-employeeStats.MoneyLostRage);
+			}
+		}
+		
 	}
 
 	public void OnForceWork()
@@ -171,18 +185,21 @@ public class EmployeeController : MonoBehaviour
 
 	public void ReleaseEmployee()
 	{
-		if (!releasing && !magicFlag)
+		if (!releasing)
 		{
 			if(UnityEngine.Random.Range(0.0f, 1.0f) > 0.6f)
 			{
 				EmployeeMovementController.MoveToCrazyTarget(true);
 				EmployeeUIController.EnableFire();
+				raging = true;
 			}
 			else
 			{
 				EmployeeMovementController.MoveToCrazyTarget(false);
+				GameMetaManager.Money.RemoveMoney(employeeStats.MoneyLostFly);
+				EmployeeUIController.EnableMoneyChange(-employeeStats.MoneyLostRage);
 			}
-			magicFlag = true;
+			releasing = true;
 			EmployeeUIController.OnRequestAnswered -= OnRequestAnswered;
 		}
 	}
@@ -197,7 +214,7 @@ public class EmployeeController : MonoBehaviour
 	private int holidayEnd;
 	private bool releasing = false;
 
-	private bool magicFlag = false;
+	private bool raging = false;
 
 	[SerializeField]
 	private EmployeeUIController employeeUIControllerPrefab;

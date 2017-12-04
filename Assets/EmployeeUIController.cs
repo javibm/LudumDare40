@@ -87,6 +87,8 @@ public class EmployeeUIController : MonoBehaviour {
 		answerRequest.SetActive(false);
 		forceWork.SetActive(false);
 		fire.SetActive(false);
+
+		activeObject = null;
 	}
 
 	public void ForceWork()

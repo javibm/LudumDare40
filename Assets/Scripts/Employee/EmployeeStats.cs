@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu (menuName = "Employee/Stats")]
 public class EmployeeStats : ScriptableObject {
 	public int MoneyGenerated = 5;
+	public int MoneyLostRage = 5;
+	public int MoneyLostFly = 10;
 	public int HolidayTime = 15;
 	public int MinPayRaise = 10;
 	public int MaxPayRaise = 20;
