@@ -9,7 +9,6 @@ public class GameUIController : MonoBehaviour
 	void Awake()
 	{
     // Buttons listeners
-    	expandOfficeButton.onClick.AddListener(OnExpandOfficeButtonClick);
 		cvAcceptButton.onClick.AddListener(OnCVAcceptButtonClick);
 		cvRejectButton.onClick.AddListener(OnCVRejectButtonClick);
 		gameOverPlayAgainButton.onClick.AddListener(OnGameOverPlayAgainButtonClick);
@@ -43,12 +42,6 @@ public class GameUIController : MonoBehaviour
 		GameMetaManager.Time.OnDayPassed -= OnDayPassed;
 		GameMetaManager.CVs.OnNewCVGenerated -= OnNewCVGenerated;
 		GameMetaManager.OnLoseGame -= OnLoseGame;
-	}
-
-	private void OnExpandOfficeButtonClick()
-	{
-		GameMetaManager.OnUIButtonClicked();
-		GameMetaManager.Office.TryExpand();
 	}
 
 	private void OnCVAcceptButtonClick()
@@ -178,9 +171,6 @@ public class GameUIController : MonoBehaviour
 	private GameObject daysWithNegativeMoneyTimerGameObject;
 	[SerializeField]
 	private Image moneyProgressBarImage;
-
-	[SerializeField]
-	private Button expandOfficeButton;
 
 	[SerializeField]
 	private GameObject gameOverObject;
