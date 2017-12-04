@@ -60,21 +60,21 @@ public class GameMetaManager : Singleton<GameMetaManager>
 	}
 
 	// TODO: BORRAR!!!!!!!!!!
-	void Update()
-	{
-		if(Input.GetKey(KeyCode.M))
-		{
-			money.AddMoney(10);
-		}
-		if(Input.GetKeyDown(KeyCode.Space))
-		{
-			GameMetaManager.Office.TryExpand();
-		}
-		if(Input.GetKeyDown(KeyCode.L))
-		{
-			GameMetaManager.Employee.TryCreateNewEmployee(0,1);
-		}
-	}
+	// void Update()
+	// {
+	// 	if(Input.GetKey(KeyCode.M))
+	// 	{
+	// 		money.AddMoney(10);
+	// 	}
+	// 	if(Input.GetKeyDown(KeyCode.Space))
+	// 	{
+	// 		GameMetaManager.Office.TryExpand();
+	// 	}
+	// 	if(Input.GetKeyDown(KeyCode.L))
+	// 	{
+	// 		GameMetaManager.Employee.TryCreateNewEmployee(0,1);
+	// 	}
+	// }
 
 	private void OnDayPassed()
 	{
