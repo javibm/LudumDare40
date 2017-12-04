@@ -34,10 +34,18 @@ public class AudioManager : MonoBehaviour
 
 	void Start ()
 	{
-		// DontDestroyOnLoad (gameObject);
-		// PlaySound (AudioType.Main);
+		DontDestroyOnLoad (gameObject);
+		 if (FindObjectsOfType(GetType()).Length > 1)
+         {
+             Destroy(gameObject);
+         }
+		PlaySound (AudioType.Main, true);
 		PlaySound(AudioType.Loop, true);
 		PlaySound(AudioType.Typing, true);
+	}
+
+	public void SubscribeEvents()
+	{
 		GameMetaManager.Employee.OnBackToWork += PlayBackToWork;
 		GameMetaManager.Employee.OnEmployeeCreated += PlayDoor;
 		GameMetaManager.Employee.OnAnswerCry += PlayCry;
