@@ -192,7 +192,6 @@ public class EmployeeController : MonoBehaviour
 				EmployeeMovementController.MoveToCrazyTarget(true);
 				EmployeeUIController.EnableFire();
 				raging = true;
-				
 			}
 			else
 			{
