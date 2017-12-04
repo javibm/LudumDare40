@@ -24,6 +24,7 @@ public class NavMeshController : MonoBehaviour
     if ((!agent.pathPending && agent.remainingDistance < 0.2f && target != null) || agent.isStopped)
     {
       agent.isStopped = true;
+      transform.rotation = target.rotation;
       transform.position = target.position;
 
       if (NavigateFinishedCallback != null)
