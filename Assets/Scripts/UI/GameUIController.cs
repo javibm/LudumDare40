@@ -25,6 +25,7 @@ public class GameUIController : MonoBehaviour
 		GameMetaManager.Time.OnDayPassed += OnDayPassed;
 		GameMetaManager.CVs.OnNewCVGenerated += OnNewCVGenerated;
 		GameMetaManager.OnLoseGame += OnLoseGame;
+		GameMetaManager.Office.OnExpansion += OnExpansion;
 
 		UpdateMoney();
 		UpdateDaysPassed();
@@ -33,6 +34,7 @@ public class GameUIController : MonoBehaviour
 		ShowGameOverText(false);
 		ShowDailyTax(false);
 		cvMoneyBalanceTweener.gameObject.SetActive(false);
+		expandTweener.gameObject.SetActive(false);
 	}
 
 	void OnDestroy()
@@ -43,6 +45,7 @@ public class GameUIController : MonoBehaviour
 		GameMetaManager.Time.OnDayPassed -= OnDayPassed;
 		GameMetaManager.CVs.OnNewCVGenerated -= OnNewCVGenerated;
 		GameMetaManager.OnLoseGame -= OnLoseGame;
+		GameMetaManager.Office.OnExpansion -= OnExpansion;		
 	}
 
 	private void OnCVAcceptButtonClick()
@@ -165,6 +168,13 @@ public class GameUIController : MonoBehaviour
 	{
 		cvGameObject.SetActive(show);
 	}
+
+	private void OnExpansion()
+	{
+		expandTweener.ResetTweener();
+		expandText.text = "-" + GameMetaManager.Office.PreviousExpandCost.ToString() + " $";
+		expandTweener.gameObject.SetActive(true);
+	}
 	
 	[SerializeField]
 	private Text moneyLabelText;
@@ -227,6 +237,11 @@ public class GameUIController : MonoBehaviour
 	
 	[SerializeField]
 	private Tweener dailyTaxTweener;
+
+	[SerializeField]
+	private Text expandText;
+	[SerializeField]
+	private Tweener expandTweener;
 	private string cvText = "CV: {0}";
 	private string moneyText = "$ {0}";
 }
