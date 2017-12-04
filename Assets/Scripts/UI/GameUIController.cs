@@ -33,7 +33,7 @@ public class GameUIController : MonoBehaviour
 		ShowCV(false);
 		ShowGameOverText(false);
 		ShowDailyTax(false);
-		cvMoneyBalanceTweener.gameObject.SetActive(false);
+		cvMoneyBalanceObject.SetActive(false);
 		expandTweener.gameObject.SetActive(false);
 	}
 
@@ -54,8 +54,7 @@ public class GameUIController : MonoBehaviour
 		GameMetaManager.OnUIButtonClicked();
 		GameMetaManager.Employee.TryCreateNewEmployee(GameMetaManager.CVs.PendingCV.MoneyCost, GameMetaManager.CVs.PendingCV.Happiness);
 		GameMetaManager.CVs.AcceptPendingCV();
-		cvMoneyBalanceTweener.AddOnFinishedCallback(delegate { cvMoneyBalanceTweener.gameObject.SetActive(false); } );
-		cvMoneyBalanceTweener.gameObject.SetActive(true);
+		cvMoneyBalanceObject.SetActive(true);
 		ShowCV(false);
 	}
 	private void OnCVRejectButtonClick()
@@ -228,7 +227,7 @@ public class GameUIController : MonoBehaviour
 	private Color barGreenColor;
 
 	[SerializeField]
-	private Tweener cvMoneyBalanceTweener;
+	private GameObject cvMoneyBalanceObject;
 	[SerializeField]
 	private Text cvMoneyBalanceText;
 
