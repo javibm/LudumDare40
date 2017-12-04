@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114452983451642108}
   - component: {fileID: 114554190445026988}
   - component: {fileID: 114553158534427268}
+  - component: {fileID: 114787942072073482}
   m_Layer: 5
   m_Name: Money
   m_TagString: Untagged
@@ -744,7 +745,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playOnStart: 1
-  disableOnFinished: 1
+  disableOnFinished: 0
   tweenerCurve:
     serializedVersion: 2
     m_Curve:
@@ -965,7 +966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playOnStart: 1
-  disableOnFinished: 1
+  disableOnFinished: 0
   tweenerCurve:
     serializedVersion: 2
     m_Curve:
@@ -1731,7 +1732,7 @@ MonoBehaviour:
     m_RotationOrder: 0
   tweenerType: 0
   startDelay: 0
-  duration: 3
+  duration: 2
   initialPosition: {x: 0, y: 0, z: 0}
   finalPosition: {x: 0, y: -80, z: 0}
 --- !u!114 &114557634664291240
@@ -1909,7 +1910,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 2
     m_MaxSize: 56
-    m_Alignment: 5
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -2317,6 +2318,42 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: TWEET
+--- !u!114 &114787942072073482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1030389645032784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c38925d035527b745b8c779d3979e357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playOnStart: 1
+  disableOnFinished: 1
+  tweenerCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  tweenerType: 0
+  startDelay: 1.5
+  duration: 0.5
+  initialAlpha: 1
+  finalAlpha: 0
 --- !u!114 &114789258741421996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3087,16 +3124,16 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1030389645032784}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.825012, y: 6.5499954, z: 0}
+  m_LocalPosition: {x: -9.200012, y: 6.399994, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224389613181594562}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 109.79999, y: -49.600006}
-  m_SizeDelta: {x: 193.99, y: 64.35}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -9.200012, y: 6.399994}
+  m_SizeDelta: {x: 193.98999, y: 64.35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224389613181594562
 RectTransform:
@@ -3105,17 +3142,17 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1368488557697618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 150, y: 321.55, z: 0}
+  m_LocalPosition: {x: -457.5, y: -169.71997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224273823265530538}
   m_Father: {fileID: 224645339591872550}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 200, y: 371.55}
-  m_SizeDelta: {x: 237.25, y: 112.3}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -507.5, y: -219.71997}
+  m_SizeDelta: {x: 237.25, y: 112.30005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224397657320529542
 RectTransform:
