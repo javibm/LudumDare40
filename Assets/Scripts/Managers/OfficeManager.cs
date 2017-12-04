@@ -41,6 +41,12 @@ public class OfficeManager
 		get {return officeGenerator.DoorPoint;}
 	}
 
+	public int PreviousExpandCost
+	{
+		get;
+		private set;
+	}
+
 	public event System.Action OnExpansion;
 
   public OfficeManager(int initialSize, OfficeGenerator officeGenerator, OfficeStats officeStats)
@@ -136,6 +142,7 @@ public class OfficeManager
 	private void PayExpand()
 	{
 		GameMetaManager.Money.RemoveMoney(GetExpandCost());
+		PreviousExpandCost = GetExpandCost();
 	}
 
 	private void ExpandOffice()
