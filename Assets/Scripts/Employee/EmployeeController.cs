@@ -139,7 +139,6 @@ public class EmployeeController : MonoBehaviour
 
 	public void ApplyRequest()
 	{
-		Debug.Log("REQUEST " + NextRequest);
 		if (NextRequest == RequestType.PayRaise)
 		{
 			GameMetaManager.Money.RemoveMoney(RequestValue);

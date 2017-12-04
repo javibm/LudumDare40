@@ -14,6 +14,5 @@ public class LeaveAction : Action {
 	{
 		controller.ReleaseEmployee();
 		controller.UngenerateMoney();
-		Debug.Log("RAGEQUIT");
 	}
 }

@@ -18,6 +18,5 @@ public class ProcrastinateAction : Action {
 		{
 			controller.EmployeeUIController.EnableForceWork();
 		}
-		Debug.Log ("LAZING AROUND zZzzZ");
 	}
 }
