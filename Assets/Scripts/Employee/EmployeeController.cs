@@ -47,8 +47,10 @@ public class EmployeeController : MonoBehaviour
 		EmployeeStateController = GetComponent<EmployeeStateController>();
 		EmployeeStateController.Happiness = happiness;
 		EmployeeMovementController = GetComponent<EmployeeMovementController>();
-		EmployeeUIController = GetComponentInChildren<EmployeeUIController>();
-
+		EmployeeUIController = Instantiate(employeeUIControllerPrefab);
+		EmployeeUIController.transform.SetParent(transform, false);
+		EmployeeUIController.transform.localPosition = Vector3.zero;
+		
 		EmployeeMovementController.Init(officeDesk, GetComponent<NavMeshController>(), GetComponent<EmployeeAnimationController>(), GetComponent<EmployeeParticlesController>());
 		EmployeeUIController.DisableAll();
 
@@ -189,4 +191,7 @@ public class EmployeeController : MonoBehaviour
 	private bool releasing = false;
 
 	private bool magicFlag = false;
+
+	[SerializeField]
+	private EmployeeUIController employeeUIControllerPrefab;
 }

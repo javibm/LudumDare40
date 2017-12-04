@@ -20,11 +20,11 @@ public class EmployeeUIController : MonoBehaviour {
 	{
 		if (requestType == EmployeeController.RequestType.PayRaise)
 		{
-			EnablePayRaise(text);
+			EnablePayRaise("$"+text);
 		}
 		else if (requestType == EmployeeController.RequestType.Holidays)
 		{
-			EnableHolidays(text);
+			EnableHolidays("$"+text);
 		}
 	}
 
@@ -96,7 +96,8 @@ public class EmployeeUIController : MonoBehaviour {
 	public void EnableMoneyChange(int money)
 	{
 		moneyBalanceChange.AddOnFinishedCallback(DisableMoneyChange);
-		moneyBalanceChangeText.text = money.ToString();
+		moneyBalanceChangeText.color = money > 0 ? greenColor : redColor;
+		moneyBalanceChangeText.text = (money > 0 ? "+$" : "-$") + money.ToString();
 		moneyBalanceChange.gameObject.SetActive(true);
 	}
 
@@ -135,6 +136,12 @@ public class EmployeeUIController : MonoBehaviour {
 
 	[SerializeField]
 	private Text holidaysText;
+
+	[Header("Money Colors")]
+	[SerializeField]
+	private Color greenColor;
+	[SerializeField]
+	private Color redColor;
 
 	private bool requestClicked = false;
 }
