@@ -11,8 +11,11 @@ public class AnimationSpeed : MonoBehaviour {
 	
 	void Update()
 	{
-		float ratio = (float)GameMetaManager.Money.CurrentMoney / (float)GameMetaManager.Office.GetExpandTarget();
-		animator.speed = Mathf.Lerp(2.5f, 0.5f, ratio);
+		if(GameMetaManager.Instance != null)
+		{
+			float ratio = (float)GameMetaManager.Money.CurrentMoney / (float)GameMetaManager.Office.GetExpandTarget();
+			animator.speed = Mathf.Lerp(2.5f, 0.5f, ratio);
+		}
 	}
 
 	private Animator animator;
