@@ -14,6 +14,8 @@ public class EmployeeUIController : MonoBehaviour {
 	void Start()
 	{
 		moneyBalanceChange.gameObject.SetActive(false);
+		happyFace.gameObject.SetActive(false);
+		angryFace.gameObject.SetActive(false);
 	}
 
 	public void EnableUI(EmployeeController.RequestType requestType, string text)
@@ -99,13 +101,16 @@ public class EmployeeUIController : MonoBehaviour {
 	public void AcceptRequest()
 	{
 		GameMetaManager.Employee.OnAnswerYay();
-
+		happyFace.AddOnFinishedCallback(delegate {happyFace.gameObject.SetActive(false);});
+		happyFace.gameObject.SetActive(true);
 		OnRequestAnswered(true);
 	}
 
 	public void DeclineRequest()
 	{
 		GameMetaManager.Employee.OnAnswerCry();
+		angryFace.AddOnFinishedCallback(delegate {angryFace.gameObject.SetActive(false);});
+		angryFace.gameObject.SetActive(true);
 		OnRequestAnswered(false);
 	}
 
