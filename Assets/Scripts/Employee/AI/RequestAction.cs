@@ -17,6 +17,5 @@ public class RequestAction : Action {
 		{
 			controller.EmployeeUIController.EnableUI(controller.NextRequest, controller.RequestValue.ToString());
 		}
-		Debug.Log ("WAITING FOR REQUEST");
 	}
 }
