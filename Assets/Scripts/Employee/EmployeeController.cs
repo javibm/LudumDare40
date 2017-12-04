@@ -143,7 +143,7 @@ public class EmployeeController : MonoBehaviour
 		if (NextRequest == RequestType.PayRaise)
 		{
 			GameMetaManager.Money.RemoveMoney(RequestValue);
-			EmployeeUIController.EnableMoneyChange(-RequestValue);
+			EmployeeUIController.EnablePayRaise(RequestValue);
 			GameMetaManager.Employee.OnPayMoney();
 		}
 		else if (NextRequest == RequestType.Holidays)
