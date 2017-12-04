@@ -46,6 +46,7 @@ public class AudioManager : MonoBehaviour
 
 	public void SubscribeEvents()
 	{
+		PlaySound (AudioType.LevelUp);
 		GameMetaManager.Employee.OnBackToWork += PlayBackToWork;
 		GameMetaManager.Employee.OnEmployeeCreated += PlayDoor;
 		GameMetaManager.Employee.OnAnswerCry += PlayCry;
