@@ -50,7 +50,7 @@ public class EmployeeManager {
 	{
 		this.employeeGenerator = employeeGenerator;
 		this.employeeStats = employeeStats;
-    EmployeeList = new List<EmployeeController>();
+    	EmployeeList = new List<EmployeeController>();
 		//TO-DO ESTO ES UNA INSTANCIACIÓN DE PRUEBA!
 	}
 	
@@ -59,8 +59,8 @@ public class EmployeeManager {
 		EmployeeController employeeController = employeeGenerator.InstantiateEmployeePrefab(GameMetaManager.Office.DoorPoint);
 		employeeController.OnHolidayTaked += officeDesk.HolidayDesk.ActivateHolidayCartel;
 		employeeController.Init(officeDesk, happiness);
-    EmployeeList.Add(employeeController);
-  }
+    	EmployeeList.Add(employeeController);
+  	}
 
 	public bool TryCreateNewEmployee(int money, float happiness)
 	{
@@ -77,6 +77,15 @@ public class EmployeeManager {
 		else
 		{
 			return false;
+		}
+	}
+
+	public void AllEmployeesByTheWindow()
+	{
+		foreach(var employee in EmployeeList)
+		{
+			employee.holidayEnd = 1;
+			employee.EmployeeMovementController.MoveToCrazyTarget(false);
 		}
 	}
 

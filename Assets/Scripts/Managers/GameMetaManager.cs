@@ -44,7 +44,7 @@ public class GameMetaManager : Singleton<GameMetaManager>
 		{
 			FindObjectOfType<AudioManager>().SubscribeEvents();
 		}
-
+		OnLoseGame += GameMetaManager.Employee.AllEmployeesByTheWindow;
 		// TO DO INSTANCIACION DE PRUEBA
 		// employees.CreateNewEmployee(office.DeskList[0]);
 	}

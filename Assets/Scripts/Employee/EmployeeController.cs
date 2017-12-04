@@ -221,7 +221,7 @@ public class EmployeeController : MonoBehaviour
 	}
 
 	private float timeSinceLastGeneration;
-	private int holidayEnd;
+	public int holidayEnd;
 	private bool releasing = false;
 
 	private bool raging = false;
