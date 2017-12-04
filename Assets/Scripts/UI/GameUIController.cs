@@ -31,6 +31,7 @@ public class GameUIController : MonoBehaviour
 		UpdateProgressBar();
 		ShowCV(false);
 		ShowGameOverText(false);
+		ShowDailyTax(false);
 		cvMoneyBalanceTweener.gameObject.SetActive(false);
 	}
 
@@ -100,6 +101,7 @@ public class GameUIController : MonoBehaviour
 	{
 		UpdateDaysPassed();
 		UpdateProgressBar();
+		ShowDailyTax(true);
 		daysPassedFallingAnimationObject.SetActive(true);
 		daysPassedFallingSheetText.text = (GameMetaManager.Time.DaysPassed-1).ToString();
 	}
@@ -145,6 +147,13 @@ public class GameUIController : MonoBehaviour
 		}
 		moneyProgressBarImage.fillAmount = fillAmount;
 		moneyProgressBarImage.color = (fillAmount >= 0.75f ? barGreenColor : (fillAmount >= 0.5f ? barOrangeColor : barRedColor));
+	}
+
+	private void ShowDailyTax(bool show)
+	{
+		dailyTaxTweener.ResetTweener();
+		dailyTaxText.text = "-" + GameMetaManager.Office.GetDailyCost().ToString() + " $";
+		dailyTaxText.gameObject.SetActive(show);
 	}
 
 	private void ShowGameOverText(bool show)
@@ -213,6 +222,11 @@ public class GameUIController : MonoBehaviour
 	[SerializeField]
 	private Text cvMoneyBalanceText;
 
+	[SerializeField]
+	private Text dailyTaxText;
+	
+	[SerializeField]
+	private Tweener dailyTaxTweener;
 	private string cvText = "CV: {0}";
 	private string moneyText = "$ {0}";
 }
