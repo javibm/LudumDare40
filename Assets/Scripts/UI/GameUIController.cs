@@ -68,7 +68,7 @@ public class GameUIController : MonoBehaviour
 	private void OnGameOverMenuButtonClick()
 	{
 		GameMetaManager.OnUIButtonClicked();
-		// TODO
+		UnityEngine.SceneManagement.SceneManager.LoadScene(0);
 	}
 	
 

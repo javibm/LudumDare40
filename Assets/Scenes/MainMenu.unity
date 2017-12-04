@@ -122,12 +122,12 @@ Prefab:
     - target: {fileID: 224154955774809998, guid: f38798a4b187137409f9987c51f4698c,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 363.5
+      value: 314
       objectReference: {fileID: 0}
     - target: {fileID: 224154955774809998, guid: f38798a4b187137409f9987c51f4698c,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 263
+      value: 232.5
       objectReference: {fileID: 0}
     - target: {fileID: 224154955774809998, guid: f38798a4b187137409f9987c51f4698c,
         type: 2}
@@ -208,6 +208,46 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224583211347261760, guid: f38798a4b187137409f9987c51f4698c,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 224954997760151600, guid: f38798a4b187137409f9987c51f4698c,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 224432529545540488, guid: f38798a4b187137409f9987c51f4698c,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 224262173045015560, guid: f38798a4b187137409f9987c51f4698c,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 224919771849350532, guid: f38798a4b187137409f9987c51f4698c,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 224182559154367388, guid: f38798a4b187137409f9987c51f4698c,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 224432529545540488, guid: f38798a4b187137409f9987c51f4698c,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -392
+      objectReference: {fileID: 0}
+    - target: {fileID: 224583211347261760, guid: f38798a4b187137409f9987c51f4698c,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -461
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f38798a4b187137409f9987c51f4698c, type: 2}
