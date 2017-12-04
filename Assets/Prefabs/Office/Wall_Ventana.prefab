@@ -143,13 +143,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1698621167693484}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.7815451, z: -0, w: 0.6238488}
   m_LocalPosition: {x: -0.388, y: 0.054, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4941034294099364}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -102.80501, z: 0}
 --- !u!4 &4941034294099364
 Transform:
   m_ObjectHideFlags: 1
@@ -292,6 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playOnStart: 1
+  disableOnFinished: 0
   tweenerCurve:
     serializedVersion: 2
     m_Curve:
@@ -338,6 +339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playOnStart: 1
+  disableOnFinished: 0
   tweenerCurve:
     serializedVersion: 2
     m_Curve:

@@ -23,9 +23,12 @@ public class OfficeDesk : MonoBehaviour
 
 	void Awake()
 	{
-		Transform = gameObject.transform;
+		Transform = fixedTransform;
 		setAnimationDesk = GetComponent<SetAnimationDesk>();
 	}
 
 	private SetAnimationDesk setAnimationDesk;
+
+	[SerializeField]
+	private Transform fixedTransform;
 }

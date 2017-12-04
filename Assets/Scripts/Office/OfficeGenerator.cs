@@ -130,7 +130,7 @@ public class OfficeGenerator : MonoBehaviour
         else
         {
           go = Instantiate(wallWindowPrefab);
-          //windowList.Add(go.GetComponentInChildren<WindowPoint>());
+          windowList.Add(go.GetComponentInChildren<WindowPoint>());
         }
         go.transform.SetParent(transform);
         go.transform.localPosition = new Vector3(0f, 0f, cellSize * (step - 1));
