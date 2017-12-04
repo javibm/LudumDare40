@@ -9,8 +9,8 @@ public class Twitter : MonoBehaviour {
 
   public void ShareToTW()
   {
-    string nameParameter = "I have reached the level " + GameMetaManager.Office.CurrentSize + " in " +  GameMetaManager.Time.DaysPassed +" days.Can you beat me? ";
+    string nameParameter = "I have reached the level " + GameMetaManager.Office.CurrentSize + " in " +  GameMetaManager.Time.DaysPassed +" days. Can you beat me? ";
     Application.OpenURL(TWITTER_ADDRESS +
-       "?text=" + WWW.EscapeURL(nameParameter + "\n" + descriptionParam + "\n" + "Get the Game:\n" + appStoreLink + " " + hashtag));
+        "?text=" + WWW.EscapeURL(nameParameter + "\n" + descriptionParam + "\n" + "Get the Game:\n" + appStoreLink + " " + hashtag));
   }
 }

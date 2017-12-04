@@ -34,7 +34,7 @@ public class MainMenuUIController : MonoBehaviour
 		teamNames.Add("Marcos Díez (Coding)\n@Marcos10Tweets");
 		teamNames.Add("Fran Martínez (GD, SFX)\n@pixfran");
 		teamNames.Add("Miguel Martín (Art)\n@mmibarreta");
-		teamNames.Add("Altea (Art)\n@askthegoat");
+		teamNames.Add("Altea Lomo (Art)\n@askthegoat");
 		
 		for(int i = 0; i < creditLabelsList.Count; i++)
 		{
