@@ -732,12 +732,12 @@ Prefab:
     - target: {fileID: 224645339591872550, guid: a9b7d3acafce5684fbefff1148aa6992,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 328.5
+      value: 324
       objectReference: {fileID: 0}
     - target: {fileID: 224645339591872550, guid: a9b7d3acafce5684fbefff1148aa6992,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 214
+      value: 236.5
       objectReference: {fileID: 0}
     - target: {fileID: 224645339591872550, guid: a9b7d3acafce5684fbefff1148aa6992,
         type: 2}
@@ -2402,8 +2402,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   employees:
-  - {fileID: 1305403814224198, guid: aa62af47bd918c54f8d652439dbd2eae, type: 2}
+  - {fileID: 1305403814224198, guid: 0b2677ee427c4894d9fbdd356873911b, type: 2}
+  - {fileID: 1305403814224198, guid: 3823084424c0c9b45bc91ed153392930, type: 2}
   - {fileID: 1305403814224198, guid: f7a49645e5396a74f9ce0142a728e7d9, type: 2}
+  - {fileID: 1305403814224198, guid: 199c4f84d597d064d9a8b0c540af7782, type: 2}
+  - {fileID: 1305403814224198, guid: 97921f57d2ace5943bc9e16a4702a2ec, type: 2}
+  - {fileID: 1305403814224198, guid: 1eb9756916d52ba44af3949698856dd9, type: 2}
+  - {fileID: 1305403814224198, guid: aa62af47bd918c54f8d652439dbd2eae, type: 2}
+  - {fileID: 1305403814224198, guid: 7eb6b81a9f809cb4ca184226f0243b9d, type: 2}
 --- !u!4 &1974370101
 Transform:
   m_ObjectHideFlags: 0
