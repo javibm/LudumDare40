@@ -40,7 +40,10 @@ public class GameMetaManager : Singleton<GameMetaManager>
 		time = gameObject.GetComponent<TimeManager>();
 		cameraManager = gameObject.GetComponent<CameraManager>();
 		cvs = new CVManager(cvGenerationStats);
-		FindObjectOfType<AudioManager>().SubscribeEvents();
+		if(FindObjectOfType<AudioManager>())
+		{
+			FindObjectOfType<AudioManager>().SubscribeEvents();
+		}
 
 		// TO DO INSTANCIACION DE PRUEBA
 		// employees.CreateNewEmployee(office.DeskList[0]);
