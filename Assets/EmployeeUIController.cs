@@ -16,6 +16,7 @@ public class EmployeeUIController : MonoBehaviour {
 		moneyBalanceChange.gameObject.SetActive(false);
 		happyFace.gameObject.SetActive(false);
 		angryFace.gameObject.SetActive(false);
+		payRaiseFeedback.gameObject.SetActive(false);
 	}
 
 	public void EnableUI(EmployeeController.RequestType requestType, string text)
@@ -125,6 +126,12 @@ public class EmployeeUIController : MonoBehaviour {
 		moneyBalanceChange.gameObject.SetActive(true);
 	}
 
+	public void EnablePayRaise(int money)
+	{
+		payRaiseFeedback.text = "-" + money.ToString() + " $";
+		payRaiseFeedback.gameObject.SetActive(true);
+	}
+
 	private void DisableMoneyChange()
 	{
 		moneyBalanceChange.ResetTweener();
@@ -160,6 +167,9 @@ public class EmployeeUIController : MonoBehaviour {
 
 	[SerializeField]
 	private Text holidaysText;
+
+	[SerializeField]
+	private Text payRaiseFeedback;
 
 	[Header("Money Colors")]
 	[SerializeField]
