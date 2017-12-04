@@ -95,7 +95,7 @@ public class EmployeeController : MonoBehaviour
 		}
 		else
 		{
-			EmployeeStateController.ForceWorkAgain();
+			EmployeeStateController.DenyRequest();
 		}
 		EmployeeUIController.CloseRequest();
 	}
