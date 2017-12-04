@@ -23,6 +23,5 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 			_instance = this as T;
 		}
 	}
-
 	private static T _instance = null;
 }
