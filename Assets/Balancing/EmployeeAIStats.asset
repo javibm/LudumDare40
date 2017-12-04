@@ -11,9 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4527f607a8682e94199f8e5bf84bfcf4, type: 3}
   m_Name: EmployeeAIStats
   m_EditorClassIdentifier: 
-  minRequestTime: 5
-  maxRequestTime: 10
-  minProcrastinateTime: 5
-  maxProcrastinateTime: 10
+  minRequestTime: 10
+  maxRequestTime: 15
+  minProcrastinateTime: 10
+  maxProcrastinateTime: 15
   requestAcceptedHappiness: 0.3
   requestDeniedHappiness: 0.4

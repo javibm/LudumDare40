@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Name: EmployeeStats
   m_EditorClassIdentifier: 
   MoneyGenerated: 3
-  HolidayTime: 20
+  HolidayTime: 30
   MinPayRaise: 10
   MaxPayRaise: 20
   minInitialHappiness: 0.5
   maxInitialHappiness: 1
   moneyFactor: 10
-  payRaiseProbability: 0
+  payRaiseProbability: 0.7
