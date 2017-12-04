@@ -24,7 +24,7 @@ public class EmployeeUIController : MonoBehaviour {
 		}
 		else if (requestType == EmployeeController.RequestType.Holidays)
 		{
-			EnableHolidays("$"+text);
+			EnableHolidays(text);
 		}
 	}
 

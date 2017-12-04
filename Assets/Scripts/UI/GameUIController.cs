@@ -92,6 +92,8 @@ public class GameUIController : MonoBehaviour
 	{
 		UpdateDaysPassed();
 		UpdateProgressBar();
+		daysPassedFallingAnimationObject.SetActive(true);
+		daysPassedFallingSheetText.text = (GameMetaManager.Time.DaysPassed-1).ToString();
 	}
 
 	private void OnNewCVGenerated()
@@ -152,6 +154,10 @@ public class GameUIController : MonoBehaviour
 	
 	[SerializeField]
 	private Text daysPassedLabelText;
+	[SerializeField]
+	private GameObject daysPassedFallingAnimationObject;
+	[SerializeField]
+	private Text daysPassedFallingSheetText;
 
 	[SerializeField]
 	private GameObject daysWithNegativeMoneyTimerGameObject;
