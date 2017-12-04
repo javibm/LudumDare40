@@ -18,3 +18,4 @@ MonoBehaviour:
   minInitialHappiness: 0.5
   maxInitialHappiness: 1
   moneyFactor: 10
+  payRaiseProbability: 0

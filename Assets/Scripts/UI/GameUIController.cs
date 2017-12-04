@@ -33,6 +33,16 @@ public class GameUIController : MonoBehaviour
 		ShowGameOverText(false);
 	}
 
+	void OnDestroy()
+	{
+		GameMetaManager.Money.OnMoneyChanged -= OnMoneyChanged;
+		GameMetaManager.Money.OnMoneyChangeToNegative -= OnMoneyChangeToNegative;
+		GameMetaManager.Money.OnMoneyChangeToPositive -= OnMoneyChangeToPositive;
+		GameMetaManager.Time.OnDayPassed -= OnDayPassed;
+		GameMetaManager.CVs.OnNewCVGenerated -= OnNewCVGenerated;
+		GameMetaManager.OnLoseGame -= OnLoseGame;
+	}
+
 	private void OnExpandOfficeButtonClick()
 	{
 		GameMetaManager.OnUIButtonClicked();

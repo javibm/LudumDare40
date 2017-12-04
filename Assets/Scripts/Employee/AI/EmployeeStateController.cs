@@ -94,6 +94,12 @@ public class EmployeeStateController : MonoBehaviour {
 		UpdateState(initialState);
 	}
 
+	public void DenyRequest()
+	{
+		ForceWork = true;
+		Happiness -= employeeAIStats.requestDeniedHappiness;
+	}
+
 	public void ForceWorkAgain()
 	{
 		ForceWork = true;
