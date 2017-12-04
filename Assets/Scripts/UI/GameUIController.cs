@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Utils.UI;
 
 public class GameUIController : MonoBehaviour 
 {
@@ -31,6 +32,7 @@ public class GameUIController : MonoBehaviour
 		UpdateProgressBar();
 		ShowCV(false);
 		ShowGameOverText(false);
+		cvMoneyBalanceTweener.gameObject.SetActive(false);
 	}
 
 	void OnDestroy()
@@ -51,9 +53,12 @@ public class GameUIController : MonoBehaviour
 
 	private void OnCVAcceptButtonClick()
 	{
+		cvMoneyBalanceText.text = "-" + GameMetaManager.CVs.PendingCV.MoneyCost.ToString() + "$";
 		GameMetaManager.OnUIButtonClicked();
 		GameMetaManager.Employee.TryCreateNewEmployee(GameMetaManager.CVs.PendingCV.MoneyCost, GameMetaManager.CVs.PendingCV.Happiness);
 		GameMetaManager.CVs.AcceptPendingCV();
+		cvMoneyBalanceTweener.AddOnFinishedCallback(delegate { cvMoneyBalanceTweener.gameObject.SetActive(false); } );
+		cvMoneyBalanceTweener.gameObject.SetActive(true);
 		ShowCV(false);
 	}
 	private void OnCVRejectButtonClick()
@@ -212,6 +217,11 @@ public class GameUIController : MonoBehaviour
 	private Color barOrangeColor;
 	[SerializeField]
 	private Color barGreenColor;
+
+	[SerializeField]
+	private Tweener cvMoneyBalanceTweener;
+	[SerializeField]
+	private Text cvMoneyBalanceText;
 
 	private string cvText = "CV: {0}";
 	private string moneyText = "$ {0}";

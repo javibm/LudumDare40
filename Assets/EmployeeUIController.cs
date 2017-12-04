@@ -87,6 +87,8 @@ public class EmployeeUIController : MonoBehaviour {
 		answerRequest.SetActive(false);
 		forceWork.SetActive(false);
 		fire.SetActive(false);
+
+		activeObject = null;
 	}
 
 	public void ForceWork()
@@ -97,6 +99,7 @@ public class EmployeeUIController : MonoBehaviour {
 	public void AcceptRequest()
 	{
 		GameMetaManager.Employee.OnAnswerYay();
+
 		OnRequestAnswered(true);
 	}
 
@@ -160,6 +163,13 @@ public class EmployeeUIController : MonoBehaviour {
 	private Color greenColor;
 	[SerializeField]
 	private Color redColor;
+
+	[Header("Faces")]
+	[SerializeField]
+	private Tweener happyFace;
+
+	[SerializeField]
+	private Tweener angryFace;
 
 	private bool requestClicked = false;
 }

@@ -64,5 +64,10 @@ public class EmployeeCV
         return SpecialNames[Random.Range(0, SpecialNames.Length)];
     }
 
-    private string[] SpecialNames = new string[]{"Puñales", "Javote", "Ajota", "Jocheider", "Francoc", "Yisus", "Marcos", "Carlota", "MadMellow", "Lewandowski", "Triyisus", "Gustavo", "Miguel el Gordo", "Sergar", "Cabrote", "Maceta", "Bolardo","Estivi","Vargas","Gitano","Altea","Pepper", "Gustin", "Pablo Iglesias", "Fiu Fiu", "Angel David", "Oscar", "Velen", "Tomas", "Mate", "Diego", "Jorge", "Juanjo", "Adrian", "Zhang", "QA Luis", "QAngel", "Carolina", "Bob Morate", "Qarrillo", "Clicker Boy", "Indalo", "Machango", "Rayco", "Fotingo", "Almeria", "Bisbal", "Leprous", "Taburete", "Willy" };
+    private string[] SpecialNames = new string[]{"Puñales", "Javote", "Ajota", "Jocheider", "Francoc", "Yisus", 
+    "Marcos", "Carlota", "MadMellow", "Lewandowski", "Triyisus", "Gustavo", "Miguel el Gordo", "Sergar", "Cabrote", 
+    "Maceta", "Bolardo","Estivi","Vargas","Gitano","Altea","Pepper", "Gustin", "Pablo Iglesias", "Fiu Fiu", "Angel David", 
+    "Oscar", "Velen", "Tomas", "Mate", "Diego", "Jorge", "Juanjo", "Adrian", "Zhang", "QA Luis", "QAngel", "Carolina", 
+    "Bob Morate", "Qarrillo", "Clicker Boy", "Indalo", "Machango", "Rayco", "Fotingo", "Almeria", "Bisbal", "Leprous", "Taburete", "Willy",
+    "Jari", "Devin", "Einar", "Mikael", "Twinbot" };
 }
