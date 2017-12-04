@@ -121,7 +121,7 @@ public class EmployeeUIController : MonoBehaviour {
 	{
 		moneyBalanceChange.AddOnFinishedCallback(DisableMoneyChange);
 		moneyBalanceChangeText.color = money > 0 ? greenColor : redColor;
-		moneyBalanceChangeText.text = (money > 0 ? "+$" : "-$") + money.ToString();
+		moneyBalanceChangeText.text = (money > 0 ? "+" : "") + money.ToString() +" $";
 		moneyBalanceChange.gameObject.SetActive(true);
 	}
 
