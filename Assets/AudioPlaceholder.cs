@@ -71,5 +71,6 @@ public class AudioPlaceholder : MonoBehaviour {
 
 	private void PlayPayMoney()
 	{
+		
 	}
 }
