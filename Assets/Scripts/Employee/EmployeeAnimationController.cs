@@ -9,42 +9,66 @@ public class EmployeeAnimationController : MonoBehaviour
 
   public void WalkAnim()
   {
-    animatorController.CrossFade("Walking", 0.0f);
+    if(animatorController != null)
+    {
+      animatorController.CrossFade("Walking", 0.0f);
+    }
   }
 
   public void IdleAnim()
   {
-    animatorController.CrossFade("Idle", 0.0f);
+    if(animatorController != null)
+    {
+      animatorController.CrossFade("Idle", 0.0f);
+    }
   }
 
   public void IdleAnim2()
   {
-    animatorController.CrossFade("Idle2", 0.0f);
+    if(animatorController != null)
+    {
+      animatorController.CrossFade("Idle2", 0.0f);
+    }
   }
 
   public void IdleAnim3()
   {
-    animatorController.CrossFade("Idle3", 0.0f);
+    if(animatorController != null)
+    {
+      animatorController.CrossFade("Idle3", 0.0f);
+    }
   }
 
   public void WorkAnim()
   {
-    animatorController.CrossFade("Working", 0.0f);
+    if(animatorController != null)
+    {
+      animatorController.CrossFade("Working", 0.0f);
+    }
   }
 
   public void JumpAnim()
   {
-    animatorController.CrossFade("Jump", 0.0f);
+    if(animatorController != null)
+    {
+      animatorController.CrossFade("Jump", 0.0f);
+    }
   }
 
   public void DestroyAnim()
   {
-    animatorController.CrossFade("Destroy", 0.0f);
+    if(animatorController != null)
+    {
+      animatorController.CrossFade("Destroy", 0.0f);
+    }
   }
 
   public void RunAnim()
   {
-    animatorController.CrossFade("Run", 0.0f);
+    if(animatorController != null)
+    {
+      animatorController.CrossFade("Run", 0.0f);
+    }
   }
 
   private Animator animatorController;	
