@@ -37,9 +37,12 @@ public class NavMeshController : MonoBehaviour
   public void NavigateTo(Transform target, float speed, OnNavigateFinished del)
   {
     this.target = target;
-    agent.isStopped = false;
-    agent.speed = speed;
-    agent.destination = target.position;
+    if(agent != null)
+    {
+      agent.destination = target.position;
+      agent.speed = speed;
+      agent.isStopped = false;
+    }
     NavigateFinishedCallback = del;
   }
 
